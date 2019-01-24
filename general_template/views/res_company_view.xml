@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<data noupdate="1">
+    <record id="base.main_company" model="res.company">
+        <field name="invoice_logo" type="base64" file="general_template/static/src/img/company_image.png"/>
+    </record>
+</data>
+<data>
+    <!-- Inherited Customer For add Reporting Field --> 
+    <record model="ir.ui.view" id="view_report_company_sale_order">
+        <field name="name">res.company.invoice.template.form.inherit</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page" position="after">
+                <page string="Default Report Settings">
+                    <group string="Default Template Settings">
+                        <group>
+                            <field name="report_sale_template_id1" attrs="{'invisible':[('report_sale_template_id','!=',False)]}"/>
+                            <field name="report_sale_template_id" domain="[('report_name', 'ilike', '%sale_order%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                            <field name="report_po_template_id1" invisible="1" />
+                            <field name="report_po_template_id" domain="[('report_name', 'ilike', '%purchase_c%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                            <field name="report_rfq_template_id" domain="[('report_name', 'ilike', '%purchase_c%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                        </group>
+                        <group>
+                            <field name="report_template_id" domain="[('report_name', 'ilike', '%invoice_template%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                            <field name="report_template_id1" attrs="{'invisible':[('report_template_id','!=',False)]}"/>
+                            <field name="report_delivery_template_id1" invisible="1" />
+                            <field name="report_delivery_template_id" domain="[('report_name', 'ilike', '%delivery_c%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                            <field name="report_picking_template_id" domain="[('report_name', 'ilike', '%delivery_c%')]" options="{'no_create': True}" attrs="{'required': True}"/>
+                        </group>
+                    </group>
+                    <group string="Default Report Settings">
+                        <group>
+                            <button name="template_print1" type="object" string="Preview Template"/><br/>
+                            <field name="invoice_logo" widget="image"  class="oe_avatar"/>
+                            <field name="standard_template"/>
+                            <field name="theme_color" placeholder=" like #d4d2d2" widget="color"/>
+                            <field name="theme_text_color" placeholder=" like #5cc2d2" widget="color"/>
+                            <field name="text_color" placeholder=" like #5bb3d2" widget="color"/>
+                            <field name="company_color" placeholder=" like #b30000" widget="color"/>
+                            <field name="company_address_color" placeholder=" like #b30010" widget="color"/>
+                            <field name="is_company_bold"/>
+                            <field name="add_amount_in_words" />
+                        </group>
+                        <group>
+                            <field name="watermark_logo" widget="image"  class="oe_avatar"/>
+                            <field name="odd_party_color" placeholder=" like #aea8a8" widget="color"/>
+                            <field name="even_party_color" placeholder=" like #aea8aa" widget="color"/>
+                            <field name="customer_color" placeholder=" like #2763a1" widget="color"/>
+                            <field name="customer_address_color" placeholder=" like #2763c1" widget="color"/>
+                            <field name="is_description"/>
+                            <field name="is_customer_bold"/>
+                            <field name="add_product_image"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+</data>
+</odoo>

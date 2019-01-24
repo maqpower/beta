@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="biz_add_credit_approval_section" model="ir.ui.view">
+        <field name="name">biz.add.credit.approval.section</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <group name="credit_approval" string="Credit Approval">
+                    <field name="credit_check_verified"/>
+                    <field name="credit_rating"/>
+                </group>
+            </xpath>
+       </field>
+    </record>
+</odoo>

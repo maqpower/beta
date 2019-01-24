@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="service_wspc_view" model="ir.ui.view">
+            <field name="name">
+            </field>
+            <field name="model">import.service.wspc</field>
+            <field name="arch" type="xml">
+                <form string="Update Date">
+                    <group>
+                        <field name="filename" invisible="1" />
+                        <group>
+                            <field name="attach_file" filename = "filename" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="store_wspc_report" string="Store WSPC Report" class="oe_highlight" type="object"
+                            icon="fa-paperclip"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_wspc_attached" model="ir.actions.act_window">
+            <field name="name">wspc report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.service.wspc</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="service_wspc_view"/>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</openerp>

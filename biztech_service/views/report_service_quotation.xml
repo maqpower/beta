@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="service_quotation_footer">
+        <div class="footer" style="height: 50%">
+            <div class="text-center" >
+                <t t-if="o.company_id.generic_comment">
+                    <p t-field="o.company_id.generic_comment"/>
+                </t>
+            </div>
+            <div class="text-center" style="color:#000000;width: 100%; font-size:14px;line-height:18px;border-top:
+                1px solid black;">
+                THANK YOU FOR YOUR BUSINESS
+                <br/>
+                <ul class="list-inline" >
+                    <t t-set="company" t-value="company.sudo()"/>
+                    <li t-if="company.phone">
+                        Phone:
+                        <span t-field="company.phone"/>
+                    </li>
+                    <li t-if="company.fax and company.phone">&amp;bull;</li>
+                    <li t-if="company.fax">
+                        Fax:
+                        <span t-field="company.fax"/>
+                    </li>
+                    <li t-if="company.email and company.fax or company.email and company.phone">&amp;bull;</li>
+                    <li t-if="company.email">Email: &amp;nbsp;sales@maqpower.com</li>
+                    <!-- <li t-if="company.website and company.email or company.website and company.fax
+                        or company.website and company.phone">&amp;bull;</li><li t-if="company.website">Website:
+                        <span t-field="company.website"/></li>-->
+                </ul>
+                <!--<t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>-->
+                <ul class="list-inline" style="margin-top:-8px;margin-bottom:-10px;">
+                    <li >Page:</li>
+                    <li>
+                        <span class="page"/>
+                    </li>
+                    <li>/</li>
+                    <li>
+                        <span class="topage"/>
+                    </li>
+                </ul>
+                
+            </div>
+            <div style="margin-bottom:10px;">
+                <span class = "pull-left text-left">Signature :_______________</span>
+                <span class = "pull-right text-right">Date :_______________</span>
+            </div>
+        </div>
+    </template>
+    
+    
+    <template id="service_quotation_custom_header">
+        <div class="header">
+            <div class="row">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <center>
+                                    <table border="0" cellpadding="0" cellspacing="0" t-attf-style="margin:0; font-family:
+                                        Arial,Helvetica, sans-serif; background:#fff;
+                                        line-height:20px; border-bottom: 1px solid
+                                        #{doc.company_id and doc.company_id.theme_color
+                                        or '#000000'};" width="100%">
+                                        <tr>
+                                            <td align="left" style="color:#4D4D4F; font-size:12px; margin:0; padding:25px 15px
+                                                10px 5px;" valign="middle">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="center" style="color:#4D4D4F; font-size:12px; padding:0 0px; margin:0 "
+                                                            valign="middle">
+                                                            <img style="max-height: 90px; margin-top: 4%;" t-att-src="'data:image/png;base64,%s'
+                                                                % to_text(doc.company_id.invoice_logo
+                                                                or doc.company_id.logo)"
+                                                                t-if="doc.company_id.logo"/>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                            </td>
+                                            <td align="right" style="color:#4D4D4F; font-size:22px; padding: 25px 15px 10px 5px;
+                                                line-height:25px;" valign="top">
+                                                <t t-if="doc.company_id and doc.company_id.is_company_bold">
+                                                    <h2 class="text-center" style="text-transform:capitalize; font-size :20px; padding:0px;
+                                                        margin:0;">
+                                                        <b>
+                                                            <span t-attf-style="color: #{doc.company_id and doc.company_id.company_color or '#ffffff'};"
+                                                                t-field="doc.company_id.partner_id"/>
+                                                        </b>
+                                                    </h2>
+                                                </t>
+                                                <t t-if="not doc.company_id.is_company_bold">
+                                                    <h2 class="text-center" style="text-transform:capitalize; font-size :22px; padding:0px;
+                                                        margin:0;">
+                                                        <span t-attf-style="color: #{doc.company_id and doc.company_id.company_color or '#ffffff'};"
+                                                            t-field="doc.company_id.partner_id"/>
+                                                    </h2>
+                                                </t>
+                                                <div class="text-center" t-attf-style="color: #{doc.company_id and doc.company_id.company_address_color
+                                                    or '#ffffff'};">
+                                                    <span t-esc="doc._get_street(doc.company_id.partner_id)"/>
+                                                    <span t-esc="doc._get_address_details(doc.company_id.partner_id)"/>
+                                                </div>
+                                                <!-- <div class="text-center" t-attf-style="color: #{doc.company_id and doc.company_id.company_address_color
+                                                    or '#ffffff'};"><t t-if="doc.company_id.partner_id.phone"><span
+                                                    t-attf-style="color: #{doc.company_id
+                                                    and doc.company_id.company_address_color
+                                                    or '#ffffff'};" t-field="doc.company_id.partner_id.phone"/></t><t
+                                                    t-if="doc.company_id.partner_id.fax"><strong
+                                                    t-attf-style="color: #{doc.company_id
+                                                    and doc.company_id.company_address_color
+                                                    or '#ffffff'};">Fax: </strong><span
+                                                    t-attf-style="color: #{doc.company_id
+                                                    and doc.company_id.company_address_color
+                                                    or '#ffffff'};" t-field="doc.company_id.partner_id.fax"/></t></div>-->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+    <template id="service_quotation_external_layout">
+        <!-- Multicompany -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+        
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+        
+        <t t-if="company.external_report_layout == 'background'">
+            <t t-call="web.external_layout_background">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout == 'boxed'">
+            <t t-call="web.external_layout_boxed">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout == 'clean'">
+            <t t-call="web.external_layout_clean">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout in (False, 'standard')">
+            <t t-call="biztech_service.service_quotation_custom_header"/>
+            
+            <!--            <t t-call="web.external_layout_standard"><t t-raw="0"/></t-->
+            <t t-raw="0"/>
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+            <t t-call="biztech_service.service_quotation_footer"/>
+        </t>
+        
+    </template>
+    
+    <template id="report_service_quotation_template">
+        <t t-call="biztech_service.service_quotation_external_layout">
+            <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                </div>
+                
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:10;margin-bottom:10"
+                    >
+                    <tbody>
+                        <tr >
+                            <tr>
+                                <td align="center" colspan="3" style="padding: 5px 5px 15px 15px; line-height:15px;
+                                    font-size:22px;" valign="top">
+                                    <span>QUOTE #:</span>
+                                    <span t-field="doc.name" t-if="doc.name"/>
+                                </td>
+                            </tr>
+                            
+                            <!--<td > <t t-if="not (env.context.get('proforma', False) or is_pro_forma)"> <span><strong>QUOTE
+                                #:</strong></span> </t> <span t-field="doc.name"/>
+                                </td>-->
+                        </tr>
+                        <tr style="background-color:#f2f2f2">
+                            <td align="left" style="padding: 15px 5px 10px 20px; width:30%; line-height:20px;"
+                                valign="top">
+                                <p t-attf-style="text-transform:capitalize; color: #{doc.company_id and doc.company_id.theme_color
+                                    or '#ffffff'}; font-size:16px; font-weight:bold;margin:0;
+                                    margin-bottom:5px;">
+                                    <!-- <strong t-if="o.partner_shipping_id == o.partner_invoice_id">Bill To and Ship
+                                        To:</strong> -->
+                                    <strong>Bill To:</strong>
+                                </p>
+                                <t t-if="doc.partner_invoice_id">
+                                    <t t-if="doc.company_id and doc.company_id.is_customer_bold">
+                                        <h1 style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                            <b>
+                                                <span t-attf-style="color: #{doc.company_id and doc.company_id.customer_color or '#ffffff'};"
+                                                    t-esc="doc.partner_invoice_id.name"/>
+                                            </b>
+                                        </h1>
+                                    </t>
+                                    <t t-if="not doc.company_id.is_customer_bold">
+                                        <h1 style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                            <span t-attf-style="color: #{doc.company_id and doc.company_id.customer_color or '#ffffff'};"
+                                                t-esc="doc.partner_invoice_id.name"/>
+                                        </h1>
+                                    </t>
+                                    <p t-attf-style="font-size :14px;color: #{doc.company_id and doc.company_id.customer_address_color
+                                        or '#ffffff'};">
+                                        <span t-esc="doc._get_street(doc.partner_invoice_id)"/>
+                                        <br/>
+                                        <span t-esc="doc._get_address_details(doc.partner_invoice_id)"/>
+                                        <br/>
+                                        <!-- <t t-if="doc.partner_invoice_id.mobile"> <strong t-attf-style="color: #{doc.company_id
+                                            and doc.company_id.customer_address_color
+                                            or '#ffffff'};">Mobile: </strong> <span
+                                            t-field="doc.partner_invoice_id.mobile"/>
+                                            <br/> </t>-->
+                                        <t t-if="doc.partner_invoice_id.phone">
+                                            <strong t-attf-style="color: #{doc.company_id and doc.company_id.customer_address_color
+                                                or '#ffffff'};">Phone:</strong>
+                                            <span t-field="doc.partner_invoice_id.phone"/>
+                                            <br/>
+                                        </t>
+                                        <!--<t t-if="doc.partner_invoice_id.vat"> <strong t-attf-style="color: #{doc.company_id
+                                            and doc.company_id.customer_address_color
+                                            or '#ffffff'};">Vat: </strong> <span t-field="doc.partner_invoice_id.vat"/>
+                                            </t> -->
+                                    </p>
+                                </t>
+                            </td>
+                            <td width="30%" >
+                                <p t-attf-style="text-transform:capitalize; color: #{doc.company_id and doc.company_id.theme_color
+                                    or '#ffffff'}; font-size:16px; font-weight:bold;margin:0;
+                                    margin-bottom:5px;">
+                                    <strong>Ship To:</strong>
+                                </p>
+                                <t t-if="doc.partner_shipping_id">
+                                    <t t-if="doc.company_id and doc.company_id.is_customer_bold">
+                                        <h1 style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                            <b>
+                                                <span t-attf-style="color: #{doc.company_id and doc.company_id.customer_color or '#ffffff'};"
+                                                    t-esc="doc.partner_shipping_id.name"/>
+                                            </b>
+                                        </h1>
+                                    </t>
+                                    <t t-if="not doc.company_id.is_customer_bold">
+                                        <h1 style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                            <span t-attf-style="color: #{doc.company_id and doc.company_id.customer_color or '#ffffff'};"
+                                                t-esc="doc.partner_shipping_id.name"/>
+                                        </h1>
+                                    </t>
+                                    <p t-attf-style="font-size :14px;color: #{doc.company_id and doc.company_id.customer_address_color
+                                        or '#ffffff'};">
+                                        <span t-esc="doc._get_street(doc.partner_shipping_id)"/>
+                                        <br/>
+                                        <span t-esc="doc._get_address_details(doc.partner_shipping_id)"/>
+                                        <br/>
+                                        <!-- <t t-if="doc.partner_shipping_id.mobile"> <strong t-attf-style="color: #{doc.company_id
+                                            and doc.company_id.customer_address_color
+                                            or '#ffffff'};">Mobile: </strong> <span
+                                            t-field="doc.partner_shipping_id.mobile"/>
+                                            <br/> </t>-->
+                                        <t t-if="doc.partner_shipping_id.phone">
+                                            <strong t-attf-style="color: #{doc.company_id and doc.company_id.customer_address_color
+                                                or '#ffffff'};">Phone:</strong>
+                                            <span t-field="doc.partner_shipping_id.phone"/>
+                                            <br/>
+                                        </t>
+                                        <!--<t t-if="doc.partner_shipping_id.vat"> <strong t-attf-style="color: #{doc.company_id
+                                            and doc.company_id.customer_address_color
+                                            or '#ffffff'};">Vat: </strong> <span t-field="doc.partner_shipping_id.vat"/>
+                                            </t> -->
+                                    </p>
+                                </t>
+                            </td>
+                            <td align="left" style="padding: 15px 5px 10px 20px; line-height:20px;" valign="top">
+                                <!-- <td align="left" style="padding: 15px 5px 10px 20px; line-height:20px;" valign="top">
+                                    <t t-if="doc.date_order"><strong>Quote Date:</strong></t>
+                                    <t t-if="doc.date_order"> <span t-esc="time.strftime('%m/%d/%y',
+                                    time.strptime(doc.date_order,'%Y-%m-%d %H:%M:%S'))"/>
+                                    </t> </td>-->
+                                <strong>QUOTE DATE:</strong>
+                                <t t-if="doc.date_order">
+                                    <span t-esc="time.strftime('%m/%d/%y', time.strptime(doc.date_order,'%Y-%m-%d %H:%M:%S'))"/>
+                                </t>
+                                <br/>
+                                <strong>PHONE:</strong>
+                                <span t-field="doc.partner_id.phone"/>
+                                <br/>
+                                <strong>FAX #:</strong>
+                                <span t-field="doc.company_id.fax"/>
+                                <br/>
+                                <strong>Attn:</strong>
+                                Huong channita
+                                <br/>
+                                <strong>E-MAIL #:</strong>
+                                <span t-field="doc.company_id.email"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <table style="height: 70px; width: 100%;margin-bottom:20;">
+                    <tbody>
+                        <tr>
+                            <td style="width: 90px;border: 1px solid black;" class ="text-center">TECHNICIAN</td>
+                            <td style="width: 90px;border: 1px solid black;" class ="text-center">
+                                SERVICE
+                                <br/>
+                                TYPE
+                            </td>
+                            <td style="width: 91px;border: 1px solid black;" class ="text-center">
+                                DELIVERY
+                                <br/>
+                                DATE
+                            </td>
+                            <td style="width: 91px;border: 1px solid black;" class ="text-center">
+                                PAYMENT
+                                <br/>
+                                TERMS
+                            </td>
+                            <td style="width: 102px;border: 1px solid black;" class ="text-center">
+                                QUOTE
+                                <br/>
+                                EXPIRES
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90px;border: 1px solid black;" class ="text-center">
+                            </td>
+                            <td style="width: 90px;border: 1px solid black;" class ="text-center">Annual Service</td>
+                            <td style="width: 91px;border: 1px solid black;" class ="text-center">TBD</td>
+                            <td style="width: 91px;border: 1px solid black;" class ="text-center">
+                                <span t-field="doc.payment_term_id"/>
+                            </td>
+                            <td style="width: 102px;border: 1px solid black;" class ="text-center">
+                                <span t-field="doc.validity_date"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                
+                <!-- Is there a discount on at least one line? -->
+                
+                <t t-foreach="doc.order_lines_layouted()" t-as="page">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="active">
+                                <td class="text-right" >
+                                    <strong>QTY</strong>
+                                </td>
+                                <td class="text-left">
+                                    <strong>ITEM #</strong>
+                                </td>
+                                <td class="text-left">
+                                    <strong>Part Number/Description</strong>
+                                </td>
+                                <td class="text-right">
+                                    <strong>UNIT PRICE</strong>
+                                </td>
+                                <td class="text-right" groups="sale.group_show_price_subtotal">
+                                    <strong>TOTAL</strong>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="page" t-as="layout_category">
+                                
+                                <t t-if="layout_category_size > 1 or page_size >
+                                    1" groups="sale.group_sale_layout">
+                                    <tr class="active">
+                                        <td colspan="6" style="font-weight: bold; border-bottom: 1px solid black;">
+                                            &amp;bull;
+                                            <t t-esc="layout_category['name']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <!-- Lines associated -->
+                                <t t-foreach="layout_category['lines']" t-as="l">
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="l.product_uom_qty" />
+                                        </td>
+                                        <td class="text-left" style="padding-left:10px;">
+                                            <span t-field="l.product_id.default_code" />
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td class="text-right" >
+                                            <span t-field="l.price_unit"/>
+                                        </td>
+                                        <td class="text-right" groups="sale.group_show_price_subtotal">
+                                            <span t-field="l.price_subtotal" t-options='{"widget": "monetary", "display_currency":
+                                                doc.pricelist_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                
+                                <t t-if="(layout_category_size > 1 or page_size >
+                                    1) and layout_category['subtotal']" groups="sale.group_sale_layout">
+                                    <tr class="text-right">
+                                        <td colspan="6">
+                                            <strong>SECTION SUBTOTAL:</strong>
+                                            <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
+                                            <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="text-right">
+                                        <td colspan="6">
+                                            <strong>TAX RATE:</strong>
+                                            <t t-set="section_tax" t-value="sum(line.tax_id.amount for line in layout_category['lines'])"/>
+                                            <span t-esc="section_tax" t-options="{'widget': 'monetary', 'display_currency': doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-right">
+                                        <td colspan="6">
+                                            <strong>TAX:</strong>
+                                            <t t-set="tax_amount" t-value="((subtotal*section_tax)/100)"/>
+                                            <span t-esc="tax_amount" t-options="{'widget': 'monetary', 'display_currency': doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                
+                            </t>
+                        </tbody>
+                    </table>
+                    
+                    <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
+                        <p style="page-break-before:always;">
+                        </p>
+                    </t>
+                </t>
+                
+                <div class="clearfix">
+                    <div class="row pull-right" name="total">
+                        <div>
+                            <table class="table-condensed" style="min-width: 200px;max-width: 350px;">
+                                <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                    <td>
+                                        <strong>SUBTOTAL</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency":
+                                            doc.pricelist_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <t t-set="tax_groups_length" t-value="len(doc._get_tax_amount_by_group())"/>
+                                <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
+                                    <tr style="border-bottom:1px solid #dddddd;">
+                                        <t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
+                                            <td>
+                                                <span t-esc="amount_by_group[0]"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="amount_by_group[1]" t-options='{"widget": "monetary", "display_currency":
+                                                    doc.pricelist_id.currency_id}'/>
+                                            </td>
+                                        </t>
+                                        <t t-else ="">
+                                            <td>
+                                                <span t-esc="amount_by_group[0]"/>
+                                                <span>
+                                                    &amp;nbsp;
+                                                    <span>on</span>
+                                                    &amp;nbsp;
+                                                    <t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency":
+                                                        doc.pricelist_id.currency_id}'/>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="amount_by_group[1]" t-options='{"widget": "monetary", "display_currency":
+                                                    doc.pricelist_id.currency_id}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr class="border-black">
+                                    <td>
+                                        <strong>TOTAL ESTIMATE</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency":
+                                            doc.pricelist_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+    
+    
+    <template id="report_service_quotation">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="biztech_service.report_service_quotation_template" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+    
+    
+</odoo>

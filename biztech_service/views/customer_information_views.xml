@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- customer info Views -->
+    <record id="view_service_customert_info_tree" model="ir.ui.view">
+        <field name="name">service.customer.information.tree</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <tree string="Service Work Order" >
+                <field name="name" />
+                <field name="partner_id" domain="[('customer','=',True)]"/>
+                <field name="schedule_date" />
+                <field name="partner_shipping_id" />
+                <field name="payment_term_id" />
+                <field name="service_type" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_service_customert_info_form" model="ir.ui.view">
+        <field name="name">service.customer.information.form</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <form string="Service Work Order" duplicate="false">
+                <header>
+                    <button name="%(biztech_service.action_wspc_attached)d" string="Upload WSPC Report"
+                        type="action" class="btn-primary"/>
+                    <button name="send_workorder_by_email" string="Send By Email" type="object" class="btn-primary"/>
+                    <button name = "%(biztech_service.schedule_workorder_action)d" attrs="{'invisible':
+                        [('state', '!=', 'plan')]}" class="btn btn-sm btn-default
+                        oe_highlight" string="Schedule" type="action">
+                    </button>
+                    <!--for load the product from main location to truck location -->
+                    <button name="load_product_to_fleet" string="Request Parts" type="object" class="btn-primary" 
+                        attrs="{'invisible': ['|',('state', '!=', 'schedule'),('is_transfer_main_to_truck', '=', True)]}" />
+                    
+                    <button name="start_workorder" string="Start" type="object" class="btn-primary" states="schedule"
+                        attrs="{'invisible': ['|',('is_user_working', '=', True),('state',
+                        '!=', 'schedule')]}"/>
+                    <button name="pause_workorder" string="Pause" type="object" class="btn-primary" attrs="{'invisible':
+                        ['|',('is_user_working', '=', False),('state', '=', 'schedule')]}"
+                        />
+                    <button name="%(biztech_service.confirmation_workorder_action)d" string="Complete"
+                        type="action" class="btn-success success_complete" attrs="{'invisible':
+                        ['|', ('is_order_valid_to_complete', '=', False),('state',
+                        'in', ('schedule','plan','completed'))]}"/>
+                    <button name="show_warning_complete" string="Complete" type="object" class="btn-warning
+                        warning_complete" attrs="{'invisible': ['|',('is_order_valid_to_complete',
+                        '=', True),('state', 'in', ('schedule','plan','completed'))]}"
+                        />
+                    <button name="restart_workorder" string="Restart" type="object" class="btn-warning"
+                        attrs="{'invisible': ['|',('is_user_working', '=', True),('state',
+                        '!=', 'in_progress')]}" />
+                    <field name="state" widget="statusbar" state="schedule"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" position='inside'>
+                        <field name="picking_ids" invisible="1"/>
+                        <button type="object" name="action_view_delivery" class="oe_stat_button" icon="fa-truck"
+                            attrs="{'invisible': [('delivery_count', '=', 0)]}" groups="base.group_user">
+                            <field name="delivery_count" widget="statinfo" string="Delivery"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="is_order_valid_to_complete" invisible="1"/>
+                            <field name="partner_id" domain="[('customer','=',True),('custom_lead','=',False)]"/>
+                            <field name="equipment_id" domain="[('partner_id', '=', partner_id)]"/>
+                            <field name="partner_invoice_id" invisible="1"/>
+                            <field name="partner_shipping_id" string="Ship To" domain="[('customer','=',True),('custom_lead','=',False)]"/>
+                            <field name="customer_contact_ids" />
+                            <label for="total_labor"/>
+                            <div>
+                                <field name="total_labor"/>
+                                <span>Hours</span>
+                            </div>
+                            <field name="is_user_working" invisible ="1"/>
+                            <field name="is_plan_done" invisible ="1"/>
+                            <field name="is_schedule_done" invisible ="1"/>
+                            <field name="fully_complete" invisible ="1"/>
+                            <field name="edit_after_start" invisible ="1"/>
+                            <field name="is_transfer_main_to_truck" invisible ="1"/>
+                            <field name="is_transfer_truck_to_custo" invisible ="1"/>
+                            <field name="is_truck_already_loaded" invisible ="1"/>
+                            <field name="is_extra_already_loaded" invisible ="1"/>
+                            <field name="is_new_product" invisible ="1"/>
+                            <field name="is_product_loaded" />
+                            <field name="count_additional_parts" invisible ="1"/>
+                            <field name="all_service_product" invisible ="1"/>
+                            <field name="customer_id" />
+                            <field name="truck_product_available" invisible ="1"/>
+                        </group>
+                        <group>
+                            <field name="payment_term_id" />
+                            <field name="service_type" />
+                            <field name="technician" readonly = "1" attrs="{'invisible':
+                                [('technician', '=', False)]}"/>
+                            <field name="technician_gruop_id" invisible = "1"/>
+                            <field name="is_in_progress_done" invisible ="1"/>
+                            <field name="is_complete" invisible ="1"/>
+                            <field name="schedule_date" readonly = "1" attrs="{'invisible':
+                                [('schedule_date', '=', False)]}"/>
+                            <field name="required_field_message" nolabel="1" style="color:red;" attrs="{'invisible':
+                                [('is_order_valid_to_complete', '=', True)]}" />
+                        </group>
+                    </group>
+                    <notebook class="change_notebook_tab_color" >
+                        <page string="Equipment Data" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="equipment_make_id" class="small_width1 equipment_make" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="equipment_model_id" class="small_width1 equipment_model" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="equipment_date_installed" class="small_width2 equipment_date_installed"
+                                        attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}" />
+                                </group>
+                                <group>
+                                    <field name="year_installed" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="equipment_serial_number" class="small_width1 equipment_serial_number"
+                                        attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="equipment_compressor" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                                <field name="equipment_location" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                            </group>
+                        </page>
+                        <page string="Scheduling" class="apply_color_action" >
+                            <group>
+                                <group>
+                                    <field name="user_id" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="no_of_service_units" class="small_width1 no_of_service_units" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}" />
+                                </group>
+                                <group>
+                                    <field name="date_service_scheduled" class="small_width2"  />
+                                    <field name="date_service_performed" class="small_width2" attrs="{'invisible': [('date_service_performed_success',
+                                        '!=', False)]}" />
+                                    <field name="date_service_performed_success" class="small_width2" attrs="{'invisible':
+                                        [('date_service_performed_success', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="work_details" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}" />
+                            </group>
+                        </page>
+                        <page string="Parts" class="apply_color_action" >
+                            <field name="service_inventory_workflow" mode="tree" >
+                                <tree string="Service Inventory Workflow" editable="bottom">
+                                    <field name="product_id" />
+                                    <field name="inventory_source" />
+                                    <field name="product_uom_qty" />
+                                    <field name="product_uom" />
+                                    <field name="product_price" />
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        <page string="* Temperature Data" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_service_fields_true" invisible="1" />
+                                    <field name="total_run_hours" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="total_loaded_hours" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <label for="loaded_pressure"/>
+                                    <div class="o_row small_width1" >
+                                        <field name="loaded_pressure" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>PSI</span>
+                                    </div>
+                                    <label for="unloaded_pressure"/>
+                                    <div class="o_row small_width1">
+                                        <field name="unloaded_pressure" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>PSI</span>
+                                    </div>
+                                    <label for="ambient_temperature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="ambient_temperature" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="service_location" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <label for="package_discharge_temperature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="package_discharge_temperature" attrs="{'readonly': [('edit_after_start',
+                                            '=', False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="injection_temperature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="injection_temperature" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                    <label for="airend_discharge_tempreature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="airend_discharge_tempreature" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="* Visual" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_visual_inspection_fields_true" invisible="1" />
+                                    <field name="oil_lines_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="air_lines_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="control_component_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_oil_discharge_temperature" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_oil_level" class="small_width3 center_me" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="check_oil_or_water_separator" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_air_drier" class="small_width3 center_me" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="check_air_line_filters" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_all_system_drain_lines" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <label for="cooler_oil_temperature_inlet_and_outlet"/>
+                                    <div class="o_row small_width2">
+                                        <field name="cooler_oil_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                    <label for="cooler_air_temperature_inlet_and_outlet"/>
+                                    <div class="o_row small_width2">
+                                        <field name="cooler_air_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+<!--                                <field name="cooler_oil_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly':-->
+<!--                                    [('edit_after_start', '=', False)]}"/>-->
+<!--                                <field name="cooler_air_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly':-->
+<!--                                    [('edit_after_start', '=', False)]}"/>-->
+                            </group>
+                        </page>
+                        <page string="* Electrical" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_electrical_fields_are_true" invisible="1"/>
+                                    <field name="ele_volts_l1_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_volts_l2_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_volts_l1_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ele_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ele_cv1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_cv2" class="small_width_ele ele_cv2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ele_amps_fla_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_amps_fla_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_amps_fla_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ele_ula_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_ula_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_ula_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="* Service Completion" class="apply_color_action">
+                            <group>
+                                <field name="is_all_wrap_up_fields_true" invisible="1"/>
+                                <field name="recommendations" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="next_schedule_visit" class="small_width2" attrs="{'invisible': [('next_schedule_visit_success',
+                                        '!=', False)],'readonly': [('edit_after_start',
+                                        '=', False)]}" />
+                                    <field name="next_schedule_visit_success" class="small_width2" attrs="{'invisible':
+                                        [('next_schedule_visit_success', '=', False)],'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="signature_image" widget="signature" attrs="{'readonly': [('fully_complete','=', True)],'invisible': [('edit_after_start','=', False)]}" />
+                            </group>
+                        </page>
+                        <page string="Time Tracker" class="apply_color_action end_date_service" >
+                            <group>
+                                <field name="end_date" class="small_width2" readonly="1" />
+                                <field name="stage_id" invisible = "1" class="stage_id"/>
+                                <label for="total_duration"/>
+                                <div>
+                                    <button style="pointer-events: none;" class="oe_inline label label-default">
+                                        <field name="total_duration" class="total_duration" widget="float_time" />
+                                    </button>
+                                    <button style="pointer-events: none;" class="oe_inline label label-default">
+                                        <field name="count_duration" widget="service_time_counter"/>
+                                    </button>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="time_line_ids" nolabel="1" >
+                                    <tree>
+                                        <field name="date_start"/>
+                                        <field name="date_end" />
+                                        <field name="duration_line" widget="float_time" />
+                                        <field name="technician_id"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="date_start" />
+                                                <field name="date_end" />
+                                                <field name="duration_line" widget="float_time" />
+                                            </group>
+                                            <group>
+                                                <field name="technician_id" />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- service workorder kanban view -->
+    <record id="view_service_customert_info_kanban_view" model="ir.ui.view">
+        <field name="name">view.service.customert.info.kanban.lead</field>
+        <field name="model">service.customer.information</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" class="o_kanban_small_column o_opportunity_kanban"
+                on_create="quick_create">
+                <field name="stage_id" />
+                <field name="user_id"/>
+                <field name="schedule_date" />
+                <field name="color"/>
+                <field name="technician"/>
+                <field name="partner_id"/>
+                <field name="state" />
+                <field name="activity_state" />
+                <field name="is_transfer_main_to_truck"/>
+                <field name="is_new_product" invisible ="1"/>
+                <field name="is_product_loaded" invisible ="1"/>
+                <field name="count_additional_parts"/>
+                <field name="is_truck_already_loaded" />
+                <field name="is_extra_already_loaded"/>
+                <field name="all_service_product"/>
+                <field name="truck_product_available"/>
+                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning",
+                    "overdue": "danger"}' />
+                <field name="schedule_date" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click" >
+                            <t t-value="JSON.parse(record.count_additional_parts.raw_value)" t-set="dashboard"/>
+                        <!--<div t-attf-class="#{kanban_color} ">-->
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <span class="o_field_widget label label-default" style="margin-right:10px;width: 56px;height: 22px;font-size:12px;color: #fff;background-color: black;border-color: black;padding-left: 7px;padding-right: 4px;padding-bottom: 19px;padding-top: 6px;margin-top: 0px;margin-left: 0px;border-left-width: 0px;">
+                                                <field name="name"/>
+                                            </span>
+                                        </strong>
+                                    </div>
+    <button name="%(biztech_service.schedule_workorder_action_kanban)d" attrs="{'invisible':[('state', '!=', 'plan')]}" class="btn btn-sm btn-default oe_highlight" string="Schedule" type="action">Schedule</button>
+    <button name="not_load" help="This truck Is Not Loaded With Stock" class="btn btn-sm btn-default oe_highlight" string="Truck Stock Pending" attrs="{'invisible':['|','|','|',('all_service_product','=',True),
+                                            ('is_truck_already_loaded', '=', True),
+                                            ('truck_product_available','=',False),
+                                            ('state','!=','schedule')]}" 
+    style="margin-right:10px;width: 45px;height: 22px;font-size:10px;color: #fff;background-color: red;border-color: red;padding-left: 7px;padding-right: 4px;padding-bottom: 19px;padding-top: 6px;margin-top: 0px;margin-left: 0px;border-left-width: 0px;" type="object">Truck</button>
+
+     <button name="loaded" help="This truck Is Fully Loaded" class="btn btn-sm btn-default oe_highlight" string="Truck Stock Ready" 
+        attrs="{'invisible':['|','|','|',('all_service_product','=',True),
+                                        ('is_truck_already_loaded', '=', False),
+                                        ('truck_product_available','=',False),
+                                        ('state','!=','schedule')]}" 
+    style="margin-right:10px;width: 45px;height: 22px;font-size:10px;color: #fff;background-color: green;border-color: green;padding-left: 7px;padding-right: 4px;padding-bottom: 19px;padding-top: 6px;margin-top: 0px;margin-left: 0px;border-left-width: 0px;" type="object">Truck</button><br/>
+
+     <hr style="background: black !important; width: 1px !important; height: 20px !important; margin-top: 2px !important; margin-bottom: 18px !important; border: 0 !important; border-top: 1px solid #F9F9F9 !important; margin-right: 5px !important; margin-left: -4px !important;" attrs="{'invisible':['|','|',('truck_product_available','=',False),('is_new_product', '=', False),('state','!=','schedule')]}"/>
+
+     <button name="not_initial_item" help="This truck Is Not Loaded With Stock" class="btn btn-sm btn-default oe_highlight" string="Additional Service Parts" attrs="{'invisible':['|','|',('is_new_product', '=', False),('is_extra_already_loaded', '=', True),('state','!=','schedule')]}" style="width: 50px;height: 22px;font-size:10px;color: #fff;background-color: red;border-color: red;padding-left: 5px;padding-right: 6px;padding-bottom: 19px;padding-top: 6px;margin-top: 0px;margin-left: 0px;border-left-width: 0px;" type="object">
+                                        <t t-if="dashboard.extra_count > 1">
+                                            <t t-esc="dashboard.extra_count"/> Parts
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="dashboard.extra_count"/> Part
+                                        </t>
+                                    </button>
+    <button name="extra_item_loaded" help="This truck Is Not Loaded With Stock" class="btn btn-sm btn-default oe_highlight" string="Additional Service Parts" attrs="{'invisible':['|','|',('is_new_product', '=', False),('is_extra_already_loaded', '=', False),('state','!=','schedule')]}" style="width: 50px;height: 22px;font-size:10px;color: #fff;background-color: green;border-color: green;padding-left: 7px;padding-right: 4px;padding-bottom: 19px;padding-top: 6px;margin-top: 0px;margin-left: 0px;border-left-width: 0px;" type="object">
+                                        <t t-if="dashboard.extra_count > 1">
+                                            <t t-esc="dashboard.extra_count"/> Parts
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="dashboard.extra_count"/> Part
+                                        </t>
+                                    </button>
+                                </div>
+                                <div class="text-muted o_kanban_record_subtitle">
+                                    <span>
+                                        <strong>Customer -</strong>
+                                        <field name="partner_id" />
+                                    </span>
+                                    
+                                </div>
+                                <div class="text-muted o_kanban_record_subtitle">
+                                    <span>
+                                        <strong>Technician -</strong>
+                                        <field name="technician" />
+                                    </span>
+                                </div>
+                                <div class="text-muted o_kanban_record_subtitle">
+                                    <span>
+                                        <field name="schedule_date" />
+                                    </span>
+                                </div>
+                                
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="activity_ids" widget="kanban_activity"/>
+                                        <strong><field name="stage_id" /></strong>
+                                        
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <img t-att-src="kanban_image('res.users', 'image_small', record.technician.raw_value)"
+                                            t-att-title="record.user_id.value" width="24"
+                                            height="24" class="oe_kanban_avatar"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear">
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <!-- search view For manager -->
+    <record id="view_service_workorder_filter" model="ir.ui.view">
+        <field name="name">view.service.workorder.filter</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <search string="Search Workorder">
+                <field name="technician" />
+                <field name="partner_id" />
+                <field name="service_type"/>
+                <separator/>
+                <group expand="0" string="Group By" colspan="16">
+                    <filter string="Customer" context="{'group_by':'partner_id'}"/>
+                    <filter string="Technician" context="{'group_by':'technician'}"/>
+                    <filter string="Schedule Date" name="groupby_scheduledate" domain="[]" context="{'group_by':'schedule_date'}"/>
+                    <filter string="Service Type" context="{'group_by':'service_type'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!--calender view -->
+    <record  id="service_workorder_calendar_view" model="ir.ui.view">
+        <field name="name">service.workorder.calendar.view</field>
+        <field name="model">service.customer.information</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <calendar string="Service Workorder" date_start="schedule_date" color="schedule_date">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="technician"/>
+                <field name="schedule_date" />
+            </calendar>
+        </field>
+    </record>
+    
+    <!-- service Customer Info -->
+    <record id="service_customert_info_action" model="ir.actions.act_window">
+        <field name="name">Service Work Order</field>
+        <field name="res_model">service.customer.information</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create a Service Work Order the first step of a new Service work order.</p>
+        </field>
+    </record>
+    
+    <record id="action_customert_info_kanban_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_service_customert_info_kanban_view"/>
+        <field name="act_window_id" ref="service_customert_info_action"/>
+    </record>
+    
+    <record id="action_customert_info_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_service_customert_info_tree"/>
+        <field name="act_window_id" ref="service_customert_info_action"/>
+    </record>
+    
+    <record id="action_customert_info_form_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="4"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_service_customert_info_form"/>
+        <field name="act_window_id" ref="service_customert_info_action"/>
+    </record>
+    
+    <record id="action_customert_info_calendar_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="service_workorder_calendar_view"/>
+        <field name="act_window_id" ref="service_customert_info_action"/>
+    </record>
+    
+    <!-- technician view -->
+    
+    <record id="view_service_customert_info_tree_technician" model="ir.ui.view">
+        <field name="name">service.customer.information.tree.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <tree string="Service Work Order">
+                <field name="name" />
+                <field name="partner_id" domain="[('customer','=',True)]"/>
+                <field name="schedule_date" />
+                <field name="partner_shipping_id" />
+                <field name="payment_term_id" />
+                <field name="service_type" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_service_customert_info_form_technician" model="ir.ui.view">
+        <field name="name">service.customer.information.form.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <form string="Service Work Order" duplicate="false">
+                <header>
+                    <button name = "%(biztech_service.schedule_workorder_action)d" attrs="{'invisible':
+                        [('state', '!=', 'plan')]}" class="btn btn-sm btn-default
+                        oe_highlight" string="Schedule" type="action">
+                    </button>
+                    <!--for load the product from main location to truck location -->
+                    <button name="load_product_to_fleet" string="Request Parts" type="object" class="btn-primary" 
+                        attrs="{'invisible': ['|',('state', '!=', 'schedule'),('is_transfer_main_to_truck', '=', True)]}" />
+                    
+                    <button name="start_workorder" string="Start" type="object" class="btn-primary" states="schedule"
+                        attrs="{'invisible': ['|',('is_user_working', '=', True),('state',
+                        '!=', 'schedule')]}"/>
+                    
+                    <button name="pause_workorder" string="Pause" type="object" class="btn-primary" attrs="{'invisible':
+                        ['|',('is_user_working', '=', False),('state', '=', 'schedule')]}"
+                        />
+                  
+                    <button name="%(biztech_service.confirmation_workorder_action)d" string="Complete"
+                        type="action" class="btn-success success_complete" attrs="{'invisible':
+                        ['|', ('is_order_valid_to_complete', '=', False),('state',
+                        'in', ('schedule','plan','completed'))]}"/>
+                    
+                    <button name="show_warning_complete" string="Complete" type="object" class="btn-warning
+                        warning_complete" attrs="{'invisible': ['|',('is_order_valid_to_complete',
+                        '=', True),('state', 'in', ('schedule','plan','completed'))]}"
+                        />
+                    
+                    <button name="restart_workorder" string="Restart" type="object" class="btn-warning"
+                        attrs="{'invisible': ['|',('is_user_working', '=', True),('state',
+                        '!=', 'in_progress')]}" />
+                    <field name="state" widget="statusbar" state="schedule"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" position='inside'>
+                        <field name="picking_ids" invisible="1"/>
+                        <button type="object" name="action_view_delivery_outgoing" attrs="{'invisible': [('delivery_count_technician', '=', 0)]}" class="oe_stat_button" icon="fa-truck" >
+<!--                            attrs="{'invisible': [('delivery_count_technician', '=', 0)]}"-->
+                            <field name="delivery_count_technician" widget="statinfo" string="Delivery"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="is_order_valid_to_complete" invisible="1"/>
+                            <field name="partner_id" domain="[('customer','=',True)]"/>
+                            <field name="equipment_id" domain="[('partner_id', '=', partner_id)]"/>
+                            <field name="partner_invoice_id" />
+                            <field name="partner_shipping_id" />
+                            <field name="customer_contact_ids" />
+                            <label for="total_labor"/>
+                            <div>
+                                <field name="total_labor"/>
+                                <span>Hours</span>
+                            </div>
+                            <field name="is_user_working" invisible ="1"/>
+                            <field name="is_plan_done" invisible ="1"/>
+                            <field name="is_schedule_done" invisible ="1"/>
+                            <field name="fully_complete" invisible ="1"/>
+                            <field name="edit_after_start" invisible ="1"/>
+                            <field name="is_transfer_main_to_truck" invisible ="1"/>
+                            <field name="is_transfer_truck_to_custo" invisible ="1"/>
+                            <field name="is_new_product" invisible ="1"/>
+                            <field name="is_product_loaded" />
+                            <field name="customer_id" />
+                        </group>
+                        <group>
+                            <field name="payment_term_id" />
+                            <field name="service_type" />
+                            <field name="technician" readonly = "1"/>
+                            <field name="technician_gruop_id" invisible = "1"/>
+                            <field name="is_in_progress_done" invisible ="1"/>
+                            <field name="is_complete" invisible ="1"/>
+                            <field name="schedule_date" readonly = "1"/>
+                            <field name="required_field_message" nolabel="1" style="color:red;" attrs="{'invisible':
+                                [('is_order_valid_to_complete', '=', True)]}" />
+                        </group>
+                    </group>
+                    <notebook class="change_notebook_tab_color" >
+                        <page string="Equipment Data" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="equipment_make_id" class="small_width1 equipment_make" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="equipment_model_id" class="small_width1 equipment_model" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="equipment_date_installed" class="small_width2 equipment_date_installed"
+                                        attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}" />
+                                </group>
+                                <group>
+                                    <field name="year_installed" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="equipment_serial_number" class="small_width1 equipment_serial_number"
+                                        attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="equipment_compressor" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                                <field name="equipment_location" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                            </group>
+                        </page>
+                        <page string="Scheduling" class="apply_color_action" >
+                            <group>
+                                <group>
+                                    <field name="user_id" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="no_of_service_units" class="small_width1 no_of_service_units" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}" />
+                                </group>
+                                <group>
+                                    <field name="date_service_scheduled"   />
+                                    <field name="date_service_performed" class="small_width2" attrs="{'invisible': [('date_service_performed_success',
+                                        '!=', False)]}" />
+                                    <field name="date_service_performed_success" class="small_width2" attrs="{'invisible':
+                                        [('date_service_performed_success', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="work_details" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}" />
+                            </group>
+                        </page>
+                        <page string="Parts" class="apply_color_action" >
+                            <field name="service_inventory_workflow" mode="tree" >
+                                <tree string="Service Inventory Workflow" editable="bottom">
+                                    <field name="product_id" />
+                                    <field name="inventory_source" />
+                                    <field name="product_uom_qty" />
+                                    <field name="product_uom" />
+                                    <field name="product_price" />
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        <page string="* Temperature Data" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_service_fields_true" invisible="1" />
+                                    <field name="total_run_hours" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="total_loaded_hours" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <label for="loaded_pressure"/>
+                                    <div class="o_row small_width1" >
+                                        <field name="loaded_pressure" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>PSI</span>
+                                    </div>
+                                    <label for="unloaded_pressure"/>
+                                    <div class="o_row small_width1">
+                                        <field name="unloaded_pressure" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>PSI</span>
+                                    </div>
+                                    <label for="ambient_temperature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="ambient_temperature" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="service_location" class="small_width2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <label for="package_discharge_temperature"/>
+                                    <div class="o_row small_width2">
+                                        <field name="package_discharge_temperature" attrs="{'readonly': [('edit_after_start',
+                                            '=', False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="injection_temperature"/>
+                                        <field name="injection_temperature" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>F</span>
+                                    <label for="airend_discharge_tempreature"/>
+                                        <field name="airend_discharge_tempreature" attrs="{'readonly': [('edit_after_start', '=', False)]}"/>
+                                        <span>F</span>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="* Visual" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_visual_inspection_fields_true" invisible="1" />
+                                    <field name="oil_lines_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="air_lines_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="control_component_inspection" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_oil_discharge_temperature" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_oil_level" class="small_width3 center_me" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="check_oil_or_water_separator" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_air_drier" class="small_width3 center_me" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="check_air_line_filters" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                    <field name="check_all_system_drain_lines" class="small_width3 center_me" attrs="{'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <label for="cooler_oil_temperature_inlet_and_outlet"/>
+                                    <div class="o_row small_width2">
+                                        <field name="cooler_oil_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                    <label for="cooler_air_temperature_inlet_and_outlet"/>
+                                    <div class="o_row small_width2">
+                                        <field name="cooler_air_temperature_inlet_and_outlet" class="small_width2" attrs="{'readonly': [('edit_after_start', '=',
+                                            False)]}"/>
+                                        <span>F</span>
+                                    </div>
+                                
+                            </group>
+                        </page>
+                        <page string="* Electrical" class="apply_color_action">
+                            <group>
+                                <group>
+                                    <field name="is_all_electrical_fields_are_true" invisible="1"/>
+                                    <field name="ele_volts_l1_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_volts_l2_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_volts_l1_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ele_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ele_cv1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_cv2" class="small_width_ele ele_cv2" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="ele_amps_fla_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_amps_fla_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_amps_fla_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="ele_ula_l1" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_ula_l2" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                    <field name="ele_ula_l3" class="small_width_ele" attrs="{'readonly': [('edit_after_start',
+                                        '=', False)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="* Service Completion" class="apply_color_action">
+                            <group>
+                                <field name="is_all_wrap_up_fields_true" invisible="1"/>
+                                <field name="recommendations" class="small_width1" attrs="{'readonly': [('edit_after_start',
+                                    '=', False)]}"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="next_schedule_visit" class="small_width2" attrs="{'invisible': [('next_schedule_visit_success',
+                                        '!=', False)],'readonly': [('edit_after_start',
+                                        '=', False)]}" />
+                                    <field name="next_schedule_visit_success" class="small_width2" attrs="{'invisible':
+                                        [('next_schedule_visit_success', '=', False)],'readonly':
+                                        [('edit_after_start', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="signature_image" widget="signature" attrs="{'readonly': [('fully_complete','=', True)],'invisible': [('edit_after_start','=', False)]}" />
+                            </group>
+                        </page>
+                        <page string="Time Tracker" class="apply_color_action end_date_service" >
+                            <group>
+                                <field name="end_date" class="small_width2" readonly="1" />
+                                <field name="stage_id" invisible = "1" class="stage_id"/>
+                                <label for="total_duration"/>
+                                <div>
+                                    <button style="pointer-events: none;" class="oe_inline label label-default">
+                                        <field name="total_duration" class="total_duration" widget="float_time" />
+                                    </button>
+                                    <button style="pointer-events: none;" class="oe_inline label label-default">
+                                        <field name="count_duration" widget="service_time_counter"/>
+                                    </button>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="time_line_ids" nolabel="1" >
+                                    <tree>
+                                        <field name="date_start"/>
+                                        <field name="date_end" />
+                                        <field name="duration_line" widget="float_time" />
+                                        <field name="technician_id"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="date_start" />
+                                                <field name="date_end" />
+                                                <field name="duration_line" widget="float_time" />
+                                            </group>
+                                            <group>
+                                                <field name="technician_id" />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                    
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- search view For manager -->
+    <record id="view_service_workorder_filter_technician" model="ir.ui.view">
+        <field name="name">view.service.workorder.filter.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <search string="Search Workorder">
+                <field name="technician" />
+                <field name="partner_id" />
+                <field name="service_type"/>
+                <separator/>
+                <group expand="0" string="Group By" colspan="16">
+                    <filter string="Customer" context="{'group_by':'partner_id'}"/>
+                    <filter string="Technician" context="{'group_by':'technician'}"/>
+                    <filter string="Schedule Date" name="groupby_scheduledate" domain="[]" context="{'group_by':'schedule_date'}"/>
+                    <filter string="Service Type" context="{'group_by':'service_type'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!--calender view for technician-->
+    <record  id="service_workorder_calendar_view_technician" model="ir.ui.view">
+        <field name="name">service.workorder.calendar.view.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <calendar string="Service Workorder" date_start="schedule_date" color="schedule_date">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="technician"/>
+                <field name="schedule_date" />
+            </calendar>
+        </field>
+    </record>
+    
+    <!-- service Customer Info -->
+    <record id="service_customert_info_action_technician" model="ir.actions.act_window">
+        <field name="name">Service Work Order</field>
+        <field name="res_model">service.customer.information</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create a Customer Information, the first step of a new customer information.</p>
+        </field>
+    </record>
+    
+    <record id="action_customert_info_tree_view_technician" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_service_customert_info_tree_technician"/>
+        <field name="act_window_id" ref="service_customert_info_action_technician"/>
+    </record>
+    
+    <record id="action_customert_info_form_view_technician" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_service_customert_info_form_technician"/>
+        <field name="act_window_id" ref="service_customert_info_action_technician"/>
+    </record>
+    
+    <record id="action_customert_info_calendar_view_technician" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="service_workorder_calendar_view_technician"/>
+        <field name="act_window_id" ref="service_customert_info_action_technician"/>
+    </record>
+    <!-- Menu Items -->
+    <menuitem name="Service" id="maqpower_service" web_icon="biztech_service,static/description/icon.png"
+        />
+    
+    <menuitem id="menu_service_customer_info" name="Service Work Order" parent="maqpower_service"
+        groups="biztech_service.service_group_manager" action="service_customert_info_action"
+        sequence="1"/>
+    
+    <menuitem id="menu_service_customer_info_technician" name="Service Work Order" parent="maqpower_service"
+        groups="biztech_service.service_group_user_technician" action="service_customert_info_action_technician"
+        sequence="2"/>
+    
+    <menuitem name="Inter Truck Transfer" id="maqpower_inter_truck" action="service_move_line_wiz_action"  parent="maqpower_service"/>
+    <menuitem name="Truck To Warehouse" id="maqpower_warehouse_truck_demo" action="truck_warehouse_line_transfer" parent="maqpower_service"/>
+    
+</odoo>
+

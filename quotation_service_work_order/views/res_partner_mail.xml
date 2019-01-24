@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="biz_res_partner_mail_focus" model="ir.ui.view">
+            <field name="name">biz.res.partner.mail.focus</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="replace">
+                <label for="email"/>
+                <div >
+                    <field name="email" class="oe_inline" context="{'gravatar_image': True}" attrs="{'required': [('user_ids','!=', [])]}"/>
+                    <span><button type='object' class="btn btn-sm btn-xs btn-link mb4 fa fa-envelope-o o_chatter_button_new_message_extend fa fa-envelope-o"  name="send_msg" id="send_msg" />
+                    </span>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='message_bounce']" position="before">
+            <field name="provider_name" invisible="1"/>
+                        <field name="method_type_fedex" domain="[('provider_name', '=', 'fedex')]" attrs="{'invisible': [('provider_name', '!=', 'fedex')]}"/>
+
+                        <field name="method_type_usps" domain="[('provider_name', '=', 'usps')]" attrs="{'invisible': [('provider_name', '!=', 'usps')]}"/>
+                        <field name="method_type_ups" domain="[('provider_name', '=', 'ups')]" attrs="{'invisible': [('provider_name', '!=', 'ups')]}"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

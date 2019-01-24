@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="address_align" inherit_id="website.company_description" name="Company Description">
+            <xpath expr="//div[@t-field='res_company.partner_id']" position="replace">
+            <div class = "address_align" t-field="res_company.partner_id" t-options='{
+                "widget": "contact",
+                "fields": ["name", "address", "phone", "mobile", "email"]}'/>
+            </xpath>
+        </template>
+        
+</odoo>

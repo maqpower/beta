@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report 
+            id="biztech_service_workorder"
+            model="service.customer.information"
+            string="Service Workorder"
+            report_type="qweb-pdf"
+            name="biztech_service.report_service_workorder"
+            file="biztech_service.report_service_workorder"
+        />
+        
+         <report 
+            id="action_report_service_quotation"
+            string="Service Quotation"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="biztech_service.report_service_quotation" 
+            name="biztech_service.report_service_quotation"
+            print_report_name="(object.state in ('draft', 'sent') and 'Service Quotation - %s' % (object.name)) or 'Service Order - %s' % (object.name)" 
+        />
+
+	</data>
+</odoo>

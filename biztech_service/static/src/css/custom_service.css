@@ -1,0 +1,85 @@
+/*------Added on 6/2/2018 by Poonam------*/
+.biz-tab-active-color{
+    background-color: #3f51b5 !important;
+    color: white !important;
+}
+.biz-tab-color.biz-tab-active-color{
+    background-color: #3f51b5 !important;
+    color: white !important;
+}
+.biz_warning.biz-tab-active-color{
+    background-color: #3f51b5 !important;
+    color: white !important;
+}
+.biz-success-tab-color.biz-tab-active-color{
+    background-color: #3f51b5 !important;
+    color: white !important;
+}
+.ele_cv2_color_green
+{
+    color: white !important;
+    background-color: green !important;
+}
+/*---------End of css by Poonam---------*/
+
+
+.biz-tab-color{
+    background-color: red !important;
+    color: white !important;
+}
+
+.biz_warning{
+	color: white !important;
+    background-color: red !important;
+}
+
+.biz-success-tab-color{
+	color: white !important;
+    background-color: green !important;	
+}
+
+.small_width1{
+	width: 33% !important;
+	max-width: 33% !important;
+}
+
+.small_width2{
+	width: 30% !important;
+	max-width: 30% !important;
+}
+
+.small_width3{
+	width: 15% !important;
+	max-width: 15% !important;
+}
+
+.small_width_ele{
+    width: 25% !important;
+    max-width: 25% !important;
+}
+
+
+/*changes of dropdown for selection on yes-no fields only*/
+
+.center_me{
+    color: white !important;
+}
+
+.color_red > option{
+    color: white !important;
+    background-color: red !important;
+}
+.color_red{
+    background-color: red !important;
+}
+
+.color_green > option{
+    color: white !important;
+    background-color: green !important;
+}
+.color_green{
+    background-color: green !important;
+}
+.no_edit{
+    pointer-events: none !important;
+}

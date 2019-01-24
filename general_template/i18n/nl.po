@@ -1,0 +1,3281 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* general_template
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-20 09:01+0000\n"
+"PO-Revision-Date: 2017-06-20 09:01+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "% discount"
+msgstr "% korting"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "&amp;bull;"
+msgstr "&amp;bull;"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "01 February, 2016"
+msgstr "01 February, 2016"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "10 March, 2016"
+msgstr "10 March, 2016"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "1000.00"
+msgstr "1000.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "123456789135"
+msgstr "123456789135"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "15 March, 2016"
+msgstr "15 March, 2016"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "1500.00"
+msgstr "1500.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "1900.00"
+msgstr "1900.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "1950.00"
+msgstr "1950.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "20 March, 2016"
+msgstr "20 March, 2016"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "4569896347"
+msgstr "4569896347"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "5.00%"
+msgstr "5.00%"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "50.00"
+msgstr "50.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "500.00"
+msgstr "500.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "900.00"
+msgstr "900.00"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+msgid "<b style=\"padding:10px 15px 10px 0px;\">Invoice No: </b>\n"
+"                                <br/>"
+msgstr "<b style=\"padding:10px 15px 10px 0px;\">Factuur nr.: </b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b style=\"padding:10px 15px;\">Invoice No: </b>\n"
+"                                <br/>"
+msgstr "<b style=\"padding:10px 15px;\">Factuur nr.: </b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>\n"
+"                                                                    <b>Carrier</b>\n"
+"                                                                </b>"
+msgstr "<b>\n"
+"                                                                    <b>Carrier</b>\n"
+"                                                                </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>\n"
+"                                                                    <b>Commitment Date</b>\n"
+"                                                                </b>"
+msgstr "<b>\n"
+"                                                                    <b>Datum Overeenkomst</b>\n"
+"                                                                </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+msgid "<b>\n"
+"                                                                    <span>Commitment Date</span>\n"
+"                                                                </b>"
+msgstr "<b>\n"
+"                                                                    <span>Datum Overeenkomst</span>\n"
+"                                                                </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "<b>\n"
+"                                                                    <span>Salesperson:</span>\n"
+"                                                                </b>"
+msgstr "<b>\n"
+"                                                                    <span>Verkoper:</span>\n"
+"                                                                </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b>Biztech IT Consultancy Pvt. Ltd.</b>"
+msgstr "<b>Biztech IT Consultancy Pvt. Ltd.</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+msgid "<b>Carrier</b>"
+msgstr "<b>Carrier</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<b>Comment: </b>"
+msgstr "<b>Opmerking: </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+msgid "<b>Comment: </b>\n"
+"                                                                <br/>"
+msgstr "<b>Opmerking: </b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "<b>Comment:</b>We are a highly qualified team of well-rounded software"
+msgstr "<b>Opmerking:</b>We are a highly qualified team of well-rounded software"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+msgid "<b>Commitment Date</b>"
+msgstr "<b>Datum Overeenkomst</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Description:</b>"
+msgstr "<b>Beschrijving:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+msgid "<b>Description:</b>\n"
+"                                                                <br/>"
+msgstr "<b>Beschrijving:</b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Due Date:</b>"
+msgstr "<b>Vervalsdatum:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+msgid "<b>Due Date:</b>\n"
+"                                                                <br/>"
+msgstr "<b>Vervalsdatum:</b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b>Due Date:</b>\n"
+"                                <br/>"
+msgstr "<b>Vervalsdatum:</b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "<b>Expiration Date:</b>"
+msgstr "<b>Vervaldatum:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+msgid "<b>Payment History</b>"
+msgstr "<b>Betaling geschiedenis</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Amount"
+msgstr "Bedrag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Payment History"
+msgstr "Betaling geschiedenis"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Method"
+msgstr "Methode"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_advanced_header
+#: model:ir.ui.view,arch_db:general_template.sale_innovative_header
+msgid "<span>Pro-Forma Invoice # </span>"
+msgstr "<span>Pro-Forma factuur # </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+msgid "<span>Pro-Forma Invoice # </span>\n"
+"                                                                <br/>"
+msgstr "<span>Pro-Forma factuur # </span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_professional_header
+msgid "<span>Pro-Forma Invoice # </span> \n"
+"                                                                <br/>"
+msgstr "<span>Pro-Forma factuur # </span> \n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+msgid "<span>Pro-Forma Invoice No: </span>"
+msgstr "<span>Pro-Forma factuur No: </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+msgid "<span>Pro-Forma Invoice</span>"
+msgstr "<span>Pro-Forma factuur</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Date"
+msgstr "Datum"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Credit Amount"
+msgstr "Hoeveelheid krediet"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_duplicate
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_duplicate
+msgid "Amount Due"
+msgstr "Verschuldigd bedrag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<b>Fiscal Position Remark: </b>"
+msgstr "<b>Opmerking Fiscale Positie: </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+msgid "<b>Fiscal Position Remark: </b>\n"
+"                                                                <br/>"
+msgstr "<b>Opmerking Fiscale Positie: </b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "<b>Fiscal Position Remart:</b>20% VAT applies to all Electronic Devices"
+msgstr "<b>Opmerking Fiscale Positie:</b>20% VAT applies to all Electronic Devices"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Invoice Date:</b>"
+msgstr "<b>Factuurdatum:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+msgid "<b>Invoice Date:</b>\n"
+"                                                                <br/>"
+msgstr "<b>Factuurdatum:</b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b>Invoice Date:</b>\n"
+"                                <br/>"
+msgstr "<b>Factuurdatum:</b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+msgid "<b>Invoice No: </b>\n"
+"                                <br/>"
+msgstr "<b>Factuur nr: </b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>Order (Origin):</b>"
+msgstr "<b>Bestelling (Herkomst):</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+msgid "<b>Order (Origin)</b>"
+msgstr "<b>Bestelling (Herkomst)</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Order Date:</b>"
+msgstr "<b>Besteldatum:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+msgid "<b>Order Date:</b>\n"
+"                                                                <br/>"
+msgstr "<b>Besteldatum:</b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b>Order Date:</b>\n"
+"                                <br/>"
+msgstr "<b>Besteldatum:</b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+msgid "<b>PO:</b>"
+msgstr "<b>PO:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<b>PO:</b>\n"
+"                                <br/>"
+msgstr "<b>PO:</b>\n"
+"                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Payment History</b>"
+msgstr "<b>Betaling geschiedenis</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<b>Payment Term: </b>"
+msgstr "<b>Betalingstermijn: </b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+msgid "<b>Payment Term: </b>\n"
+"                                                                <br/>"
+msgstr "<b>Betalingstermijn: </b>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "<b>Payment Term:</b>"
+msgstr "<b>Betalingstermijn:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "<b>Payment Term:</b>30 Days"
+msgstr "<b>Betalingstermijn:</b>30 Days"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "<b>Payment is Pending</b>"
+msgstr "Betaling in afwachting"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>Scheduled Date</b>"
+msgstr "<b>Geplande Datum</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>State</b>"
+msgstr "<b>Status</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "<b>Suggested Products</b>"
+msgstr "<b>Voorgestelde producten</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<b>Weight</b>"
+msgstr "<b>Gewicht</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+msgid "<b>Your Order Reference:</b>"
+msgstr "<b>Uw Referentie:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "<b>Your Reference:</b>"
+msgstr "<b>Uw referentie:</b>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<span class=\"text-left\">Description:</span>"
+msgstr "<span class=\"text-left\">Beschrijving:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<span class=\"text-left\">Due Date:</span>"
+msgstr "<span class=\"text-left\">Vervalsdatum:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+msgid "<span class=\"text-left\">Expiration Date:</span>"
+msgstr "<span class=\"text-left\">Vervaldatum:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<span class=\"text-left\">Expiration Date:</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Vervaldatum:</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<span class=\"text-left\">Invoice Date:</span>"
+msgstr "<span class=\"text-left\">Factuurdatum:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "<span class=\"text-left\">Order Date:</span>"
+msgstr "<span class=\"text-left\">Besteldatum:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+msgid "<span class=\"text-left\">Payment Term:</span>"
+msgstr "<span class=\"text-left\">Betalingstermijn:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<span class=\"text-left\">Payment Term:</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Betalingstermijn:</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+msgid "<span class=\"text-left\">Salesperson:</span>"
+msgstr "<span class=\"text-left\">Verkoper:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<span class=\"text-left\">Salesperson:</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Verkoper:</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+msgid "<span class=\"text-left\">Your Order Reference:</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Uw Referentie:</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+msgid "<span class=\"text-left\">Your Order Reference</span>"
+msgstr "<span class=\"text-left\">Uw Orderreferentie</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+msgid "<span class=\"text-left\">Your Order Reference</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Uw Referentie</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+msgid "<span class=\"text-left\">Your Reference:</span>"
+msgstr "<span class=\"text-left\">Uw referentie:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<span class=\"text-left\">Your Reference:</span>\n"
+"                                                                <br/>"
+msgstr "<span class=\"text-left\">Uw Referentie:</span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+msgid "<span>\n"
+"                                                                    <strong>Customer Address:</strong>\n"
+"                                                                </span>"
+msgstr "<span>\n"
+"                                                                    <strong>Klantadres:</strong>\n"
+"                                                                </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+msgid "<span>\n"
+"                                                                    <strong>Vendor Address:</strong>\n"
+"                                                                </span>"
+msgstr "<span>\n"
+"                                                                    <strong>Verkoperadres:</strong>\n"
+"                                                                </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+msgid "<span>\n"
+"                                                                    <strong>Warehouse Address:</strong>\n"
+"                                                                </span>"
+msgstr "<span>\n"
+"                                                                    <strong>Adres Magazijn:</strong>\n"
+"                                                                </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<span>\n"
+"                                                            <strong>Customer Address:</strong>\n"
+"                                                        </span>"
+msgstr "<span>\n"
+"                                                            <strong>Klantadres:</strong>\n"
+"                                                        </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<span>\n"
+"                                                            <strong>Vendor Address:</strong>\n"
+"                                                        </span>"
+msgstr "<span>\n"
+"                                                            <strong>Verkoperadres:</strong>\n"
+"                                                        </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<span>\n"
+"                                                            <strong>Warehouse Address:</strong>\n"
+"                                                        </span>"
+msgstr "<span>\n"
+"                                                            <strong>Adres Magazijn:</strong>\n"
+"                                                        </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+msgid "<span>Delivery No # </span>"
+msgstr "<span>Levering Nr. </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+msgid "<span>Delivery No # </span>\n"
+"                                                                <br/>"
+msgstr "<span>Levering Nr. # </span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.delivery_incredible_header
+#: model:ir.ui.view,arch_db:general_template.delivery_innovative_header
+msgid "<span>Delivery No:</span>"
+msgstr "<span>Levering Nr:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+msgid "<span>Delivery To:</span>"
+msgstr "<span>Levering Nr:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<span>Picking No # </span>"
+msgstr "<span>Verzamel nr.</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<span>Picking No # </span>\n"
+"                                                                <br/>"
+msgstr "<span>Verzamel nr# </span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_incredible_header
+#: model:ir.ui.view,arch_db:general_template.picking_innovative_header
+msgid "<span>Picking No:</span>"
+msgstr "<span>Verzamel nr:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<span>Picking Operations:</span>\n"
+"                                                        <br/>"
+msgstr "<span>Orderverzamelen:</span>\n"
+"                                                        <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_incredible_header
+#: model:ir.ui.view,arch_db:general_template.picking_innovative_header
+msgid "<span>Picking Operations</span>"
+msgstr "<span>Orderverzamelen</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.purchase_incredible_header
+#: model:ir.ui.view,arch_db:general_template.purchase_innovative_header
+#: model:ir.ui.view,arch_db:general_template.quotation_incredible_header
+#: model:ir.ui.view,arch_db:general_template.quotation_innovation_header
+msgid "<span>Purchase Order</span>"
+msgstr "<span>Inkooporder</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+msgid "<span>Request for Quotation # </span>"
+msgstr "<span>Offerteaanvraag # </span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.quotation_incredible_header
+#: model:ir.ui.view,arch_db:general_template.quotation_innovation_header
+msgid "<span>Request for Quotation</span>"
+msgstr "<span>Offerteaanvraag</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.quotation_advanced_header
+msgid "Request for Quotation"
+msgstr "Offerteaanvraag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.quotation_professional_header
+msgid "Request for Quotation: \n"
+"                                                                <br/>"
+msgstr "Offerteaanvraag: \n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+msgid "<span>Request for Quotation # </span>\n"
+"                                                                <br/>"
+msgstr "<span>Offerteaanvraag # </span>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.quotation_incredible_header
+#: model:ir.ui.view,arch_db:general_template.quotation_innovation_header
+msgid "<span>Request for Quotation:</span>"
+msgstr "<span>Offerteaanvraag:</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<span>Suggested Products</span>"
+msgstr "<span>Voorgestelde producten</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+msgid "<span>Taxes</span>"
+msgstr "<span>BTW</span>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Carrier</span>\n"
+"                                                                </strong>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Carrier</span>\n"
+"                                                                </strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Carrier</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Carrier</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Commitment Date</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Datum Overeenkomst</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Scheduled Date</span>\n"
+"                                                                </strong>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Geplande Datum</span>\n"
+"                                                                </strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Scheduled Date</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Geplande Datum</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Weight</span>\n"
+"                                                                </strong>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Gewicht</span>\n"
+"                                                                </strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>\n"
+"                                                                    <span class=\"text-left\">Weight</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+msgstr "<strong>\n"
+"                                                                    <span class=\"text-left\">Gewicht</span>\n"
+"                                                                </strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>Commitment Date</strong>"
+msgstr "<strong>Datum toezegging</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>Commitment Date</strong>\n"
+"                                                                <br/>"
+msgstr "<strong>Datum toezegging</strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<strong>Customer Address:</strong>"
+msgstr "<strong>Klantadres:</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr "<strong>Opmerking voor fiscale positie:</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+msgid "<strong>Mobile:</strong>+91-987-962-2024\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>\n"
+"                                    <strong>Email:</strong>\n"
+"                                    sales@biztechconsultancy.com"
+msgstr "<strong>Mobile:</strong>+91-987-962-2024\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>\n"
+"                                    <strong>Email:</strong>\n"
+"                                    sales@biztechconsultancy.com"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+msgid "<strong>Mobile:</strong>+91-987-962-2024\n"
+"            \n"
+"            \n"
+"            <br/><strong>Email:</strong>sales@biztechconsultancy.com"
+msgstr "<strong>Mobile:</strong>+91-987-962-2024\n"
+"            \n"
+"            \n"
+"            <br/><strong>Email:</strong>sales@biztechconsultancy.com"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "<strong>Mobile:</strong>+91-987-962-2024\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>\n"
+"                        <strong>Email:</strong>\n"
+"                        sales@biztechconsultancy.com"
+msgstr "<strong>Mobile:</strong>+91-987-962-2024\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>\n"
+"                        <strong>Email:</strong>\n"
+"                        sales@biztechconsultancy.com"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+msgid "<strong>Mobile:</strong>+91-987-962-2024\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>\n"
+"                                    <strong>Email:</strong>\n"
+"                                    sales@biztechconsultancy.com"
+msgstr "<strong>Mobile:</strong>+91-987-962-2024\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>\n"
+"                                    <strong>Email:</strong>\n"
+"                                    sales@biztechconsultancy.com"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>Order (Origin)</strong>"
+msgstr "<strong>Order (bron)</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>Order (Origin)</strong>\n"
+"                                                                <br/>"
+msgstr "<strong>Bestelling (Herkomst)</strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.purchase_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.quotation_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+msgid "<strong>Shipping address:</strong>"
+msgstr "<strong>Afleveradres:</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "<strong>State</strong>"
+msgstr "<strong>Status</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "<strong>State</strong>\n"
+"                                                                <br/>"
+msgstr "<strong>Status</strong>\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "<strong>Subtotal: </strong>"
+msgstr "<strong>Subtotaal: </strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<strong>Vendor Address:</strong>"
+msgstr "<strong>Verkoperadres:</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "<strong>Warehouse Address:</strong>"
+msgstr "<strong>Adres Magazijn:</strong>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.delivery_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.quotation_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+msgid "Address"
+msgstr "Adres"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_advanced
+#: model:ir.actions.report,name:general_template.report_invoice_template_advanced
+#: model:ir.actions.report,name:general_template.report_purchase_advanced
+#: model:ir.actions.report,name:general_template.report_sale_order_advanced
+#: selection:res.company,standard_template:0
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Amount"
+msgstr "Bedrag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Amount Due"
+msgstr "Verschuldigd bedrag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "Apple Mobile"
+msgstr "Apple Mobiel"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "Barcode"
+msgstr "Barcode"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "Biztech IT Consultancy Pvt. Ltd."
+msgstr "Biztech IT Consultancy Pvt. Ltd."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+msgid "C/801, Dev Aurum Commercial,\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>\n"
+"                                    Prahalad Nagar, Gujarat, India.\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>"
+msgstr "C/801, Dev Aurum Commercial,\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>\n"
+"                                    Prahalad Nagar, Gujarat, India.\n"
+"\n"
+"\n"
+"\n"
+"                                    <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+msgid "C/801, Dev Aurum Commercial,\n"
+"            \n"
+"            \n"
+"            <br/>Prahalad Nagar, Gujarat, India.\n"
+"            \n"
+"            \n"
+"            <br/>"
+msgstr "C/801, Dev Aurum Commercial,\n"
+"            \n"
+"            \n"
+"            <br/>Prahalad Nagar, Gujarat, India.\n"
+"            \n"
+"            \n"
+"            <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "C/801, Dev Aurum Commercial,\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>\n"
+"                        Prahalad Nagar, Gujarat, India.\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>"
+msgstr "C/801, Dev Aurum Commercial,\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>\n"
+"                        Prahalad Nagar, Gujarat, India.\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                        <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+msgid "C/801, Dev Aurum Commercial,\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>\n"
+"                                    Prahalad Nagar, Gujarat, India.\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>"
+msgstr "C/801, Dev Aurum Commercial,\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>\n"
+"                                    Prahalad Nagar, Gujarat, India.\n"
+"                        \n"
+"                        \n"
+"                        \n"
+"                                    \n"
+"                                    <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "Cancelled Invoice"
+msgstr "Geannuleerde factuur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Cancelled Invoice No:"
+msgstr "Geannuleerde factuur nr.:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Cancelled Invoice To:"
+msgstr "Geannuleerde factuur naar:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "Comment:"
+msgstr "Opmerking:"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_res_company
+msgid "Companies"
+msgstr "Bedrijven"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_company_address_color
+msgid "Company Address Color"
+msgstr "Kleur Bedrijfsadres"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_company_color
+msgid "Company Name Color"
+msgstr "Kleur Bedrijfsnaam"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_contemporary
+#: model:ir.actions.report,name:general_template.report_invoice_template_contemporary
+#: model:ir.actions.report,name:general_template.report_purchase_contemporary
+#: model:ir.actions.report,name:general_template.report_sale_order_contemporary
+#: selection:res.company,standard_template:0
+msgid "Contemporary"
+msgstr "Eigentijds Modern"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_creative
+#: model:ir.actions.report,name:general_template.report_invoice_template_creative
+#: model:ir.actions.report,name:general_template.report_purchase_creative
+#: model:ir.actions.report,name:general_template.report_sale_order_creative
+#: selection:res.company,standard_template:0
+msgid "Creative"
+msgstr "Creatief"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Credit Amount"
+msgstr "Hoeveelheid krediet"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_customer_address_color
+msgid "Customer Address Color"
+msgstr "Kleur Klantadres"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_customer_color
+msgid "Customer Name Color"
+msgstr "Kleur Klantnaam"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Date"
+msgstr "Datum"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Date Ordered:"
+msgstr "Besteldatum:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+msgid "Date Req."
+msgstr "Leveringstermijn"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+#: model:ir.ui.view,arch_db:general_template.view_report_partner_sale_order
+msgid "Default Report Settings"
+msgstr "Standaard Bericht Instellingen"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "Default Template Settings"
+msgstr "Standaard-Template-Instellingen"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+msgid "Delivery No #"
+msgstr "Pakbon Nr. "
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.delivery_advanced_header
+#: model:ir.ui.view,arch_db:general_template.delivery_incredible_header
+#: model:ir.ui.view,arch_db:general_template.delivery_innovative_header
+msgid "Delivery Note"
+msgstr "Pakbon"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_delivery_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_delivery_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_delivery_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_delivery_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_delivery_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_delivery_template_id1
+msgid "Delivery Note Template"
+msgstr "Leveringsnotitie sjabloon"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.delivery_professional_header
+msgid "Delivery Note:\n"
+"                                                                <br/>"
+msgstr "Pakbon:\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+msgid "Delivery To"
+msgstr "Levering"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.delivery_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+msgid "Delivery to:"
+msgstr "Levering:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "Destination"
+msgstr "Bestemming"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "Dis (%)."
+msgstr "Krt (%)."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Disc.(%)"
+msgstr "Krt. (%)"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_add_amount_in_words
+msgid "Display Amount In Word"
+msgstr "Weergave Bedrag In Word"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_is_company_bold
+msgid "Display Company Name in Bold"
+msgstr "Bedrijfsnaam in Bold weergeven"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_is_customer_bold
+msgid "Display Customer Name in Bold"
+msgstr "Klantnaam in Bold weergeven"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_is_description
+msgid "Display Product Description"
+msgstr "Produktbeschrijving weergeven"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_add_product_image
+msgid "Display Product Image"
+msgstr "Toon productafbeelding"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Draft Invoice"
+msgstr "Concept factuur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Draft Invoice To:"
+msgstr "Proforma Factuur:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main_header
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_elegant
+#: model:ir.actions.report,name:general_template.report_invoice_template_elegant
+#: model:ir.actions.report,name:general_template.report_purchase_elegant
+#: model:ir.actions.report,name:general_template.report_sale_order_elegant
+#: selection:res.company,standard_template:0
+msgid "Elegant"
+msgstr "Elegant"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.creative_header
+#: model:ir.ui.view,arch_db:general_template.delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.delivery_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.picking_creative_header
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.purchase_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_template_header
+#: model:ir.ui.view,arch_db:general_template.quotation_delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.quotation_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.quotation_template_header
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_creative_header
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.sale_template_header
+#: model:ir.ui.view,arch_db:general_template.template_delivery_header
+#: model:ir.ui.view,arch_db:general_template.template_header
+#: model:ir.ui.view,arch_db:general_template.template_picking_header
+#: model:ir.ui.view,arch_db:general_template.biz_general_template_custom_footer
+msgid "Email:"
+msgstr "E-Mail:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.biz_general_template_custom_footer
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Pagina: <span class=\"page\"/> / <span class=\"topage\"/>"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.biz_general_template_custom_footer
+msgid "Phone:"
+msgstr "Telefoon:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.biz_general_template_custom_footer
+msgid "Web:"
+msgstr "Web:"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_exclusive
+#: model:ir.actions.report,name:general_template.report_invoice_template_exclusive
+#: model:ir.actions.report,name:general_template.report_purchase_exclusive
+#: model:ir.actions.report,name:general_template.report_sale_order_exclusive
+#: selection:res.company,standard_template:0
+msgid "Exclusive"
+msgstr "Exclusief"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+msgid "Expected Date"
+msgstr "Datum verwacht"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "Fiscal Position Remark:"
+msgstr "Opmerking Fiscale Positie:"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_text_color
+msgid "General Text Color"
+msgstr "Algemene Tekstkleur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Image"
+msgstr "Beeld"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_account_invoice_amount_to_text
+#: model:ir.model.fields,field_description:general_template.field_purchase_order_amount_to_text
+#: model:ir.model.fields,field_description:general_template.field_sale_order_amount_to_text
+msgid "In Words"
+msgstr "In Tekst"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_incredible
+#: model:ir.actions.report,name:general_template.report_invoice_template_incredible
+#: model:ir.actions.report,name:general_template.report_purchase_incredible
+#: model:ir.actions.report,name:general_template.report_sale_order_incredible
+#: selection:res.company,standard_template:0
+msgid "Incredible"
+msgstr "Incredible"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_innovative
+#: model:ir.actions.report,name:general_template.report_invoice_template_innovative
+#: model:ir.actions.report,name:general_template.report_purchase_innovative
+#: model:ir.actions.report,name:general_template.report_sale_order_innovative
+#: selection:res.company,standard_template:0
+msgid "Innovative"
+msgstr "Innovative"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_account_invoice
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "Invoice"
+msgstr "Factuur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Invoice No:"
+msgstr "Factuur nr.:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "Invoice No:\n"
+"                        \n"
+"                        <br/>"
+msgstr "Factuur Nr:\n"
+"                        \n"
+"                        <br/>"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_account_invoice_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_account_invoice_report_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_template_id1
+msgid "Invoice Template"
+msgstr "Factuur Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Invoice To:"
+msgstr "Factuur:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "Invoice to:"
+msgstr "Factuur:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+msgid "Invoicing address:"
+msgstr "Factuuradres:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+msgid "Invoicing and shipping address:"
+msgstr "Factuur- en afleveradres:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+msgid "Location"
+msgstr "Locatie"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "Lot"
+msgstr "Lot"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "Mackbook Pro"
+msgstr "MacBook Pro"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Method"
+msgstr "Methode"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.creative_header
+#: model:ir.ui.view,arch_db:general_template.delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.delivery_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.picking_creative_header
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.purchase_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_template_header
+#: model:ir.ui.view,arch_db:general_template.quotation_delivery_creative_header
+#: model:ir.ui.view,arch_db:general_template.quotation_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.quotation_template_header
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_creative_header
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.sale_template_header
+#: model:ir.ui.view,arch_db:general_template.template_delivery_header
+#: model:ir.ui.view,arch_db:general_template.template_header
+#: model:ir.ui.view,arch_db:general_template.template_picking_header
+msgid "Mobile:"
+msgstr "Mobiel:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+msgid "Net Price"
+msgstr "Subtotaal"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "Online Bank Transfer"
+msgstr "Online Bankoverschrijving"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Order #"
+msgstr "Bestelnr #"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+#: model:ir.ui.view,arch_db:general_template.sale_innovative_header
+msgid "Order No:"
+msgstr "Bestelnr:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "PO:"
+msgstr "PO:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "PRO-FORMA No:"
+msgstr "PROFORMA NR.:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "PRO-FORMA To:"
+msgstr "PRO-FORMA:"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_res_partner
+msgid "Partner"
+msgstr "Relatie"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Payment History"
+msgstr "Betaling geschiedenis"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+msgid "Payment Term:"
+msgstr "Betalingstermijn:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Payments is Pending"
+msgstr "Betaling in afwachting"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_picking_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_picking_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_picking_template_id
+msgid "Picking List Template"
+msgstr "Orderverzamellijst Voorbeeld"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+msgid "Picking No #"
+msgstr "Verzamel nr."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_advanced_header
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "Picking Operations:"
+msgstr "Orderverzamelen:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.picking_professional_header
+msgid "Picking Operations: \n"
+"                                                                <br/>"
+msgstr "Orderverzamelen: \n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_stock_picking_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_stock_picking_report_template_id1
+msgid "Picking Template"
+msgstr "Picking Template"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_add_product_image
+msgid "Please check it if you want to Product Image"
+msgstr "Controleer het als u Productafbeelding wilt"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_is_company_bold
+msgid "Please check it if you want to show Company Name in Bold."
+msgstr "Controleer of U de bedrijfsnaam in BOLD wilt weergeven."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_is_customer_bold
+msgid "Please check it if you want to show Customer Name in Bold."
+msgstr "Controleer of U de Klantnaam in BOLD wilt weergeven."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_is_description
+msgid "Please check it if you want to show product description in report."
+msgstr "Controleer of U de Produktomschrijving in het rapport wilt weergeven."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_report_delivery_template_id
+#: model:ir.model.fields,help:general_template.field_res_company_report_delivery_template_id1
+#: model:ir.model.fields,help:general_template.field_res_partner_report_delivery_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_delivery_template_id1
+#: model:ir.model.fields,help:general_template.field_res_users_report_delivery_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_delivery_template_id1
+msgid "Please select Template report for Delivery Note "
+msgstr "Selecteer alstublieft Sjabloonrapport voor Leveringsopmerking "
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_account_invoice_report_template_id
+#: model:ir.model.fields,help:general_template.field_account_invoice_report_template_id1
+#: model:ir.model.fields,help:general_template.field_res_company_report_template_id
+#: model:ir.model.fields,help:general_template.field_res_company_report_template_id1
+#: model:ir.model.fields,help:general_template.field_res_partner_report_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_template_id1
+#: model:ir.model.fields,help:general_template.field_res_users_report_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_template_id1
+msgid "Please select Template report for Invoice"
+msgstr "Selecteer uw Template voor facturatie"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_stock_picking_report_template_id
+#: model:ir.model.fields,help:general_template.field_stock_picking_report_template_id1
+msgid "Please select Template report for Picking"
+msgstr "Selecteer uw Template voor Verzamelijsten"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_report_picking_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_picking_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_picking_template_id
+msgid "Please select Template report for Picking List"
+msgstr "Selecteer uw Template voor Verzamelijsten"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_purchase_order_report_template_id
+#: model:ir.model.fields,help:general_template.field_purchase_order_report_template_id1
+#: model:ir.model.fields,help:general_template.field_res_company_report_po_template_id
+#: model:ir.model.fields,help:general_template.field_res_company_report_po_template_id1
+#: model:ir.model.fields,help:general_template.field_res_partner_report_po_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_po_template_id1
+#: model:ir.model.fields,help:general_template.field_res_users_report_po_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_po_template_id1
+msgid "Please select Template report for Purchase Order"
+msgstr "Selecteer uw Template voor Inkooporders"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_report_rfq_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_rfq_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_rfq_template_id
+msgid "Please select Template report for RFQ"
+msgstr "Selecteer uw Template voor Aanbesteding"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_report_sale_template_id
+#: model:ir.model.fields,help:general_template.field_res_company_report_sale_template_id1
+#: model:ir.model.fields,help:general_template.field_res_partner_report_sale_template_id
+#: model:ir.model.fields,help:general_template.field_res_partner_report_sale_template_id1
+#: model:ir.model.fields,help:general_template.field_res_users_report_sale_template_id
+#: model:ir.model.fields,help:general_template.field_res_users_report_sale_template_id1
+#: model:ir.model.fields,help:general_template.field_sale_order_report_template_id
+#: model:ir.model.fields,help:general_template.field_sale_order_report_template_id1
+msgid "Please select Template report for Sale Order"
+msgstr "Selecteer uw Template voor Verkooporders"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_standard_template
+msgid "Please select your choice Standard Color Configuration for all Template."
+msgstr "Selecteer de Standaard Kleurconfiguratie voor alle Templates."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_company_address_color
+msgid "Please set Hex color for Company Address."
+msgstr "Wijzig uw HEX-kleurcode voor Bedrijfsadres."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_company_color
+msgid "Please set Hex color for Company Name."
+msgstr "Wijzig uw HEX-kleurcode voor Bedrijfsnaam."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_customer_address_color
+msgid "Please set Hex color for Customer Address."
+msgstr "Wijzig uw HEX-kleurcode code voor Klantadres."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_customer_color
+msgid "Please set Hex color for Customer Name."
+msgstr "Wijzig uw HEX-kleurcode voor Klantnaam."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_text_color
+msgid "Please set Hex color for General Text."
+msgstr "Wijzig uw HEX-kleurcode voor Algemene tekst."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_even_party_color
+msgid "Please set Hex color for Table Even Parity."
+msgstr "Wijzig uw HEX-kleurcode voor de even rijen van de tabel."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_odd_party_color
+msgid "Please set Hex color for Table Odd Parity."
+msgstr "Wijzig uw HEX-kleurcode voor de oneven rijen van de tabel."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_theme_text_color
+msgid "Please set Hex color for Template Text."
+msgstr "Wijzig uw HEX-kleurcode Template Tekst."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_theme_color
+msgid "Please set Hex color for Template."
+msgstr "Wijzig uw HEX-kleurcode Template Basis."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_watermark_logo
+msgid "Please set Watermark Logo for Report."
+msgstr "Voeg Watermerk toe in het rapport."
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_add_amount_in_words
+msgid "Please unchecked if you want to hide amount in words"
+msgstr "Gelieve uit te vinken als u het aantal in woorden wilt verbergen"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_demo_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "Preview Template"
+msgstr "Preview Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Price"
+msgstr "Prijs"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Product"
+msgstr "Product"
+
+#. module: general_template
+#: model:ir.actions.report,name:general_template.report_delivery_professional
+#: model:ir.actions.report,name:general_template.report_invoice_template_professional
+#: model:ir.actions.report,name:general_template.report_purchase_professional
+#: model:ir.actions.report,name:general_template.report_sale_order_professional
+#: selection:res.company,standard_template:0
+msgid "Professional"
+msgstr "Professional"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_purchase_order
+#: model:ir.ui.view,arch_db:general_template.purchase_advanced_header
+#: model:ir.ui.view,arch_db:general_template.quotation_advanced_header
+msgid "Purchase Order"
+msgstr "Inkooporder"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.purchase_incredible_header
+#: model:ir.ui.view,arch_db:general_template.purchase_innovative_header
+msgid "Purchase Order  Confirmation:"
+msgstr "Inkooporder bevestiging:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+msgid "Purchase Order Confirmation #"
+msgstr "Inkooporder bevestiging #"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_po_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_po_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_po_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_po_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_po_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_po_template_id1
+msgid "Purchase Order Template"
+msgstr "Inkooporder Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.purchase_professional_header
+#: model:ir.ui.view,arch_db:general_template.quotation_professional_header
+msgid "Purchase Order: \n"
+"                                                                <br/>"
+msgstr "Inkooporder:\n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_purchase_order_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_purchase_order_report_template_id1
+msgid "Purchase Template"
+msgstr "Inkoop Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+msgid "Qty"
+msgstr "Hvhd"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_advanced_header
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+#: model:ir.ui.view,arch_db:general_template.sale_innovative_header
+msgid "Quotation"
+msgstr "Offerte"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Quotation #"
+msgstr "Offerte #"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Quotation Date:"
+msgstr "Offertedatum:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+#: model:ir.ui.view,arch_db:general_template.sale_innovative_header
+msgid "Quotation No:"
+msgstr "Offerte No:"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_sale_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_sale_template_id1
+msgid "Quotation/Order Template"
+msgstr "Offerte/Bestel template"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_report_rfq_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_rfq_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_rfq_template_id
+msgid "RFQ Template"
+msgstr "RFQ-Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Ref."
+msgstr "Ref."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "Refund"
+msgstr "Credit"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Refund No:"
+msgstr "Creditnota Nr:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Refund To:"
+msgstr "CREDITNOTA:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_partner_sale_order
+msgid "Report Configuration"
+msgstr "Rapport instellingen"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_invoice_logo
+msgid "Report Logo"
+msgstr "Template Logo"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_watermark_logo
+msgid "Report Watermark Logo"
+msgstr "Template Watermerk"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+msgid "Request for Quotation #"
+msgstr "Offerteaanvraag #"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.purchase_incredible_header
+#: model:ir.ui.view,arch_db:general_template.purchase_innovative_header
+msgid "Request for Quotation:"
+msgstr "Offerteaanvraag:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_custom
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+#: model:ir.ui.view,arch_db:general_template.report_demo_professional
+msgid "SO/124/4567"
+msgstr "SO/124/4567"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "SO:"
+msgstr "SO:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_advanced_header
+#: model:ir.ui.view,arch_db:general_template.sale_incredible_header
+#: model:ir.ui.view,arch_db:general_template.sale_innovative_header
+msgid "Sale Order"
+msgstr "Verkooporder"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_sale_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_partner_report_sale_template_id1
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_sale_template_id
+#: model:ir.model.fields,field_description:general_template.field_res_users_report_sale_template_id1
+#: model:ir.model.fields,field_description:general_template.field_sale_order_report_template_id
+#: model:ir.model.fields,field_description:general_template.field_sale_order_report_template_id1
+msgid "Sale Order Template"
+msgstr "Verkooporder Template"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.sale_professional_header
+msgid "Sale Order: \n"
+"                                                                <br/>"
+msgstr "Verkooporder: \n"
+"                                                                <br/>"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_sale_order
+msgid "Sales Order"
+msgstr "Verkooporder"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+msgid "Serial Number"
+msgstr "Serienummer"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "Source"
+msgstr "Bron"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Sr."
+msgstr "Sr."
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_standard_template
+msgid "Standard Template Configuration"
+msgstr "Standaard Template Configuratie"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_delivery_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_delivery_professional_main
+msgid "Status"
+msgstr "Status"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "SubTotal"
+msgstr "SubTotaal"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "TOTAL"
+msgstr "TOTAAL"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_even_party_color
+msgid "Table Even Parity Color"
+msgstr "Kleur even rij Tabel"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_odd_party_color
+msgid "Table Odd Parity Color"
+msgstr "Kleur oneven rij Tabel"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Taxes"
+msgstr "BTW"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_theme_color
+msgid "Template Base Color"
+msgstr "Basiskleur Template"
+
+#. module: general_template
+#: model:ir.model.fields,field_description:general_template.field_res_company_theme_text_color
+msgid "Template Text Color"
+msgstr "Tekst kleur Template"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_account_invoice_amount_to_text
+#: model:ir.model.fields,help:general_template.field_purchase_order_amount_to_text
+#: model:ir.model.fields,help:general_template.field_sale_order_amount_to_text
+msgid "The amount in words"
+msgstr "Het bedrag uitgeschreven in tekst"
+
+#. module: general_template
+#: model:ir.model.fields,help:general_template.field_res_company_invoice_logo
+msgid "This field holds the image used as Logo for Invoice template report"
+msgstr "Voeg hier uw Logo in dat op het rapport wordt weergegeven"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+msgid "Total Without Taxes"
+msgstr "excl. BTW"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Total in word"
+msgstr "Totaal in tekst"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+msgid "Total in word:"
+msgstr "Totaal in tekst:"
+
+#. module: general_template
+#: model:ir.model,name:general_template.model_stock_picking
+msgid "Transfer"
+msgstr "Overplaatsing"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "Unit Price"
+msgstr "Prijs"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.picking_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.purchase_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.quotation_exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_main
+#: model:ir.ui.view,arch_db:general_template.report_quotation_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+#: model:ir.ui.view,arch_db:general_template.sale_exclusive_header
+msgid "Vat:"
+msgstr "BTW:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "Vendor Bill"
+msgstr "Leveranciersfactuur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Vendor Bill No:"
+msgstr "Kreditor-Zahlu no.:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Vendor Bill To:"
+msgstr "Kreditor-Zahlu Zu:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.advanced_header
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.professional_header
+msgid "Vendor Refund"
+msgstr "Creditfactuur leverancier"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.incredible_header
+#: model:ir.ui.view,arch_db:general_template.innovative_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Vendor Refund No:"
+msgstr "Credit no. Leverancier:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.exclusive_header
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_innovative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+msgid "Vendor Refund To:"
+msgstr " Crediteren Leverancier:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_creative_main
+msgid "You do not have any products reserved for this picking.  Please click the 'Reserve' button\n"
+"                                                    to check if products are available."
+msgstr "U heeft geen producten gereserveerd voor deze plukken. Klik op de knop 'Reserve'\n"
+"                                                    Om te controleren of producten beschikbaar zijn."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_professional_main
+msgid "You do not have any products reserved for this picking.  Please click the 'Reserve' button\n"
+"                                                to check if products are available."
+msgstr "U heeft geen producten gereserveerd voor deze plukken. Klik op de knop 'Reserve'\n"
+"                                                Om te controleren of producten beschikbaar zijn."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_exclusive_main
+msgid "You do not have any products reserved for this picking.  Please click the 'Reserve' button\n"
+"                                        to check if products are available."
+msgstr "U heeft geen producten gereserveerd voor deze plukken. Klik op de knop 'Reserve'\n"
+"                                        Om te controleren of producten beschikbaar zijn."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_incredible_main
+#: model:ir.ui.view,arch_db:general_template.report_picking_innovative_main
+msgid "You do not have any products reserved for this picking.  Please click the 'Reserve' button\n"
+"                                    to check if products are available."
+msgstr "U heeft geen producten gereserveerd voor deze plukken. Klik op de knop 'Reserve'\n"
+"                                    Om te controleren of producten beschikbaar zijn."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_picking_custom_main
+msgid "You do not have any products reserved for this picking.  Please click the 'Reserve' button\n"
+"                            to check if products are available."
+msgstr "U heeft geen producten gereserveerd voor deze plukken. Klik op de knop 'Reserve'\n"
+"                            Om te controleren of producten beschikbaar zijn."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "amount"
+msgstr "Bedrag"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "date"
+msgstr "datum"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+msgid "invoice"
+msgstr "Factuur"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_advanced
+#: model:ir.ui.view,arch_db:general_template.report_demo_creative
+#: model:ir.ui.view,arch_db:general_template.report_demo_elegant
+#: model:ir.ui.view,arch_db:general_template.report_demo_exclusive
+msgid "invoice to:"
+msgstr "Factuur naar:"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #2763a1"
+msgstr "zoals #2763a1"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #2763c1"
+msgstr "zoals #2763c1"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #5bb3d2"
+msgstr "zoals #5bb3d2"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #5cc2d2"
+msgstr "zoals #5cc2d2"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #aea8a8"
+msgstr "zoals #aea8a8"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #aea8aa"
+msgstr "zoals #aea8aa"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #b30000"
+msgstr "zoals #b30000"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #b30010"
+msgstr "zoals #b30010"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.view_report_company_sale_order
+msgid "like #d4d2d2"
+msgstr "zoals #d4d2d2"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "method"
+msgstr "Methode"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "quantity"
+msgstr "Aantal"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "ref."
+msgstr "ref."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "sr."
+msgstr "sr."
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+msgid "taxes"
+msgstr "taxes"
+
+#. module: general_template
+#: model:ir.ui.view,arch_db:general_template.report_demo_template_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_invoice_template_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_main
+#: model:ir.ui.view,arch_db:general_template.report_purchase_professional_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_advanced_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_creative_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_elegant_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_exclusive_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_order_main
+#: model:ir.ui.view,arch_db:general_template.report_sale_professional_main
+msgid "total"
+msgstr "Totaal"
+

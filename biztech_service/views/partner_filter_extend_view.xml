@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="res_partner_inherit_filter" model="ir.ui.view">
+        <field name="name">res.partner.inherit.filter</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="replace" />
+            <field name="parent_id" position="replace" />
+            <field name="category_id" position="replace" />
+            <filter name="type_company" position="replace"/>
+            <filter name="inactive" position="replace" />
+            <group name="group_by" position="replace" />
+            <filter name ="type_person" position="replace" />
+            <filter name="customer" position="replace"/>
+            <filter name="filter_my_partners" position="replace"/>
+            <filter name="supplier" position="replace">
+                <field name="phone" string="Phone" filter_domain="[('phone','ilike', self)]"/>
+                <separator/>
+                <field name="id" string="Customer Number" />
+                <separator/>
+                <field name="city" string="City" filter_domain="[('city','ilike', self)]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+    
+    <record id="res_partner_view_inherit_mail_service" model="ir.ui.view">
+        <field name="name">res.partner.view.inherit.mail.service</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="mail.res_partner_view_search_inherit_mail"/>
+        <field name="arch" type="xml">
+            <separator />
+            <filter name='not_opt_out' position="replace"/>
+            <separator/>
+            <filter name="activities_my" position="replace"/>
+            <separator/>
+            <filter name="activities_overdue" position="replace"/>
+            <filter name="activities_today" position="replace"/>
+            <filter name="activities_upcoming_all" position="replace"/>
+            <separator/>
+        </field>
+    </record>
+    
+    <record id="res_partner_view_tree_inherit_service" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.mail</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="id" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="create_date" widget="date"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="id" string = "Customer Number"/>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="customer_id" string = "Customer Number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_form_inherit_script" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.script</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="create_from_script" invisible="1"/>
+                <field name="privious_destribute" invisible="1"/>
+                <field name="main_contatc_create_for_history" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="after">
+                <button name="display_name_get" string="Click" type="object" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='credit_check_verified']" position="after">
+                <field name="mfg_tax_eligible"/>
+            </xpath>
+            <xpath expr="//field[@name='property_account_position_id']" position="attributes">
+                <attribute name="domain">"[('show_in_customer','=',False)]"</attribute>
+            </xpath>
+        </field>
+    </record>
+
+     <record model="ir.ui.view" id="custom_res_partner_kanban_view">
+            <field name="name">res.partner.kanban.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//kanban[hasclass('o_res_partner_kanban')]/field[@name='id']" position="after">
+                        <field name="supplier"/>
+                        <field name="customer"/>
+                    </xpath>
+                    <xpath expr="//div[hasclass('oe_kanban_details')]/div[hasclass('o_kanban_tags_section')]" position="inside">
+                        <div class="no_edit">
+                           <t t-if="record.supplier.raw_value == true and record.customer.raw_value == false">
+                                <strong t-if="record.id.raw_value"><strong> Vendor Number : </strong>
+                                    <field name="id"  readonly="1" widget="phone" />
+                                </strong>
+                            </t>
+                             <t t-if="record.customer.raw_value == true and record.supplier.raw_value == false">
+                                <strong t-if="record.id.raw_value"><strong> Customer Number : </strong>
+                                    <field name="id"  readonly="1" widget="phone" />
+                                </strong>
+                            </t>
+                             <t t-if="record.supplier.raw_value == true and record.customer.raw_value == true">
+                                  <strong t-if="record.id.raw_value"><strong> Customer/Vendor Number : </strong>
+                                    <field name="id"  readonly="1" widget="phone" />
+                                </strong>
+                            </t>
+                             <t t-if="record.supplier.raw_value == false and record.customer.raw_value == false">
+                                  <strong t-if="record.id.raw_value"><strong> Number : </strong>
+                                    <field name="id"  readonly="1" widget="phone" />
+                                </strong>
+                            </t>
+                        </div>
+                    </xpath>
+                </field>
+            </record>
+
+
+     <!--Add domain for Mfg fiscal position in customer form-->
+     <record id="account_fiscal_position_inherit_view" model="ir.ui.view">
+        <field name="name">account.fiscal.position.inherit</field>
+        <field name="model">account.fiscal.position</field>
+        <field name="inherit_id" ref="account.view_account_position_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='auto_apply']" position="after">
+                <field name="show_in_customer" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

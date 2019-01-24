@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--generic_comment fields in comapnay -->
+	<record id="view_res_company_inherit" model="ir.ui.view">
+		<field name="name">view.res.company.inherit</field>
+		<field name="model">res.company</field>
+		<field name="inherit_id" ref="base.view_company_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='report_header']" position="after">
+				<field name="generic_comment" />
+			</xpath>
+		</field>
+	</record>	
+
+      <!-- comment field add in Order lines -->
+        <record id="view_sale_order_line_trans" model="ir.ui.view">
+            <field name="name">Sale Order Line</field>
+            <field name="model">sale.order.line.trans</field>
+            <field name="arch" type="xml">
+                <form string="Sales Order Line">
+                    <group>
+                        <field name="comment" />
+                    </group>
+                     <footer>
+                        <button string="Confirm" special="save" class="oe_highlight"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- comment field add in Order lines -->
+        <record id="action_sale_order_line_trans" model="ir.actions.act_window">
+            <field name="name">Sale Order Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line.trans</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+        </record>
+
+	
+    <!-- add option for part number  -->
+        <record id="biz_add_option_for_part_number" model="ir.ui.view">
+            <field name="name">biz.add.option.for.partnuner</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group//group[2]" position="after">
+                    <group>
+                        <field name="is_partnumber" invisible="1"/>
+                        <field name="is_price" invisible = "1"/>
+                    </group>
+                </xpath>
+                <xpath expr="//div[@name='carrier_selection']" position="after">
+                        <field name="service_type" string = "Service Type"/>
+                </xpath>
+                <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+               
+               <!-- partner address -->
+               <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id"  context="{'show_address': 0, 'no_change': 1}" options='{"always_reload": True}'/>
+                    <label for="street" string="" style="border-bottom: 1px solid black;"/>
+                    <div style="border-bottom: 1px solid black;">
+                    	<div class="o_address_format" name="div_address" nolabel = "1">
+	                        <field name="street" placeholder="Street..." class="o_address_street"/>
+	                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+	                        <field name="city" placeholder="City" class="o_address_city"/>
+	                        <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+	                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+	                        <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' invisible = "1"/>
+                    	</div >
+                    </div >
+                </xpath>
+                <xpath expr="//field[@name='partner_invoice_id']" position="replace">
+                    <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice','show_address': 0, 'no_change': 1}" options='{"always_reload": True}'/>
+                    <label for="street" string="" nolabel = "1" style="border-bottom: 1px solid black;"/>
+                    <div style="border-bottom: 1px solid black;">
+                    	<div class="o_address_format" name="div_address">
+	                        <field name="inv_street" placeholder="Street..." class="o_address_street"/>
+	                        <field name="inv_street2" placeholder="Street 2..." class="o_address_street"/>
+	                        <field name="inv_city" placeholder="City" class="o_address_city"/>
+	                        <field name="inv_state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+	                        <field name="inv_zip" placeholder="ZIP" class="o_address_zip"/>
+	                        <field name="inv_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' invisible = "1"/>
+                    	</div>
+                    </div>
+                </xpath>
+                
+                <xpath expr="//field[@name='partner_shipping_id']" position="replace">
+                    <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery','show_address': 0, 'no_change': 1}" options='{"always_reload": True}'/>
+                    <label for="street" string="" nolabel = "1"/>
+                    <div>
+                    	<div class="o_address_format" name="div_address">
+	                        <field name="ship_street" placeholder="Street..." class="o_address_street"/>
+	                        <field name="ship_street2" placeholder="Street 2..." class="o_address_street"/>
+	                        <field name="ship_city" placeholder="City" class="o_address_city"/>
+	                        <field name="ship_state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+	                        <field name="ship_zip" placeholder="ZIP" class="o_address_zip"/>
+	                        <field name="ship_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' invisible = "1"/>
+                    	</div>
+                    </div>
+                </xpath> 
+                 <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+                    <attribute name="string">Bill To</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="string">Ship To</attribute>
+                </xpath>
+                <!--<xpath expr="//field[@name='validity_date']" position="before">
+                        <field name="days_to_expire" attrs="{'readonly': [('state','not in',('draft',))]}"/>
+                </xpath>-->
+
+
+                <!-- change Product Line Header names -->
+                <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="attributes">
+                    <attribute name="string">Part Number</attribute>
+                </xpath> 
+                <xpath expr="//field[@name='order_line']//field[@name='name']" position="attributes">
+                    <attribute name="string">Part Description</attribute>
+                </xpath> 
+
+                <!-- Add comment field in each order line  -->
+                <xpath expr="//field[@name='order_line']//tree//field[@name='sequence']" position="after">
+                    <field name="order_id" invisible="1"/>
+                    <field name="comment" invisible="1" />
+                    <!--button name="%(customize_general_template.action_sale_order_line_trans)d" type="action" 
+                        class="btn btn-icon fa fa-comment fa-3x"
+                        context="{'order_id': order_id, 'default_comment': comment}"/-->
+                     <button name="%(customize_general_template.action_sale_order_line_trans)d" 
+                        type="action
+" 
+                        class="o_icon_button fa fa-comment fa-3x">Comment
+                    </button>
+		   
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']//tree//field[last()]" position="after">
+                    <field name="comment" />
+                </xpath>
+
+
+           </field>
+        </record>
+
+	<!--expiry date view in setting of sale configurtation -->
+        <record id="biz_change_sale_expiry_date" model="ir.ui.view">
+            <field name="name">biz.change.sale.expiry.date</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+				<xpath expr="//div[hasclass('settings')]/div[@data-key='sale_management']" position="inside">
+						<h2>Expiry Days</h2>
+						<div class="row mt16 o_settings_container">
+							<div class="col-xs-12 col-md-6 o_setting_box" >
+								<div class="o_setting_left_pane"/>
+								<div class="o_setting_right_pane">
+									<div class="content-group">
+										<div class="row mt20">
+											<label string="Days To Expire" for="days_to_expire" class="col-md-4 o_light_label"/>
+											<field name="days_to_expire"/>
+										</div>
+									</div>
+									<div class="text-muted">Default Days for Sale Order Expiry Date</div>
+								</div>
+							</div>
+						</div>
+				</xpath>
+           </field>
+        </record>
+        
+        <record id="biz_change_date_format_tree" model="ir.ui.view">
+            <field name="name">biz.change.date.format.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+           </field>
+        </record>
+        
+         <record id="biz_change_date_format_quotation_tree" model="ir.ui.view">
+            <field name="name">biz.change.date.format.quotation.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+           </field>
+        </record>
+
+        <record id="biz_change_date_format_picking_tree" model="ir.ui.view">
+            <field name="name">biz.change.date.format.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='scheduled_date']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+           </field>
+        </record>
+        
+         <record id="biz_change_date_format_picking_form" model="ir.ui.view">
+            <field name="name">biz.change.date.format.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='scheduled_date']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+           </field>
+        </record>
+        
+        <record id="biz_add_modi_attr" model="ir.ui.view">
+            <field name="name">biz.add.reqi.option</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+                 <xpath expr="//label[@for='name']" position="attributes">
+                  <attribute name="string">Product Name (Description)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="replace" />
+                <xpath expr="//label[@for='name']" position="before">
+	                <div class="oe_title">
+	                    <label for="default_code" class="oe_edit_only" string = "Part Number"/>
+	                    <h1><field name="default_code" string = "Part Number"/></h1>
+	                </div>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                  <attribute name="required">1</attribute>
+                </xpath>
+           </field>
+        </record>
+        
+        <record id="biz_add_modi_attr_pro" model="ir.ui.view">
+            <field name="name">biz.add.reqi.option.pro</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='name']" position="attributes">
+                  <attribute name="string">Product Name (Description)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="replace" />
+                <xpath expr="//label[@for='name']" position="before">
+	                <div class="oe_title">
+	                    <label for="default_code" class="oe_edit_only" string = "Part Number"/>
+	                    <h1><field name="default_code" string = "Part Number"/></h1>
+	                </div>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                  <attribute name="required">1</attribute>
+                </xpath>
+           </field>
+        </record>
+
+        <record id="biz_purchase_add_user_fields" model="ir.ui.view">
+            <field name="name">biz.add.user.fields</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                    <field name="current_user_id"/>
+                    <field name="custom_shipping_address" />
+                </xpath>
+                <xpath expr="//tree//field[@name='date_planned']" position="attributes">
+                  <attribute name="widget">date</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_planned']" position="attributes">
+                  <attribute name="widget">date</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_order']" position="attributes">
+                  <attribute name="widget">date</attribute>
+                </xpath>
+
+
+                <xpath expr="//field[@name='partner_ref']" position="attributes">
+                  <attribute name="string">Vendor Quote No.</attribute>
+                </xpath>
+
+
+           </field>
+        </record>
+        
+        <record id="biz_purchase_change_date_format" model="ir.ui.view">
+            <field name="name">biz.purchase.change.date.format</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='date_order']" position="attributes">
+                  <attribute name="widget">date</attribute>
+                </xpath>
+                <xpath expr="//tree/field[@name='date_planned']" position="attributes">
+                  <attribute name="widget">date</attribute>
+                </xpath>
+           </field>
+        </record>
+
+ 
+ <!-- change for setting default Maqpower - main and make it readonly 10-1-2018 -->
+        <record id="biz_purchase_fix_report_template_selection" model="ir.ui.view">
+            <field name="name">biz.fix.report.selection</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="general_template.view_report_company_purchase_order_template" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='report_template_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="biz_res_partner_inherit" model="ir.ui.view">
+            <field name="name">biz.res.partner.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='country_id']" position="attributes" >
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- comment field add in Order lines -->
+        <record id="view_purchase_order_line_trans" model="ir.ui.view">
+            <field name="name">Purchase Order Line</field>
+            <field name="model">purchase.order.line.trans</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order Line">
+                    <group>
+                        <field name="comment" />
+                    </group>
+                     <footer>
+                        <button string="Confirm" special="save" class="oe_highlight"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- comment field add in Order lines -->
+        <record id="action_purchase_order_line_trans" model="ir.actions.act_window">
+            <field name="name">Purchase Order Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order.line.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order" />
+        </record>
+
+
+	<record id="purchase_partner_address_extend" model="ir.ui.view">
+            <field name="name">purchase.partner.address.extend</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+		<xpath expr="//button[@name='button_cancel']" position="attributes">
+            		<attribute name="string">Cancel Purchase Order</attribute>
+            	</xpath>
+                 <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" domain="[('supplier','=',True)]"/>
+                    <label for="street" string="" nolabel = "1" style="border-bottom: 1px solid black;"/>
+                    <div style="border-bottom: 1px solid black;">
+                    	<div class="o_address_format" name="div_address">
+	                        <field name="vendor_street" placeholder="Street..." class="o_address_street"/>
+	                        <field name="vendor_street2" placeholder="Street 2..." class="o_address_street"/>
+	                        <field name="vendor_city" placeholder="City" class="o_address_city"/>
+	                        <field name="vendor_state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+	                        <field name="vendor_zip" placeholder="ZIP" class="o_address_zip"/>
+	                        <field name="vendor_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' invisible = "1"/>
+                    	</div>
+                    </div>
+                </xpath>
+                
+                <xpath expr="//field[@name='custom_shipping_address']" position="replace">
+                    <field name="custom_shipping_address" string = "Ship To"/>
+                    <label for="street" string="" nolabel = "1"/>
+                    <div>
+                    	<div class="o_address_format" name="div_address">
+	                        <field name="ship_street" placeholder="Street..." class="o_address_street"/>
+	                        <field name="ship_street2" placeholder="Street 2..." class="o_address_street"/>
+	                        <field name="ship_city" placeholder="City" class="o_address_city"/>
+	                        <field name="ship_state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+	                        <field name="ship_zip" placeholder="ZIP" class="o_address_zip"/>
+	                        <field name="ship_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' invisible = "1"/>
+                    	</div>
+                    </div>
+                </xpath> 
+		 <!-- invisible tax field froim purchase order line -->
+		<xpath expr="//field[@name='order_line']/tree/field[@name='taxes_id']" position="attributes" >
+                    <attribute name="invisible">1</attribute>
+                </xpath> 
+                <xpath expr="//field[@name='order_line']/form/sheet/group/group/field[@name='taxes_id']" position="attributes" >
+                    <attribute name="invisible">1</attribute>
+                </xpath> 
+                <xpath expr="//field[@name='amount_tax']" position="attributes" >
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <!-- change Product Line Header names -->
+                <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="attributes">
+                    <attribute name="string">Part Number</attribute>
+                </xpath> 
+                <xpath expr="//field[@name='order_line']//field[@name='name']" position="attributes">
+                    <attribute name="string">Part Description</attribute>
+                </xpath> 
+
+                <!-- Add comment field in each order line  -->
+                <xpath expr="//field[@name='order_line']//tree//field[@name='sequence']" position="after">
+                    <field name="order_id" invisible="1"/>
+                    <field name="comment" invisible="1" />
+                    <button name="%(customize_general_template.action_purchase_order_line_trans)d" type="action" 
+                        class="btn btn-icon fa fa-comment fa-3x"
+                        context="{'order_id': order_id, 'default_comment': comment}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']//tree//field[last()]" position="after">
+                    <field name="comment" />
+                </xpath>
+                
+           </field>
+        </record>
+
+        <!-- Show all partners and partner childs who dont have any sale order yet -->
+        <record id="inherit_action_partner_lead_customer_form" model="ir.actions.act_window">
+            <field name="name">Lead</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'default_lead': 1}</field>
+            <field name="filter" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="inherit_res_partner_menu_crm"
+            parent="crm.crm_menu_root"
+            name="Lead"
+            action="customize_general_template.inherit_action_partner_lead_customer_form"
+            sequence="3"/>
+
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="domain">[]</field>
+        </record>
+
+<!--    <menuitem action="purchase_rfq" id="menu_purchase_rfq"
+            parent="menu_procurement_management"
+            sequence="0"/> -->
+        <menuitem id="purchase.menu_purchase_rfq"/>
+        
+</odoo>

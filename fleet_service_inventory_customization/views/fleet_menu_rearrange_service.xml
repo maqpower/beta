@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <menuitem name="Service Fleet" parent="biztech_service.maqpower_service" id="fleet_main_menu" sequence="5" />  
+      <menuitem name="Vehicles" parent="fleet_main_menu" id="fleet.fleet_vehicles" sequence="5" />
+       <menuitem name="Reporting" parent="fleet_main_menu" id="fleet.menu_fleet_reporting" sequence="99" />
+       <menuitem name="Configuration" parent="fleet_main_menu" id="fleet.fleet_configuration" sequence="100" />
+</odoo>

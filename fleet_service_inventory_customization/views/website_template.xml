@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="asset_backend" inherit_id="web.assets_backend" name="assets frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/fleet_service_inventory_customization/static/src/js/map.js">
+            </script>
+            <script type="text/javascript" src="/fleet_service_inventory_customization/static/src/js/directions.js">
+            </script>
+        </xpath>
+    </template>
+</odoo>

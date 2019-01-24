@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_fleet_stock_location_form" model="ir.ui.view">
+        <field name="name">stock.location.form</field>
+        <field name="model">stock.location</field>
+        <field name="arch" type="xml">
+            <form string="Stock Location" >
+                <div class="oe_button_box" name="button_box">
+                	
+                	<button string="Initial Stock Request"
+                            class="oe_stat_button"
+                            icon="fa-building-o" name="%(action_fleet_load_product_wiz)d" type="action"
+                            context="{'default_is_fleet_stock': 1}" attrs="{'invisible': [('is_initial_load_transfer','=',True)]}"  />
+                    
+                    <button string="Current Stock"
+                            class="oe_stat_button"
+                            icon="fa-building-o" name="%(stock.location_open_quants)d" type="action"
+                            context="{'search_default_internal_loc': 1}"/>
+                    <button string="Products"
+                            class="oe_stat_button"
+                            icon="fa-filter" name="%(stock.act_product_location_open)d" type="action"
+                            context="{'location_id': active_id}"
+                            />
+                   <button name="stock.toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <label for="name" class="oe_edit_only"/>
+                <h1><field name="name"/></h1>
+                <label for="location_id" class="oe_edit_only"/>
+                <h2><field name="location_id" options="{'no_create': True}" domain="[('is_fleet_location','=',True)]"/></h2>
+
+                <group>
+                    <group string="Additional Information">
+                        <field name="usage"/>
+                        <field name="is_fleet_location" />
+                        <field name="is_initial_load_transfer" />
+                        <field name="fleet_product_id"/>
+                        <field name="partner_id"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    </group>
+                    
+                </group>
+                <field name="comment" placeholder="External note..."/>
+            </form>
+        </field>
+    </record>
+	
+    <record id="view_fleet_location_tree" model="ir.ui.view">
+        <field name="name">stock.location.tree</field>
+        <field name="model">stock.location</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <tree string="Stock Location" decoration-info="usage=='view'" decoration-danger="usage=='internal'" create="true">
+                <field name="active" invisible="1"/>
+                <field name="display_name"/>
+                <field name="usage"/>
+                <field name="is_fleet_location"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="fleet_product_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    
+    
+	<record id="action_fleet_location_form" model="ir.actions.act_window">
+        <field name="name">Fleet Locations</field>
+        <field name="res_model">stock.location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="search_view_id" ref="stock.view_location_search"/>
+        <field name="context">{&quot;default_is_fleet_location&quot;:1}</field>
+        <field name="domain">[('is_fleet_location','=',True)]</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a location.
+          </p><p>
+            Define your locations to reflect your warehouse structure and
+            organization. Odoo is able to manage physical locations
+            (warehouses, shelves, bin, etc), partner locations (customers,
+            vendors) and virtual locations which are the counterpart of
+            the stock operations like the manufacturing orders
+            consumptions, inventories, etc.
+          </p><p>
+            Every stock operation in Odoo moves the products from one
+            location to another one.  For instance, if you receive products
+            from a vendor, Odoo will move products from the Vendor
+            location to the Stock location. Each report can be performed on
+            physical, partner or virtual locations.
+          </p>
+        </field>
+    </record>
+    
+     <record id="stock.action_location_form" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="res_model">stock.location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="stock.view_location_tree2"/>
+        <field name="search_view_id" ref="stock.view_location_search"/>
+        <field name="context">{'search_default_in_location':1}</field>
+        <field name="domain">[('is_fleet_location','=',False)]</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a location.
+          </p><p>
+            Define your locations to reflect your warehouse structure and
+            organization. Odoo is able to manage physical locations
+            (warehouses, shelves, bin, etc), partner locations (customers,
+            vendors) and virtual locations which are the counterpart of
+            the stock operations like the manufacturing orders
+            consumptions, inventories, etc.
+          </p><p>
+            Every stock operation in Odoo moves the products from one
+            location to another one.  For instance, if you receive products
+            from a vendor, Odoo will move products from the Vendor
+            location to the Stock location. Each report can be performed on
+            physical, partner or virtual locations.
+          </p>
+        </field>
+    </record>
+
+    <record id="action_customert_info_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_fleet_location_tree"/>
+        <field name="act_window_id" ref="action_fleet_location_form"/>
+    </record>
+    
+    <record id="action_customert_info_form_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="4"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fleet_stock_location_form"/>
+        <field name="act_window_id" ref="action_fleet_location_form"/>
+    </record>
+
+    <menuitem action="action_fleet_location_form" id="menu_action_fleet_location_form"
+        parent="stock.menu_warehouse_config" sequence="3" groups="stock.group_stock_multi_locations"/>
+</odoo>

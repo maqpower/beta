@@ -1,0 +1,41 @@
+<?xml version ="1.0"?>
+<odoo>
+
+    <!-- customer sale history tree view-->
+    <record id="product_view_tree" model="ir.ui.view">
+        <field name="name">customer.sale.history.tree</field>
+        <field name="model">customer.sale.history</field>
+        <field name="arch" type="xml">
+            <tree string="product info">
+                <field name="serial"/>
+                <field name="ship_date"/>
+                <field name="description"/>
+                <field name="warranty_registration"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_view_form" model="ir.ui.view">
+        <field name="name">customer.sale.history.form</field>
+        <field name="model">customer.sale.history</field>
+        <field name="arch" type="xml">
+            <form string="product info">
+                <field name="serial"/>
+                <field name="ship_date"/>
+                <field name="description"/>
+                <field name="warranty_registration"/>
+                <field name="unit_price"/>
+                <button name="get_price" string="Float Price" type='object'/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_customer_history_view" model="ir.actions.act_window">
+        <field name="name">customer sale history</field>
+        <field name="res_model">customer.sale.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <menuitem name="Customer Sale History" id="customer_history_menu" parent="crm.crm_menu_report" action="action_customer_history_view"/>
+</odoo>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_workorder_confirm" model="ir.ui.view">
+        <field name="name">sale.order.form.workorder.confirm</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+            
+                <button class="oe_stat_button oe_inline" 
+                        name="action_view_workorder" 
+                        type="object" 
+                        attrs="{'invisible': ['|' ,('workorder_count', '=', 0),('workorder_count', '!=',1)]}" 
+                        icon="fa-play-circle-o" string="Service Work Order">
+                    <field string="Service Work Order" nolabel = "1" style="margin-right:30px;" name="workorder_count" widget="statinfo"/>
+                </button>
+                <button class="oe_stat_button oe_inline"  
+                        name="action_view_workorder" 
+                        type="object"  
+                        attrs="{'invisible': ['|' ,('workorder_count', '=', 0),('workorder_count', '=',1)]}" 
+                        icon="fa-play-circle-o" string="Service Work Orders" >
+                    <field string="Service Work Orders" nolabel = "1" style="margin-right:30px;" name="workorder_count" widget="statinfo" />
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="attrs">{'readonly': [('no_edit', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="is_service_quote_temp" invisible = "1"/>
+                <field name="is_sale_order_line" invisible = "1"/>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_workorder_create" type="object" attrs="{'invisible': ['|','|','|',('state',
+                    '=', 'draft'),('is_service_quote_temp', '=', True),('no_edit','=',True),('is_sale_order_line', '=', False)]}" string="Confirm
+                    Service Work Order" />
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="after">
+                <field name="equipment_id" attrs="{'readonly':
+                    [('parent.is_service_quote_temp', '=', True)],'required':[('parent.is_service_quote_temp', '=', False)]}" string = "Equipment" domain="[('partner_id', '=',
+                    parent.partner_id)]" context="{'partner':parent.partner_id}"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                <field name="equipment_id" string = "Equipment" context="{'partner':parent.partner_id}"
+                    domain="[('partner_id', '=', parent.partner_id)]" attrs="{'readonly':
+                    [('parent.is_service_quote_temp', '=', True)],'required':[('parent.is_service_quote_temp', '=', False)]}" />
+            </xpath>
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="attrs">{'readonly': [('no_edit', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="no_edit" invisible = "1"/>
+            </xpath>
+            <xpath expr="//field[@name='confirmation_date']" position="after">
+                <field name="single_multiple_quotation_reports" attrs="{'invisible': [('is_service_quote_temp',
+                    '=', True)]}"/>
+                <field name="single_multiple_invoice" attrs="{'invisible': [('is_service_quote_temp',
+                    '=', True)]}"/>
+            </xpath>
+            <!--<xpath expr="//field[@name='layout_category_id']" position="attributes"> <attribute
+                name="attrs">{'readonly': [('parent.is_service_quote_temp', '=', True)]}</attribute>
+                </xpath>-->
+            <xpath expr="//field[@name='order_line']/tree//field[@name='layout_category_id']"
+                position="attributes">
+                <attribute name="attrs">{'readonly': [('parent.is_service_quote_temp', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                <attribute name="string">Customer PO</attribute>
+            </xpath>
+            <notebook position="inside">
+                <page string = "Service Work Order History">
+                    <field name="service_workorder_history_id" nolabel="1" >
+                        <tree string = "Service Work Order History" editable = "bottom">
+                            <field name="name" />
+                            <field name="schedule_date" widget = "date"/>
+                            <field name="equipment_id" />
+                            <field name="service_type"/>
+                            <field name="payment_term_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+            <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+           <xpath expr="//field[@name='confirmation_date']" position="before">
+                <field name="date_order"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="sale_stock_extend" model="ir.ui.view">
+            <field name="name">sale.stock.extend</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+               <xpath expr="//button[@name='action_view_delivery']" position="replace">
+                   <button type="object"
+                        name="action_view_delivery"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        attrs="{'invisible': ['|',('delivery_count_service', '=', 0),('is_service_quote_temp','=',True)]}" groups="base.group_user">
+                        <field name="delivery_count_service" widget="statinfo" string="Inventory Delivery"/>
+                    </button>
+                    <button type="object"
+                        name="action_view_delivery"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        attrs="{'invisible': ['|',('delivery_count_service', '=', 0),('is_service_quote_temp','=',False)]}" groups="base.group_user">
+                        <field name="delivery_count" widget="statinfo" string="Delivery"/>
+                    </button>
+                </xpath>
+           </field>
+        </record> 
+    
+    <record id="view_service_workorder_tree_inherit_technician" model="ir.ui.view">
+        <field name="name">view.workorder.tree.inherit.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_tree_technician"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sale_order_id" />
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_service_workorder_tree_inherit" model="ir.ui.view">
+        <field name="name">view.workorder.tree.inherit</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sale_order_id" />
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_service_workorder_inherit" model="ir.ui.view">
+        <field name="name">view.workorder.inherit</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='service_type']" position="after">
+                <field name="sale_order_id" domain="[('partner_id','=',partner_id),('state','!=','draft')]"
+                     string = "Sales Order"/>
+                <field name="client_order_ref" />
+            </xpath>
+            <xpath expr="//field[@name='service_inventory_workflow']/tree/field[@name='product_id']"
+                position="after">
+                <field name="sale_order_line_id" string = "Sale order line" invisible = "1"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- ad sale order and customer po in technician for view -->
+    <record id="view_service_workorder_customer_inherit" model="ir.ui.view">
+        <field name="name">view.workorder.inherit.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_form_technician"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='service_type']" position="after">
+                <field name="sale_order_id" domain="[('partner_id','=',partner_id),('state','!=','draft')]"
+                     string = "Sales Order"/>
+                <field name="client_order_ref" />
+            </xpath>
+            <xpath expr="//field[@name='service_inventory_workflow']/tree/field[@name='product_id']"
+                position="after">
+                <field name="sale_order_line_id" string = "Sale order line" invisible = "1"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- search view For manager inherit-->
+    <record id="biztech_service.view_service_workorder_filter" model="ir.ui.view">
+        <field name="name">view.service.workorder.filter</field>
+        <field name="model">service.customer.information</field>
+        <field name="arch" type="xml">
+            <search string="Search Workorder">
+                <field name="technician" />
+                <field name="partner_id" />
+                <field name="service_type"/>
+                <field name="sale_order_id"/>
+                <separator/>
+                <group expand="0" string="Group By" colspan="16">
+                    <filter string="Customer" context="{'group_by':'partner_id'}"/>
+                    <filter string="Technician" context="{'group_by':'technician'}"/>
+                    <filter string="Schedule Date" name="groupby_scheduledate"  domain="[]" context="{'group_by':'schedule_date'}"/>
+                    <filter string="Service Type" context="{'group_by':'service_type'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    
+</odoo>

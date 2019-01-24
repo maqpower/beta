@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_service_workorder_inherit" model="ir.ui.view">
+        <field name="name">view.fleet.workorder.inherit</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="start_on_way" string="Start" type="object" class="btn-primary" states="start"
+                    attrs="{'invisible': [('state','!=','start')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='customer_contact_ids']" position="after">
+                <field name="miles" class='miles'/>
+                <label for="total_time"/>
+                
+                <div>
+                    <field name="total_time"/>
+                </div>
+                <field name="origin"/>
+                <field name="destination"/>
+                
+            </xpath>
+            <xpath expr="//field[@name='service_inventory_workflow']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="product_in_truck"/>
+                <field name="truck_quantity" />
+            </xpath>
+            <xpath expr="//field[@name='technician']" position="after">
+                <field name="vehicle_id" attrs="{'required': [('state','!=','plan')],'invisible':[('vehicle_id','=',False)]}"/>
+                <field name="fleet_location_id" domain="[('is_fleet_location','=',True)]" attrs="{'required': [('state','!=','plan')],'invisible':[('fleet_location_id','=',False)]}" />
+            </xpath>
+            <div class="oe_button_box" name="button_box" position='inside'>
+                <button class="oe_stat_button" name="open_journey" type="object" icon="fa fa-map-marker"
+                    string="Map">
+                </button>
+            </div>
+        </field>
+    </record>
+    
+    <!-- Add Fleet,fleet location and schedule date in technician form view -->
+    <record id="view_fleet_service_workorder_technician_inherit" model="ir.ui.view">
+        <field name="name">view.fleet.workorder.inherit.technician</field>
+        <field name="model">service.customer.information</field>
+        <field name="inherit_id" ref="biztech_service.view_service_customert_info_form_technician"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="start_on_way" string="Start" type="object" class="btn-primary" states="start"
+                    attrs="{'invisible': [('state','!=','start')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='customer_contact_ids']" position="after">
+                <field name="miles" class='miles'/>
+                <label for="total_time"/>
+                <div>
+                    <field name="total_time"/>
+                </div>
+                <field name="origin"/>
+                <field name="destination"/>
+                <field name="is_truck_already_loaded" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='service_inventory_workflow']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="product_in_truck" readonly="1"/>
+                <field name="truck_quantity" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='technician']" position="after">
+                <field name="vehicle_id" attrs="{'required': [('state','!=','plan')],'invisible':[('vehicle_id','=',False)]}"/>
+                <field name="fleet_location_id" domain="[('is_fleet_location','=',True)]" attrs="{'required': [('state','!=','plan')],'invisible':[('fleet_location_id','=',False)]}" />
+            </xpath>
+            <div class="oe_button_box" name="button_box" position='inside'>
+                <button class="oe_stat_button" name="open_journey" type="object" icon="fa fa-map-marker"
+                    string="Map">
+                </button>
+            </div>
+        </field>
+    </record>
+    
+    <record id="view_fleet_inherit" model="ir.ui.view">
+        <field name="name">view.fleet.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="technician_gruop_id" invisible="1"/>
+                <field name="driver_user_id" domain="[('groups_id','=',technician_gruop_id)]"/>
+            </xpath>
+            <xpath expr="//field[@name='driver_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='model_year']" position="after">
+                <field name="is_for_service_work" />
+                <field name="service_stock_id" string="Truck Location" domain="[('is_fleet_location','=',True)]" readonly="1" context="{'form_view_ref':
+                    'fleet_service_inventory_customization.view_fleet_stock_location_form'}"/>
+            </xpath>
+            <xpath expr="//field[@name='car_value']" position="attributes">
+                <attribute name="string">Catalog Value</attribute>
+            </xpath>
+            <xpath expr="//field[@name='vin_sn']" position="attributes">
+                <attribute name="string">VIN</attribute>
+            </xpath>
+            <xpath expr="//field[@name='vin_sn']" position="attributes">
+                <attribute name="help">Vehicle Identification Number</attribute>
+            </xpath>
+            <xpath expr="//field[@name='model_year']" position="attributes">
+                <attribute name="string">Year</attribute>
+            </xpath>
+            
+            <xpath expr="//label[@for='model_id']" position="before">
+                <label for="brand_id" class="oe_edit_only"/>
+                <h1>
+                    <field name="brand_id" />
+                </h1>
+            </xpath>
+            <xpath expr="//field[@name='acquisition_date']" position="attributes">
+                <attribute name="string">Registration Date</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem action="fleet.fleet_vehicle_model_action" parent="fleet.fleet_configuration" id="fleet.fleet_vehicle_model_menu" sequence="2" name="Vehicle Model"/>
+    <menuitem action="fleet.fleet_vehicle_model_brand_action" parent="fleet.fleet_configuration" id="fleet.fleet_vehicle_model_brand_menu" sequence="1" name='Vehicle Make'/>
+</odoo>

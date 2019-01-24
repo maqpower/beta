@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Product.template part number field hide -->
+        <record model="ir.ui.view" id="product_template_hide_number">
+            <field name="name">product.template.hide.number</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="priority" eval="22"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="groups">stock.group_stock_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Product.Product part Number Field Hide -->
+        <record model="ir.ui.view" id="product_product_hide_number">
+            <field name="name">product.product.hide.number</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="priority" eval="22"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="groups">stock.group_stock_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Prouduct template Part Number Label Hide -->
+        <record model="ir.ui.view" id="product_template_hide_number_label">
+            <field name="name">product.template.hide.number label</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="customize_general_template.biz_add_modi_attr"/>
+            <field name="priority" eval="22"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='default_code']" position="attributes">
+                    <attribute name="groups">stock.group_stock_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Product.Product Part Number Label Hide -->
+        <record model="ir.ui.view" id="product_product_hide_number_label">
+            <field name="name">product.product.hide.number label</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="customize_general_template.biz_add_modi_attr_pro"/>
+            <field name="priority" eval="22"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='default_code']" position="attributes">
+                    <attribute name="groups">stock.group_stock_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

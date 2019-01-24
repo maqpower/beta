@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <!-- service equipment Views -->
+    <record id="view_sale_payment_method_tree" model="ir.ui.view">
+        <field name="name">view.sale.payment.method.tree</field>
+        <field name="model">sale.payment.method</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Method">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_sale_payment_method_form" model="ir.ui.view">
+        <field name="name">view.sale.payment.method.form</field>
+        <field name="model">sale.payment.method</field>
+        <field name="arch" type="xml">
+            <form string="Payment Method">
+                <sheet>
+                    <group>
+                        <group>
+                           <field name="name" string = "Payment Method"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+     <!-- service equipment action -->
+    <record id="sale_payment_method_action" model="ir.actions.act_window">
+        <field name="name">Payment Method</field>
+        <field name="res_model">sale.payment.method</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a Payment Method, the first step of a new Payment Method.
+            </p>
+        </field>
+    </record>
+    
+    <menuitem
+        id="menu_sale_payment_method"
+        name="Payment Method"
+        parent="sale.menu_sale_config"
+        action="sale_payment_method_action"
+        sequence="2"/>
+    
+	<!-- add option of sale payment method -->
+     <record id="sale_order_extend_payment_method" model="ir.ui.view">
+            <field name="name">sale.order.extend.payment.method</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='client_order_ref']" position="replace" />
+               <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="client_order_ref" />
+                    <field name="sale_payment_method_id"/>
+                    <button name="chnage_order_line_qty" string="click" type="object" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="string">Locked</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="proceed_without_po" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                    <attribute name="widget">selection</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="options">{'no_open': True}</attribute>
+                </xpath>
+                 
+           </field>
+        </record> 
+
+       <!-- Editable delivery method -->
+     <record id="sale_order_extend_delivery_method" model="ir.ui.view">
+            <field name="name">sale.order.extend.delivery.method</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_form_with_carrier" />
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='carrier_id']" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','not in',('draft','sent','sale'))]}</attribute>
+                     <attribute name="readonly">False</attribute>
+                </xpath>
+           </field>
+        </record>
+
+         <!-- add delivery type based on provider in SO -->
+        <record id="sale_order_add_delivery_package_type" model="ir.ui.view">
+            <field name="name">sale.order.add.delivery.package.type</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_form_with_carrier" />
+            <field name="arch" type="xml">
+               <xpath expr="//div[@name='carrier_selection']" position="after">
+                        <field name="delivery_type" invisible="1"/>
+                        <field name="delivery_package_type" domain="[('package_carrier_type', '=', delivery_type)]" attrs="{'invisible': [('delivery_type', '=', 'fixed')]}"/>
+                        <field name="method_type_fedex" domain="[('delivery_type', '=', 'fedex')]" attrs="{'invisible': [('delivery_type', '!=', 'fedex')]}"/>
+                        <field name="method_type_usps" domain="[('delivery_type', '=', 'usps')]" attrs="{'invisible': [('delivery_type', '!=', 'usps')]}"/>
+                        <field name="method_type_ups" domain="[('delivery_type', '=', 'ups')]" attrs="{'invisible': [('delivery_type', '!=', 'ups')]}"/>
+                </xpath>
+           </field>
+        </record> 
+        
+    <!-- add option of default code set in product -->
+        
+        <record id="product_template_extent_part_no_view" model="ir.ui.view">
+            <field name="name">product.template.extent.part.no.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+               <xpath expr="//group[@name='group_standard_price']" position="inside">
+                    <field name="is_reference_code_set" invisible = "1"/>
+                </xpath>
+           </field>
+        </record> 
+        
+</odoo>
+    
