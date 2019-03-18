@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Assets Frontend -->
+    <template id="asset_frontend" inherit_id="theme_crafito.asset_frontend" name="Customizaed Crafito Frontend">
+        <xpath expr="." position="inside">
+            <link href="/maqpower_customized_crafito/static/src/less/maqpower_custom.less" rel="stylesheet" type="text/less"/>
+            <script src="/maqpower_customized_crafito/static/src/js/custom_products.js" type="text/javascript"/>
+        </xpath>
+    </template>
+
+</odoo>

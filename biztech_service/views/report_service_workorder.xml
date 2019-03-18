@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="service_custom_footer">
+        <div class="footer">
+            <div class="text-center" >
+                <t t-if="o.company_id.generic_comment">
+                    <p t-field="o.company_id.generic_comment"/>
+                </t>
+            </div>
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline">
+                    <t t-set="company" t-value="company.sudo()"/>
+                    <li t-if="company.phone">
+                        Phone:
+                        <span t-field="company.phone"/>
+                    </li>
+                    <li t-if="company.fax and company.phone">&amp;bull;</li>
+                    <li t-if="company.fax">
+                        Fax:
+                        <span t-field="company.fax"/>
+                    </li>
+                    <li t-if="company.email or company.email and company.phone">&amp;bull;</li>
+                    <li t-if="company.email">Email: &amp;nbsp;sales@maqpower.com</li>
+                    <!-- <li t-if="company.website and company.email or company.website and company.fax
+                        or company.website and company.phone">&amp;bull;</li><li t-if="company.website">Website:
+                        <span t-field="company.website"/></li>-->
+                </ul>
+                <ul class="list-inline">
+                    <li>Page:</li>
+                    <li>
+                        <span class="page"/>
+                    </li>
+                    <li>/</li>
+                    <li>
+                        <span class="topage"/>
+                    </li>
+                </ul>
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <template id="service_custom_header">
+        <div class="header">
+            <div class="row">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <center>
+                                    <table border="0" cellpadding="0" cellspacing="0" t-attf-style="margin:0; font-family:
+                                        Arial,Helvetica, sans-serif; background:#fff;
+                                        line-height:20px; border-bottom: 1px solid
+                                        #{'#000000'};" width="100%">
+                                        <tr>
+                                            <td align="left" style="color:#4D4D4F; font-size:12px; margin:0; padding:25px 15px
+                                                10px 5px;" valign="middle">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="center" style="color:#4D4D4F; font-size:12px; padding:0 0px; margin:0 "
+                                                            valign="middle">
+                                                            <img style="max-height: 100px; margin-top: 4%;" t-att-src="'data:image/png;base64,%s'
+                                                                % to_text(o.company_id.logo)"
+                                                                t-if="o.company_id.logo"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td align="right" style="color:#4D4D4F; font-size:20px; padding: 28px 18px 13px 8px;
+                                                line-height:25px;" valign="top">
+                                                <p class="text-center" style="text-transform:capitalize; font-size :20px; padding:0px;
+                                                    margin:0;">
+                                                    <span t-attf-style="color: #{'#4D4D4F'};" t-field="o.company_id.partner_id"/>
+                                                </p>
+                                                <div class="text-center" t-attf-style="color: #{'#4D4D4F'};">
+                                                    <span t-esc="o._get_street(o.company_id.partner_id)"/>
+                                                    <span t-esc="o._get_address_details(o.company_id.partner_id)"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </template>
+    <template id="service_external_layout">
+        <!-- Multicompany -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+        
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+        
+        <t t-if="company.external_report_layout == 'background'">
+            <t t-call="web.external_layout_background">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout == 'boxed'">
+            <t t-call="web.external_layout_boxed">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout == 'clean'">
+            <t t-call="web.external_layout_clean">
+                <t t-raw="0"/>
+            </t>
+        </t>
+        <t t-if="company.external_report_layout in (False, 'standard')">
+            <t t-call="biztech_service.service_custom_header"/>
+            <!--            <t t-call="web.external_layout_standard"><t t-raw="0"/></t-->
+            <t t-raw="0"/>
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+            <t t-call="biztech_service.service_custom_footer"/>
+        </t>
+        
+    </template>
+    <template id="report_service_workorder_document">
+        <t t-call="biztech_service.service_external_layout">
+            <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+            <div class="page">
+                <div class="row"/>
+                <div class="oe_structure"/>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <center>
+                                    <table border="0" cellpadding="0" cellspacing="0" style="font-size:12px;padding:0px
+                                        20px 20px 20px; margin:20; font-family: Arial,Helvetica,
+                                        sans-serif; background:#fff; line-height:20px;"
+                                        width="100%">
+                                        <tr>
+                                            <td align="center" colspan="2" style="line-height:25px; font-size:28px;" valign="top">
+                                                <span>
+                                                    Service Workorder:
+                                                    <span t-field="o.name"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                                <table border="0" cellpadding="0" cellspacing="0" style="font-size:17px;padding:0px
+                                    20px 20px 20px; margin:0; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;"
+                                    width="100%">
+                                    
+                                    <tr>
+                                        <!-- <td align="center" colspan="2" style="padding: 5px 5px 15px 15px; line-height:15px;
+                                            font-size:25px;" valign="top"-->
+                                        <td width="20%">
+                                            <span>Customer</span>
+                                        </td>
+                                        <td width="3%">:</td>
+                                        <td>
+                                        </td>
+                                        <td width="20%">
+                                            <span t-field="o.partner_id"/>
+                                        </td>
+                                        
+                                        <td width="20%">
+                                            <span>Payment Terms</span>
+                                        </td>
+                                        <td width="3%">:</td>
+                                        <td>
+                                        </td>
+                                        <td width="25%">
+                                            <span t-field="o.payment_term_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Equipment</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.equipment_id"/>
+                                        </td>
+                                        
+                                        <td>
+                                            <span>Service Type</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.service_type"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Invoice Address</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_invoice_id"/>
+                                        </td>
+                                        
+                                        <td>
+                                            <span>PO Number</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.client_order_ref"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Service Address</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_invoice_id"/>
+                                        </td>
+                                        
+                                        <td>
+                                            <span>Sale order</span>
+                                        </td>
+                                        
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.customer_contact_ids"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Customer Contact</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_invoice_id"/>
+                                        </td>
+                                        
+                                        <td>
+                                            <span>Technician</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.technician"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        
+                                        <td>
+                                            <span>Schedule Date</span>
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.schedule_date"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <table cellpadding="10" cellspacing="10" style="font-size:15px; margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif; background:#fff; line-height:20px;
+                    border:1px solid black;" width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="45%">
+                                <table cellpadding="10" cellspacing="10" style="font-size:15px;padding:10px 20px 20px
+                                    20px; margin:5; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4">
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Parts</b>
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <table style="font-size:15px; margin-top:10;" class="table table-condensed" name="invoice_line_table">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-left">
+                                                            <b>Product</b>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <b>Quantity</b>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <b>Unit of Measure</b>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <b>Price</b>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="inventory_tbody">
+                                                    <tr t-foreach="o.service_inventory_workflow" t-as="l">
+                                                        <td>
+                                                            <span t-field="l.product_id"/>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="l.product_uom_qty"/>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="l.product_uom"/>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="l.product_price"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!--start all pages-->
+                <table cellpadding="10" cellspacing="10" style="font-size:15px; margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif; background:#fff; line-height:20px;
+                    border:1px solid black;" width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="45%">
+                                <table cellpadding="10" cellspacing="10" style="font-size:15px;padding:10px 20px 20px
+                                    20px;margin:5; font-family: Arial,Helvetica, sans-serif;
+                                    background:#fff; line-height:20px;">
+                                    <tbody>
+                                        <tr >
+                                            <td colspan="4">
+                                                <span style="font-size:18px;color:#000000;margin-bottom:25px;">
+                                                    <b>Equipment Data</b>
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td width="70%">
+                                                <span>Make</span>
+                                            </td>
+                                            <td width="6%">:</td>
+                                            <td>
+                                            </td>
+                                            <td width="60%">
+                                                <span t-field="o.equipment_make_id"/>
+                                            </td>
+                                            <tr>
+                                                <td >
+                                                    <span>Year Installed (If known)</span>
+                                                </td>
+                                                <td>:</td>
+                                                <td >
+                                                    <span t-field="o.year_installed"/>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Model</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.equipment_model_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Serial Number</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.equipment_serial_number"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Compressor</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.equipment_compressor"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Location</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.equipment_location"/>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td width="10%">
+                            </td>
+                            <td width="45%">
+                                <table cellpadding="2" cellspacing="2" style="font-size:15px;padding:0px 20px 20px
+                                    20px; font-family: Arial,Helvetica, sans-serif;
+                                    background:#fff; line-height:20px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4">
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Scheduling Information</b>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td width="60%">
+                                                <span>Technician Assigned</span>
+                                            </td>
+                                            <td width="6%">:</td>
+                                            <td>
+                                            </td>
+                                            <td  width="60%">
+                                                <span t-field="o.user_id"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Date Service Scheduled</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.date_service_scheduled"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Number of Service Units</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.no_of_service_units"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Date Service Performed</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.date_service_performed"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Work to be Performed</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.work_details"/>
+                                            </td>
+                                            <td/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td width="33%">
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <table cellpadding="2" cellspacing="2" style="font-size:12px; margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif;border:1px solid black; background:#fff;
+                    line-height:20px; border-left:1px solid black;" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table cellpadding="2" cellspacing="2" style="font-size:15px;padding:0px 20px 20px
+                                    20px; margin:5; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;"
+                                    width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4">
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Service Related Data Gathering</b>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30%">
+                                                <span>Total Run Hours</span>
+                                            </td>
+                                            <td width="3%">:</td>
+                                            <td>
+                                            </td>
+                                            <td width="25%">
+                                                <span t-field="o.total_run_hours"/>
+                                            </td>
+                                            <td width="5%">
+                                            </td>
+                                            <td width="30%">
+                                                <span>Loaded Pressure</span>
+                                            </td>
+                                            <td width="3%">:</td>
+                                            <td>
+                                            </td>
+                                            <td width="15%">
+                                                <span t-field="o.loaded_pressure"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Total Loaded Hours</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.total_loaded_hours"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Unloaded Pressure</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.unloaded_pressure"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Ambient Temperature</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.ambient_temperature"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Injection Temperature</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.injection_temperature"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Location</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.service_location"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Airend Discharge Temperature</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.airend_discharge_tempreature"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Package Discharge Temperature</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.package_discharge_temperature"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <table cellpadding="0" cellspacing="0" style="font-size:12px;margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif;border:1px solid black;border-right:1px
+                    solid black; background:#fff;border-left:1px solid black; line-height:20px;
+                    " width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="100%">
+                                <table cellpadding="2" cellspacing="2" style="font-size:15px;padding:0px 20px 20px
+                                    20px; margin:5; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;"
+                                    width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4">
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Visual Inspection</b>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        
+                                        <tr>
+                                            <td width="30%">
+                                                <span>Oil Lines Visual Inspection</span>
+                                            </td>
+                                            <td width="3%">:</td>
+                                            <td>
+                                            </td>
+                                            <td width="25%">
+                                                <span t-field="o.oil_lines_inspection"/>
+                                            </td>
+                                            <td width="5%"/>
+                                            <td width="30%">
+                                                <span>Check Oil/Water Separator</span>
+                                            </td>
+                                            <td width="3%">:</td>
+                                            <td>
+                                            </td>
+                                            <td width="15%">
+                                                <span t-field="o.check_oil_or_water_separator"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30%">
+                                                <span>Air Lines Visual Inspection</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.air_lines_inspection"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Check Air Drier</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.check_air_drier"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Control Components Visual Inspection</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.control_component_inspection"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Check All Line Filters</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.check_air_line_filters"/>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <span>Check Oil Discharge Temperature</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.check_oil_discharge_temperature"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>Check All System Drain Lines</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.check_all_system_drain_lines"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Check Oil Level</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.check_oil_level"/>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td/>
+                                            <td/>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Cooler Oil Temperature - Inlet &amp; Outlet</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.cooler_oil_temperature_inlet_and_outlet"/>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Cooler Air Temperature - Inlet &amp; Outlet</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.cooler_air_temperature_inlet_and_outlet"/>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table cellpadding="0" cellspacing="0" style="font-size:12px;margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif;border:1px solid black;border-right:1px
+                    solid black; background:#fff;border-left:1px solid black; line-height:20px;
+                    " width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="100%">
+                                <table cellpadding="5" cellspacing="5" style="font-size:15px;padding:0px 20px 20px
+                                    20px; margin:5; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;"
+                                    width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Electrical</b>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Volts L1-L2</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_volts_l1_l2"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>L1</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_l1"/>
+                                            </td>
+                                            <td/>
+                                            <td >
+                                            </td>
+                                            <td>
+                                                <span>AMPS FLA L1</span>
+                                            </td>
+                                            <td >:</td>
+                                            <td>
+                                                <span t-field="o.ele_amps_fla_l1"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>ULA L1</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_ula_l1"/>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <span>Volts L2-L3</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_volts_l2_l3"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>L2</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_l2"/>
+                                            </td>
+                                            <td/>
+                                            <td >
+                                            </td>
+                                            <td>
+                                                <span>AMPS FLA L2</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_amps_fla_l2"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>ULA L2</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_ula_l2"/>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <span>Volts L1-L3</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_volts_l1_l3"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>L3</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_l3"/>
+                                            </td>
+                                            <td/>
+                                            <td >
+                                            </td>
+                                            <td>
+                                                <span>AMPS FLA L3</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_amps_fla_l3"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>ULA L3</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_ula_l3"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>CV1</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_cv1"/>
+                                            </td>
+                                            <td/>
+                                            <td>
+                                                <span>CV2</span>
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <span t-field="o.ele_cv2"/>
+                                            </td>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table cellpadding="0" cellspacing="0" style="font-size:12px; margin-top:20; font-family:
+                    Arial,Helvetica, sans-serif;border:1px solid black;border-right:1px
+                    solid black; background:#fff;border-left:1px solid black; line-height:20px;
+                    " width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="100%">
+                                <table cellpadding="5" cellspacing="5" style="font-size:15px;padding:0px 20px 20px
+                                    20px; margin:5; font-family: Arial,Helvetica,
+                                    sans-serif; background:#fff; line-height:20px;"
+                                    width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span style="font-size:18px;color:#000000;margin:2px;">
+                                                    <b>Service Wrap Up</b>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td >
+                                                <span>Recommendations :</span>
+                                            </td>
+                                            
+                                            <td>
+                                                <span t-field="o.recommendations"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>Next Scheduled Visit :</span>
+                                            </td>
+                                            
+                                            <td>
+                                                <span t-field="o.next_schedule_visit"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--start all pages-->
+                
+                
+                
+                
+                
+                
+                <table style="font-size:15px; margin-top:20;" border="0" cellpadding="2" cellspacing="2"
+                    width="100%">
+                    <tbody>
+                        <tr>
+                            <td >
+                                <span>Finish Date:</span>
+                            </td>
+                            <td>
+                                <span t-field="o.end_date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Real Duration:</span>
+                            </td>
+                            <td>
+                                <span t-field="o.total_duration"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <table width = "70%" align="right">
+                    <tr>
+                        <td style="border:0px solid #000;max-height: 40px;" class="text-center">
+                            <strong>Customer Signature</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="max-height:100px; border:1px solid #000;">
+                            <t t-if="o.signature_image">
+                                <p align = "center">
+                                    <img t-if="o.signature_image" t-att-src="'data:image/png;base64,%s' % to_text(o.signature_image)"
+                                        style="max-height: 50px;"/>
+                                </p>
+                            </t>
+                        </td>
+                    </tr>
+                </table>
+                
+                <div class="oe_structure"/>
+            </div>
+        </t>
+        
+        
+        
+    </template>
+    <template id="report_service_workorder">
+        <t t-call="web.html_container">
+            <t t-as="o" t-foreach="docs">
+                <t t-call="biztech_service.report_service_workorder_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>
+

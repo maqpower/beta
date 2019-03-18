@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id='inherit_service_equipment_form' model='ir.ui.view'>
+        <field name='name'>Inherit service equipment form</field>
+        <field name='model'>service.equipment</field>
+        <field name="inherit_id" ref="biztech_service.view_service_equipment_form"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name='isequipment_located_this_address' widget='radio'/>
+                <label for="street" string="" style="border-bottom: 1px solid black;" attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                    <div style="border-bottom: 1px solid black;">
+                        <div class="o_address_format" name="div_address" nolabel = "1">
+                            <field name="street" placeholder="Street..." class="o_address_street mapaddr" attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}" />
+                            <field name="street2" placeholder="Street 2..." class="o_address_street mapaddr" attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                            <field name="city" placeholder="City" class="o_address_city mapaddr" attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                            <field name="state_id" class="o_address_state mapaddr" placeholder="State" options='{"no_open": True}' attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                            <field name="zip1" placeholder="ZIP" class="o_address_zip mapaddr" attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                            <field name="country_id" placeholder="Country" class="o_address_country mapaddr" options='{"no_open": True, "no_create": True}' attrs="{'invisible':[('isequipment_located_this_address', '=', 'yes')]}"/>
+                        </div >
+                    </div >
+            </xpath>
+            <xpath expr="//field[@name='location']" position="replace">
+                <label for="location" class="oe_inline"/>
+                <div>
+                    <field name="location"  class="oe_inline"/>
+                    
+                    <field name="location_indoors_outdoors" class="oe_inline" style='margin-left:10px;min-width: 100px;'/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

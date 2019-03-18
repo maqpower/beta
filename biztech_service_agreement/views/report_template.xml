@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="service_agreement_report_style" inherit_id="web.report_assets_common">
+        <xpath expr=".">
+            <link href="/biztech_service_agreement/static/src/css/template.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+    <template id="service_agreement_report_header">
+        <div class="header">
+            <div class="row">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 0 !important;">
+                    <tbody>
+                        <tr><td style="border: 0 !important;">
+                                <center>
+                                    <table border="0" cellpadding="0" cellspacing="0" t-attf-style="margin:0; font-family: Arial,Helvetica, sans-serif; background:#fff; line-height:20px;border-bottom: 1px solid #{'#000000'};" width="100%">
+                                        <tr>
+                                            <td align="left" style="color:#4D4D4F; font-size:12px; margin:0; padding:10px 10px 10px 5px;border: 0 !important;" valign="middle">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="center" style="color:#4D4D4F; font-size:12px; padding:0 0px;border: 0 !important; margin:0 " valign="middle">
+                                                            <img style="max-height: 65px; margin-top: 4%; width: 800px" src="/biztech_service_agreement/static/src/img/logo.jpg"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" style="color:#4D4D4F; font-size:15px;border: 0 !important; padding:0 0px; margin:0; width: 800px;" valign="middle">
+                                                            <center>13136 Barton Rd. Whittier Ca. 90605</center>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" style="color:#4D4D4F; font-size:15px;border: 0 !important; padding:0 0px; margin:0 ;width: 800px;" valign="middle">
+                                                            <center>(562) 945-3500    FAX (562) 906-5118</center>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+    <template id="agreement_report_view">
+       <t t-call="biztech_service_agreement.service_agreement_report_header"/>
+        <t t-call="web.html_container">
+            <t t-as="o" t-foreach="docs">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <table class="main" border="1" cellpadding="0" cellspacing="0" t-attf-style="margin:0; font-family: Arial,Helvetica, sans-serif; background:#fff; font-size:15px; line-height:20px; padding-left: 2px;">
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;padding-left: 5px;">
+                                        <b><h3><center>ANNUAL PREVENTIVE MAINTENANCE (PM) SERVICE AGREEMENT</center></h3></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="50%" colspan="6" t-attf-style="padding-left: 5px;"><center>Client Representative Information Section (Please Print)</center></td>
+                                                <td width="50%" colspan="9" t-attf-style="padding-left: 5px;"><center>Maqpower Customer Service Center Representative Section (Please Print)</center></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Company Name:</td>
+                                                <td width="30%" colspan="5"></td>
+                                                <td width="20%" colspan="2" t-attf-style="padding-left: 5px;">Service Center Name:</td>
+                                                <td width="30%" colspan="7"></td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">Primary Contact Name:</td>
+                                                <td colspan="5"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Center Contact Name:</td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Philip Schmitt</td>
+                                                <td colspan="3" t-attf-style="padding-left: 5px;"><b>Estimate #:</b></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">PJS-SA-1-2017</td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">Primary Contact Title:</td>
+                                                <td colspan="5"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Center Contact Title:</td>
+                                                <td colspan="3" t-attf-style="padding-left: 5px;">Service Manager</td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;"><b>Expires:</b></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">17-Jan-19</td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">Billing Address:</td>
+                                                <td colspan="5"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">E-Mail Address:</td>
+                                                <td colspan="7" t-attf-style="padding-left: 5px;">pj.schmitt@maqpower.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">City, State, Zip Code:</td>
+                                                <td colspan="5"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Client's Account #:</td>
+                                                <td t-attf-style="padding-left: 5px;">TBD</td>
+                                                <td colspan="5" t-attf-style="padding-left: 5px;"><b>Site Acct# (multiple locs):</b></td>
+                                                <td t-attf-style="padding-left: 5px;">TBD</td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">Phone &amp; Fax Numbers:</td>
+                                                <td colspan="3"></td>
+                                                <td colspan="2"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Client's PO Number:</td>
+                                                <td colspan="7" t-attf-style="padding-left: 5px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;">E-Mail Address:</td>
+                                                <td colspan="5"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Is This A Blanket PO?</td>
+                                                <td width="5%"></td>
+                                                <td  t-attf-style="padding-left: 5px;">Yes</td>
+                                                <td width="5%"></td>
+                                                <td  t-attf-style="padding-left: 5px;">No</td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Exp Date:</td>
+                                                <td ></td>
+                                            </tr>
+                                            <tr>
+                                                <td  t-attf-style="padding-left: 5px;">Signature &amp; Date:</td>
+                                                <td colspan="2"></td>
+                                                <td colspan="3"></td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Signature &amp; Date:</td>
+                                                <td colspan="7" t-attf-style="padding-left: 5px;">E-Signed</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" width="25%" t-attf-style="padding-left: 5px;">Are "VERBAL" Purchase Orders Authorized?</td>
+                                                <td width="5%"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;">Yes</td>
+                                                <td width="5%"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;">No</td>
+                                                <td t-attf-style="padding-left: 5px;">Account Terms:</td>
+                                                <td width="5%"></td>
+                                                <td t-attf-style="padding-left: 5px;">COD</td>
+                                                <td width="5%"></td>
+                                                <td  t-attf-style="padding-left: 5px;">No</td>
+                                                <td colspan="2" t-attf-style="padding-left: 5px;">Net-15</td>
+                                                <td t-attf-style="padding-left: 5px;">X</td>
+                                                <td t-attf-style="padding-left: 5px;">Net-30</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3; padding-left: 5px;">
+                                        <center>
+                                        <b>
+                                            SERVICE TERMS:
+                                        </b>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="padding-left: 5px;">
+                                        <p>
+                                            The Client  and Maqpower Compressor (wholly owned subsidiaries of Maqpower) agree to inspect the equipment listed per the below component inspection points. Maqpower will provide the customer with an itemized/written inspection report with critical readings and actions identified/performed during the PM inspection. Unless otherwise indicated, parts, freight, trip charge, and sales tax will be invoiced in addition to the regular PM inspection pricing quoted below.  NOTE: If compressor or air dryer is covered under the Maqpower extended warranty program, it is the customer’s responsibility to notify Maqpower every 2000 hours of operation for fluid analysis. Customer agrees to only use genuine Sullair parts and lubricants for units under the extended warranty. Failure to do so will void the extended warranty agreement. The Preventative Maintenance Agreement will remain in effect until cancelled in writing by either party. This PM Agreement is intended to keep your air compressor in good running condition and to minimize costly breakdowns, but does not warranty failures during this agreement due to mechanical or electrical malfunctions. The PM agreement will automatically renew each year with any applicable labor price increases.   REPAIRS QUOTED SEPARATELY!
+
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;">
+                                        <center>
+                                        AIR COMPRESSOR(s) 
+                                        <b>
+                                            INSPECTION POINTS:
+                                        </b>
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;"><b><center>A.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change Air Filters (every service)</td>
+                                                <td width="5%" rowspan="6" t-attf-style="padding-left: 5px;"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>G.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Record running volts, amps, critical temperatures</td>
+                                                <td width="5%" rowspan="6"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>K.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Adjust controls as needed</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>B.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change Oil Filters (every service/if present)</td>
+                                                <td width="5%" rowspan="2" t-attf-style="padding-left: 5px;"><b><center>H.</center></b></td>
+                                                <td width="20%" rowspan="2" t-attf-style="padding-left: 5px;">Check drive conditions (belts/couplings) and change as needed*</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>L.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Review/Reset Controller History</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>C.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change Separators (annual/if present)</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>M.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Check/Tighten mechanical fittings</td>
+                                            </tr>
+                                            <tr>
+                                                <td t-attf-style="padding-left: 5px;"><b><center>D.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change Lubricant-Recips/Vacuums (every service)</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>I.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Check fan/main motors (lubricate as needed)*</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>N.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Check/Tighten electrical fittings</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>E.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change Lubricant-Rotaries (as needed)*</td>
+                                                <td width="5%" rowspan="2" t-attf-style="padding-left: 5px;"><b><center>J.</center></b></td>
+                                                <td width="20%" rowspan="2" t-attf-style="padding-left: 5px;">Blow out Air/Oil Coolers &amp;amp; ACACS with air. Recommend Pressure Wash as needed*</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>O.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Inspect/Clean moisture traps</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>F.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Take <b>Sullair</b> Rotary Lubricant Sample (as needed)*</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>P.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Leave Written Report On Site</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="page-break-after:always;"></p>
+                            <table class="main">
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;">
+                                    <center>
+                                        <b>AIR DRYER(s) INSPECTION POINTS:</b>
+                                    </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>A.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Check condensate drain for proper operation</td>
+                                                <td width="5%" rowspan="2" t-attf-style="padding-left: 5px;"></td>
+                                                <td width="5%" rowspan="2" t-attf-style="padding-left: 5px;"><b><center>C.</center></b></td>
+                                                <td width="20%" rowspan="2" t-attf-style="padding-left: 5px;">Refriderated &amp;amp; Dessicant Dryers: Inspect Annual PM Components (replace as needed)*</td>
+                                                <td width="5%" rowspan="2" t-attf-style="padding-left: 5px;"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>D.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Inspect By-Pass Systems</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>B.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Inspect/Blow out condenser coils with air</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>E.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Record operating parameters</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;">
+                                    <center>
+                                        IN-LINE FILTRATION SYSTEM(s)<b>INSPECTION POINTS:</b>
+                                    </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>A.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Inspect condensate traps for proper operation</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>B.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Record filter pressure drop (if gauge is available)</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"></td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>C.</center></b></td>
+                                                <td width="20%" t-attf-style="padding-left: 5px;">Change filter/drain as needed*</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;">
+                                    <center>
+                                        OIL WATER SEPARATOR<b>(<i>OWS</i>) SYSTEM(<i>s</i>) INSPECTION POINTS:</b>
+                                    </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>A.</center></b></td>
+                                                <td width="45%" t-attf-style="padding-left: 5px;">Inspect system for proper operation.</td>
+                                                <td width="5%" t-attf-style="padding-left: 5px;"><b><center>B.</center></b></td>
+                                                <td width="45%" t-attf-style="padding-left: 5px;">Replace filter packs as needed*</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%" colspan="2" t-attf-style="font-size:12px;">
+                                    <center><i><b>*Additional charges will apply for these repairs/services.</b></i></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="4%" colspan="3" t-attf-style="background:#D3D3D3;"><center><b>PM Interval:</b></center></td>
+                                                <td width="4%" rowspan="7"></td>
+                                                <td width="4%" colspan="3"><center t-attf-style="background:#D3D3D3;"><b>Service Date:</b></center></td>
+                                                <td width="4%" rowspan="7"></td>
+                                                <td width="4%" colspan="4" t-attf-style="background:#D3D3D3;"><center><b>Notification Policy:</b></center></td>
+                                                <td width="4%" rowspan="7"></td>
+                                                <td width="4%" colspan="4" t-attf-style="background:#D3D3D3;"><center><b>Rental Unit Policy:</b></center></td>
+                                                <td width="10%" colspan="6" rowspan="2" t-attf-style="background:#D3D3D3;"><center>Personnel Authorized to Request Service <i>(include contact numbers)</i>:</center></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;"><center> Monthly</center></td>
+                                                <td width="4%" colspan="3" rowspan="4" t-attf-style="padding-left: 5px;"><center>The PM service is to be performed on/about:</center></td>
+                                                <td width="4%" colspan="4" rowspan="4" t-attf-style="padding-left: 5px;"><center>Should we contact you before coming out to perform PM Service?</center></td>
+                                                <td width="4%" colspan="4" rowspan="4" t-attf-style="padding-left: 5px;"><center>Will you require back up while we perform PM service?*</center></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;">Triannual</td>
+                                                <td width="4%" colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;">Quarterly</td>
+                                                <td width="4%" colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;">Semi-Annual</td>
+                                                <td width="4%" colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;">Annual</td>
+                                                <td width="4%" colspan="3"></td>
+                                                <td width="4%" colspan="4"></td>
+                                                <td width="4%" colspan="4"></td>
+                                                <td width="4%" colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="2" t-attf-style="padding-left: 5px;">Single PM</td>
+                                                <td width="4%" colspan="3" t-attf-style="padding-left: 5px;"><center><b>On Approval</b></center></td>
+                                                <td width="4%" t-attf-style="padding-left: 5px;">Yes</td>
+                                                <td width="4%"></td>
+                                                <td width="4%" t-attf-style="padding-left: 5px;">No</td>
+                                                <td width="4%"></td>
+                                                <td width="4%" t-attf-style="padding-left: 5px;">Yes</td>
+                                                <td width="4%"></td>
+                                                <td width="4%" t-attf-style="padding-left: 5px;">No</td>
+                                                <td width="4%"></td>
+                                                <td width="4%" colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="4%" height="15px" colspan="23"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#87CEFA;"><center><b>Special instructions and client's request when performing PM Service:</b></center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="padding-left: 5px;"><b>Parts available on the month of the Service without shipping charges (if any). Available After Market parts are used for units 5 years old and older.</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="padding-left: 5px;"   ><b> Labor rate (per hour) for any possible repair during the period of this Agreement will be equal to the labor rate (per hour) of this Agreement</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" t-attf-style="background:#D3D3D3;"><center><b>CLIENT'S SYSTEM(s) COVERED BY THIS SERVICE:</b></center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td width="20%" t-attf-style="background:#D3D3D3;"><center><b>Location</b></center></td>
+                                                <td width="20%" t-attf-style="background:#D3D3D3;"><center><b>Units</b></center></td>
+                                                <td width="20%" t-attf-style="background:#D3D3D3;"><center><b>Manufacturer</b></center></td>
+                                                <td width="20%" t-attf-style="background:#D3D3D3;"><center><b>ONE PM COST UNIT (S):</b></center></td>
+                                                <td width="20%" t-attf-style="background:#D3D3D3;"><center><b>ONE TOTAL PM COST:</b></center></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><center><b>1283.56</b></center></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><center><b>945.00</b></center></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><center><b>945.00</b></center></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="15px"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="15px"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="15px"></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td><center><b>SERVICE GRAND TOTAL:</b></center></td>
+                                                <td><center><b>$3,173.56</b></center></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                        </table>
+                        <p style="page-break-after:always;"></p>
+                        <table width="100%" class="main">
+                                <tr>
+                                    <td colspan="9" t-attf-style="background:#D3D3D3;"><center><b>UNITS</b></center></td>
+                                </tr>
+                                <tr>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>MFG</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>MODEL #</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>SERIAL #</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>OEM PART #</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>A/M #</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>DESCRIPTION</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>QTY</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>OEM LIST/ea</b></center></td>
+                                    <td t-attf-style="background:#D3D3D3;"><center><b>TOTAL</b></center></td>
+                                </tr>
+                                <tr>
+                                    <td><center>Sullair</center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Air Element</center></td>
+                                    <td><center>5.0</center></td>
+                                    <td><center>25.00</center></td>
+                                    <td><center>125.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Oil Filter</center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Separator</center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Separator</center></td>
+                                    <td><center>0.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Rotary OIL 5 Gallon Pail</center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" t-attf-style="background:#87CEFA;"><center><b> FIRST SERVICE </b></center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Air Element </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>25.00</center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Oil Filter </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>SUB-TOTAL:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>RATE:</b></center></td>
+                                    <td><center>0.00%</center></td>
+                                    <td><center><b>DISCOUNT:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>PARTS:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>TAX RATE:</b></center></td>
+                                    <td><center>7.75%</center></td>
+                                    <td><center><b>TAX:</b></center></td>
+                                    <td><center>1.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><center></center></td>
+                                    <td><center><b>LABOR RATE:</b></center></td>
+                                    <td><center>125.00</center></td>
+                                    <td><center><b>MINIMUM HOURS:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center><b>LABOR:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TRUCK FEE:</b></center></td>
+                                    <td><center>100.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>RENTAL:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>HAZMAT:</b></center></td>
+                                    <td><center>35.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TOTAL:</b></center></td>
+                                    <td><center>161.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" height="16px"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" t-attf-style="background:#87CEFA;"><center><b> SECOND SERVICE </b></center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Air Element </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>25.00</center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Oil Filter </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>SUB-TOTAL:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>RATE:</b></center></td>
+                                    <td><center>0.00%</center></td>
+                                    <td><center><b>DISCOUNT:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>PARTS:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>TAX RATE:</b></center></td>
+                                    <td><center>7.75%</center></td>
+                                    <td><center><b>TAX:</b></center></td>
+                                    <td><center>1.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><center></center></td>
+                                    <td><center><b>LABOR RATE:</b></center></td>
+                                    <td><center>125.00</center></td>
+                                    <td><center><b>MINIMUM HOURS:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center><b>LABOR:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TRUCK FEE:</b></center></td>
+                                    <td><center>100.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>RENTAL:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>HAZMAT:</b></center></td>
+                                    <td><center>35.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TOTAL:</b></center></td>
+                                    <td><center>161.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" height="16px"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" t-attf-style="background:#87CEFA;"><center><b> THIRD SERVICE </b></center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Air Element </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>25.00</center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Oil Filter </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>SUB-TOTAL:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>RATE:</b></center></td>
+                                    <td><center>0.00%</center></td>
+                                    <td><center><b>DISCOUNT:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>PARTS:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>TAX RATE:</b></center></td>
+                                    <td><center>7.75%</center></td>
+                                    <td><center><b>TAX:</b></center></td>
+                                    <td><center>1.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><center></center></td>
+                                    <td><center><b>LABOR RATE:</b></center></td>
+                                    <td><center>125.00</center></td>
+                                    <td><center><b>MINIMUM HOURS:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center><b>LABOR:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TRUCK FEE:</b></center></td>
+                                    <td><center>100.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>RENTAL:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>HAZMAT:</b></center></td>
+                                    <td><center>35.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TOTAL:</b></center></td>
+                                    <td><center>161.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" height="16px"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9" t-attf-style="background:#87CEFA;"><center><b> ANNUAL SERVICE </b></center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Air Element </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>25.00</center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Oil Filter </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Separator </center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center></center></td>
+                                    <td><center>0</center></td>
+                                    <td><center>N/A</center></td>
+                                    <td><center>Rotary Oil</center></td>
+                                    <td><center>1.0</center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>SUB-TOTAL:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>RATE:</b></center></td>
+                                    <td><center>0.00%</center></td>
+                                    <td><center><b>DISCOUNT:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>PARTS:</b></center></td>
+                                    <td><center>25.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><center></center></td>
+                                    <td><center><b>TAX RATE:</b></center></td>
+                                    <td><center>7.75%</center></td>
+                                    <td><center><b>TAX:</b></center></td>
+                                    <td><center>1.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><center></center></td>
+                                    <td><center><b>LABOR RATE:</b></center></td>
+                                    <td><center>125.00</center></td>
+                                    <td><center><b>MINIMUM HOURS:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                    <td><center><b>LABOR:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TRUCK FEE:</b></center></td>
+                                    <td><center>100.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>RENTAL:</b></center></td>
+                                    <td><center>0.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>HAZMAT:</b></center></td>
+                                    <td><center>35.00</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TOTAL:</b></center></td>
+                                    <td><center>161.94</center></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"><center></center></td>
+                                    <td colspan="2"><center><b>TOTAL ANNUAL:</b></center></td>
+                                    <td><center>1283.56</center></td>
+                                </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="service_order_report_style" inherit_id="web.report_assets_common">
+        <xpath expr=".">
+            <link href="/biztech_service_agreement/static/src/css/template.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+</odoo>

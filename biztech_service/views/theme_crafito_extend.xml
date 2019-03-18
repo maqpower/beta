@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- chnage in footer from crafito to maqpower -->
+        <template id="footer_copyright_extend" inherit_id="theme_crafito.footer_copyright" >
+            <xpath expr="//p" position="replace">
+                <p>© <a href="/">Maqpower</a>
+                 . All Rights Reserved</p>
+            </xpath>
+        </template>
+        <!-- remove all departments page from top menu -->
+        <template id="theme_crafito_header_layout_extend" inherit_id="theme_crafito.theme_crafito_header_layout" name="Top Header">
+            <xpath expr="//header//ul[@id='top_menu']/li" position="replace" />
+        </template>
+</odoo>

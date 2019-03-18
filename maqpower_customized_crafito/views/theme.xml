@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_product_deatils_page" inherit_id="theme_crafito.theme_crafito_product_details">
+        <xpath expr="//form[@class='js_add_cart_variants']" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <div class="js_product">
+                    <div class="details">
+                        <t t-if="product.description_sale">
+                            <div class="pro-desc">
+                                <p t-field="product.description_sale"/>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-placeholder="select">
+                        <input class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'" type="hidden"/>
+                        <t t-call="website_sale.variants">
+                            <t t-set="ul_class" t-value="'nav-stacked'"/>
+                        </t>
+                    </t>
+                    <p class="css_not_available_msg bg-danger" style="padding: 15px;" t-if="len(product.product_variant_ids) &gt; 1">Product not available</p>
+                    <!-- <div class="add-to-cart">
+                        <a class="btn cart-btn btn-lg" data-toggle="modal" href="#" id="ask_for_quote" t-att-data-target="'#ask_for_quote-%s' %(product.id)">Quote Request</a>
+                    </div> -->
+                    <div class="modal fade quickview-modal" role="dialog" t-att-id="'ask_for_quote-%s' %(product.id)">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3 class="text-center">Request Quote</h3>
+                                    <div class="quickview-row">
+                                        <form action="/shop/ask_for_quote" class="" id="form_ask_for_quote" method="POST">
+                                            <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                                            <div class="form-group col-md-12">
+                                                <span style="font-size: 20px;">
+                                                    <strong>
+                                                        <t t-esc="product.name"/>
+                                                    </strong>
+                                                </span>
+                                                <!-- <p>Please provide details below questions. That we will send you questions by email.</p>-->
+                                            </div>
+                                            <t t-if="request.env.user.id != 4">
+                                                <t t-set="p_name" t-value="request.env.user.partner_id.name"/>
+                                                <t t-set="p_email" t-value="request.env.user.partner_id.email"/>
+                                                <t t-set="p_phone" t-value="request.env.user.partner_id.phone"/>
+                                            </t>
+                                            <div class="form-group col-md-12" id="cust_name">
+                                                <label class="control-label" for="cust_name">Name</label>
+                                                <input class="form-control" name="cust_name" t-att-readonly="True if p_name else False" t-att-value="p_name if p_name else None" type="text"/>
+                                            </div>
+                                            <div class="form-group col-md-12" id="cust_email">
+                                                <label class="control-label" for="cust_email">Email</label>
+                                                <input class="form-control" name="cust_email" t-att-readonly="True if p_email else False" t-att-value="p_email if p_email else None" type="email"/>
+                                            </div>
+                                            <div class="form-group col-md-12" id="cust_phone">
+                                                <label class="control-label" for="cust_phone">Phone</label>
+                                                <input class="form-control" name="cust_phone" t-att-readonly="True if p_phone else False" t-att-value="p_phone if p_phone else None" type="tel"/>
+                                            </div>
+                                            <input class="product_id" name="product_id" t-att-value="product.product_variant_id.id if product.product_variant_id.ids else '0'" type="hidden"/>
+                                            <div class="form-group col-md-12" t-if="product.attribute_line_ids.sorted(key=lambda x: x.attribute_id.sequence)">
+                                                <t t-call="maqpower_customized_crafito.product_variants">
+                                                    <t t-set="custom_ul_class" t-value="'custom-nav-stacked'"/>
+                                                </t>
+                                            </div>
+                                            <div class="form-group col-md-12" id="prod_qty">
+                                                <label class="control-label" for="prod_qty">Quantity</label>
+                                                <input class="form-control" name="prod_qty" type="text"/>
+                                            </div>
+                                            <div class="form-group col-md-12" id="quote_comment">
+                                                <label class="control-label" for="quote_comment">Comment</label>
+                                                <textarea class="form-control" name="quote_comment" placeholder="Please state if you have any special requirements..." rows="3"/>
+                                            </div>
+                                            <hr/>
+                                            <div class="form-group col-md-12">
+                                                <button class="btn btn-primary" id="quote_send" type="submit">Send</button>or 
+                                                
+                                                <a class="" data-dismiss="modal" id="quote_cancel" type="button">Cancel</a></div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button class="btn btn-default close-btn" data-dismiss="modal" type="button">
+                                    <i class="fa fa-times-circle"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-set="quote_success" t-value="request.session.get('quote_success')"/>
+                    <t t-set="sale_web" t-value="request.httprequest.query_string"/>
+                    <t t-if="sale_web">
+                        <t t-set="web_string" t-value="str(sale_web.decode('utf-8')).split('=')"/>
+                        <div class="quote_message" t-if="quote_success and web_string[0] == 'quote_success' and web_string[1] == 'True'">
+                            <p class="alert alert-success">Thanks for requesting a quotation for product, our sales team will get back to you soon.
+                            </p>
+                        </div>
+                    </t>
+                </div>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <form class="js_add_cart_variants" method="POST" t-att-action="keep('/shop/cart/update')">
+                    <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                    <div class="js_product">
+                        <div class="details">
+                            <div class="price-box">
+                                <t t-call="website_sale.product_price"/>
+                            </div>
+                            <t t-if="product.description_sale">
+                                <div class="pro-desc">
+                                    <p t-field="product.description_sale"/>
+                                </div>
+                            </t>
+                        </div>
+                        <t t-placeholder="select">
+                            <input class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'" type="hidden"/>
+                            <t t-call="website_sale.variants">
+                                <t t-set="ul_class" t-value="'nav-stacked'"/>
+                            </t>
+                        </t>
+                        <p class="css_not_available_msg bg-danger" style="padding: 15px;" t-if="len(product.product_variant_ids) &gt; 1">Product not available</p>
+                        <div class="add-to-cart">
+                            <a class="btn cart-btn btn-lg js_check_product a-submit" href="#" id="add_to_cart">
+                                <i class="fa fa-shopping-cart"/>Add to Cart</a>
+                        </div>
+                    </div>
+                </form>
+            </t>
+        </xpath>
+    </template>
+    <template id="product_variants">
+        <t t-set="custom_attribute_value_ids" t-value="get_attribute_value_ids(product)"/>
+        <ul t-att-data-custom_attribute_value_ids="custom_attribute_value_ids" t-attf-class="list-unstyled js_custom_variants #{custom_ul_class}">
+            <t t-as="variant_id" t-foreach="product.attribute_line_ids.sorted(key=lambda x: x.attribute_id.sequence)">
+                <li t-if="len(variant_id.value_ids) &gt;1">
+                    <strong t-field="variant_id.attribute_id.name"/>
+                    <t t-if="variant_id.attribute_id.type in ['select', 'hidden']">
+                        <select t-att-name="'prod_attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-attf-class="form-control #{'custom_js_variant_change' if variant_id.attribute_id.create_variant else ''}">
+                            <t t-as="prod_value_id" t-foreach="variant_id.value_ids">
+                                <option t-att-value="prod_value_id.id">
+                                    <span t-field="prod_value_id.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </t>
+                    <t t-if="variant_id.attribute_id.type == 'radio'">
+                        <ul class="list-unstyled">
+                            <t t-set="prod_inc" t-value="0"/>
+                            <t t-as="prod_value_id" t-foreach="variant_id.value_ids">
+                                <li class="form-group" style="margin: 0;">
+                                    <label class="control-label" style="margin: 0 20px;">
+                                        <input style="vertical-align: top; margin-right: 10px;" t-att-checked="'checked' if not prod_inc else None" t-att-class="'custom_js_variant_change' if variant_id.attribute_id.create_variant else None" t-att-name="'prod_attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="prod_value_id.id" type="radio"/>
+                                        <span t-field="prod_value_id.name"/>
+                                    </label>
+                                </li>
+                                <t t-set="prod_inc" t-value="prod_inc+1"/>
+                            </t>
+                        </ul>
+                    </t>
+                    <t t-if="variant_id.attribute_id.type == 'color'">
+                        <ul class="list-inline">
+                            <t t-set="prod_inc" t-value="0"/>
+                            <li t-as="prod_value_id" t-foreach="variant_id.value_ids">
+                                <label t-attf-class="css_attribute_color #{'active' if not prod_inc else ''}" t-attf-style="background-color:#{prod_value_id.html_color or prod_value_id.name}">
+                                    <input t-att-checked="'checked' if not prod_inc else None" t-att-class="'custom_js_variant_change' if variant_id.attribute_id.create_variant else None" t-att-name="'prod_attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-title="prod_value_id.name" t-att-value="prod_value_id.id" type="radio"/>
+                                </label>
+                                <t t-set="prod_inc" t-value="prod_inc+1"/>
+                            </li>
+                        </ul>
+                    </t>
+                </li>
+            </t>
+        </ul>
+    </template>
+    <!--     <template id="ask_for_quote_display_message" name="Quote Successfully Sumbitted"><t t-call="website.layout"><div class="js_sale" id="wrap"><section class="page-title"><div class="container"><h1><span>Ask for Quote</span></h1><ul class="breadcrumb"><li><a href="/page/homepage">Home</a></li><li><a href="/shop">Products</a></li><li t-if="product"><a t-att-href="'/shop/product/%s' % slug(product)" t-field="product.name"/></li><li class="active">Ask for Quote</li></ul></div></section><div class="oe_structure"/><div class="container oe_website_sale"><div class="quote_message"><p class="alert alert-success">Thanks for requesting a quotation for product, our sales team will get back to you soon.
+                        </p></div></div></div></t></template>-->
+    <template id="website_tabs_fields" inherit_id="theme_crafito.theme_crafito_product_details" name="Website Custom Tab Fields">
+        <xpath expr="//div[@id='website_description']/div/ul/li" position="after">
+            <t t-set="is_html" t-value="website.check_for_html_data()"/>
+            <li role="presentation" t-if="product.product_info and product.product_info != is_html">
+                <a aria-controls="product_info" data-toggle="tab" href="#product_info" role="tab">Information</a>
+            </li>
+            <li role="presentation" t-if="product.product_features and product.product_features != is_html">
+                <a aria-controls="product_features" data-toggle="tab" href="#product_features" role="tab">Features</a>
+            </li>
+            <li role="presentation" t-if="product.product_options and product.product_options != is_html">
+                <a aria-controls="product_options" data-toggle="tab" href="#product_options" role="tab">Options</a>
+            </li>
+            <li role="presentation" t-if="product.product_features_and_benefits and product.product_features_and_benefits != is_html">
+                <a aria-controls="product_features_and_benefits" data-toggle="tab" href="#product_features_and_benefits" role="tab">Features and Benefits</a>
+            </li>
+            <li role="presentation" t-if="product.product_specification and product.product_specification != is_html">
+                <a aria-controls="product_specification" data-toggle="tab" href="#product_specification" role="tab">Specifications</a>
+            </li>
+            <li role="presentation" t-if="product.product_extra_info and product.product_extra_info != is_html">
+                <a aria-controls="product_extra_info" data-toggle="tab" href="#product_extra_info" role="tab">Information</a>
+            </li>
+        </xpath>
+        <xpath expr="//div[@id='website_description']//div[@id='description']" position="after">
+            <div class="tab-pane" id="product_info" role="tabpanel" t-if="product.product_info and product.product_info != is_html">
+                <div class="oe_structure mt16" id="product_info" itemprop="product_info" t-field="product.product_info"/>
+                <div class="oe_structure"/>
+            </div>
+            <div class="tab-pane" id="product_features" role="tabpanel" t-if="product.product_features and product.product_features != is_html">
+                <div class="oe_structure mt16" id="product_features" itemprop="product_features" t-field="product.product_features"/>
+                <div class="oe_structure"/>
+            </div>
+            <div class="tab-pane" id="product_options" role="tabpanel" t-if="product.product_options and product.product_options != is_html">
+                <div class="oe_structure mt16" id="product_options" itemprop="product_options" t-field="product.product_options"/>
+                <div class="oe_structure"/>
+            </div>
+            <div class="tab-pane" id="product_features_and_benefits" role="tabpanel" t-if="product.product_features_and_benefits and product.product_features_and_benefits != is_html">
+                <div class="oe_structure mt16" id="product_features_and_benefits" itemprop="product_features_and_benefits" t-field="product.product_features_and_benefits"/>
+                <div class="oe_structure"/>
+            </div>
+            <div class="tab-pane" id="product_specification" role="tabpanel" t-if="product.product_specification and product.product_specification != is_html">
+                <div class="oe_structure mt16" id="product_specification" itemprop="product_specification" t-field="product.product_specification"/>
+                <div class="oe_structure"/>
+            </div>
+            <div class="tab-pane" id="product_extra_info" role="tabpanel" t-if="product.product_extra_info and product.product_extra_info != is_html">
+                <div class="oe_structure mt16" id="product_extra_info" itemprop="product_extra_info" t-field="product.product_extra_info"/>
+                <div class="oe_structure"/>
+            </div>
+        </xpath>
+    </template>
+    <template id="custom_theme_crafito_products_add_to_cart" inherit_id="theme_crafito.theme_crafito_products_add_to_cart">
+        <xpath expr="//div[@id='quick_view_product']//div[@class='product-info']//div[@class='price-box']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='view']//div[@class='shopping-cart']" position="replace">
+            <div class="shopping-cart">
+                <input name="product_id" t-att-value="product.product_variant_id.id" type="hidden"/>
+                <t t-if="product.ask_for_quote == True">
+                   <!--  <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                    </a> -->
+                </t>
+                <t t-if="product.ask_for_quote == False">
+                    <t t-if="len(product.product_variant_ids) == 1">
+                        <a class="a-submit">
+                            <i class="fa fa-shopping-cart"/>Add to Cart</a>
+                    </t>
+                    <t t-if="len(product.product_variant_ids) &gt; 1">
+                        <a t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                            <i class="fa fa-shopping-cart"/>Add to Cart</a>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <template id="custom_crafito_products_item" inherit_id="theme_crafito.theme_crafito_products_item">
+        <xpath expr="//div[@class='cs-product']/div[@class='pwp-info']/p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+    </template>
+    <template id="website_sale.custom_recommended_product" inherit_id="website_sale.recommended_products">
+        <xpath expr="//div[@class='view']//div[@class='shopping-cart']//a" position="replace">
+            <t t-if="sug_product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(sug_product)">Quote Request
+                </a>
+            </t>
+            <t t-if="sug_product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(sug_product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='cs-product']/div[@class='pwp-info']/p/span[@class='price']" position="attributes">
+            <attribute name="t-if">sug_product.ask_for_quote == False</attribute>
+        </xpath>
+    </template>
+    <template id="custom_related_products" inherit_id="theme_crafito.theme_crafito_related_products">
+        <xpath expr="//div[@class='cs-product']//div[@class='pwp-info']//div[@class='price']" position="attributes">
+            <attribute name="t-if">rel_product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='cs-product']//div[@class='pwp-info']//div[@class='pink-box']//div[@class='view']//div//a" position="replace">
+            <t t-if="rel_product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(rel_product)">Quote Request
+                </a>
+            </t>
+            <t t-if="rel_product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(rel_product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+    </template>
+    <!-- Multi Product Tabs Snippet -->
+    <template id="custom_crafito_multi_cat_slider_view" inherit_id="theme_crafito.theme_crafito_multi_cat_slider_view">
+        <!-- slider_details.no_of_collection == '2' -->
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection1']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_1_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection2']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_2_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[1]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <!-- slider_details.no_of_collection == '3' -->
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection1']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_1_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection2']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_2_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection3']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_3_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[2]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <!-- slider_details.no_of_collection == '4' -->
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection1']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_1_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection2']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_2_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection3']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_3_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection4']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_4_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection4']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[3]//div[@id='multi-collection4']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <!-- slider_details.no_of_collection == '5' -->
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection1']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_1_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection1']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection2']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_2_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection2']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection3']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_3_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection3']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection4']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_4_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection4']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection4']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection5']//p[@class='price']" position="attributes">
+            <attribute name="t-if">slider_details.special_offer_5_product_tmpl_id.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection5']//t[@t-as='product']//div[@class='pink-box']//div//div//a" position="replace">
+            <t t-if="product.ask_for_quote == True">
+                <a t-att-href="'/shop/product/%s' % slug(product)">Quote Request
+                </a>
+            </t>
+            <t t-if="product.ask_for_quote == False">
+                <a t-attf-href="/shop/product/#{ slug(product) }">
+                    <i class="fa fa-shopping-cart"/>Add to cart</a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@class='tab-content']//t[4]//div[@id='multi-collection5']//t[@t-as='product']//div[@class='pwp-info']//p[@class='price']" position="attributes">
+            <attribute name="t-if">product.ask_for_quote == False</attribute>
+        </xpath>
+    </template>
+    <!-- Featured Product Slider Snippet -->
+    <template id="custom_carfito_custom_featured_product_theme" inherit_id="theme_crafito.theme_crafito_featured_product_slider_view">
+        <xpath expr="//div[@id='myCarousel-feature_products_collections']//div[@class='price']" position="attributes">
+            <attribute name="t-if">rel_product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@id='myCarousel-on_sale_collections']//div[@class='price']" position="attributes">
+            <attribute name="t-if">rel_product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@id='myCarousel-random_products_collections']//div[@class='price']" position="attributes">
+            <attribute name="t-if">rel_product.ask_for_quote == False</attribute>
+        </xpath>
+        <xpath expr="//div[@id='myCarousel-low_price_collections']//div[@class='price']" position="attributes">
+            <attribute name="t-if">rel_product.ask_for_quote == False</attribute>
+        </xpath>
+    </template>
+</odoo>

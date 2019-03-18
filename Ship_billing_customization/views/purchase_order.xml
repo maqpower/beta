@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='incoterm_id']" position="after">
+                        <field name="delivery_type"/>
+                        <field name="delivery_method" attrs="{'invisible': [('delivery_type', '=', False)]}" widget='selection'/>
+                        <field name="method_type_fedex" domain="[('fedex', '=', True)]" attrs="{'invisible': ['|',('delivery_method', '=', False),('fedex','=',False)]}"/>
+                        <field name="fedex" invisible="1"/>
+
+                        <field name="method_type_dhl" domain="[('package_carrier_type', '=', 'dhl')]" attrs="{'invisible': ['|',('delivery_method', '=', False),('dhl','=',False)]}"/>
+                        <field name="dhl" invisible="1"/>
+
+                        <field name="method_type_usps" domain="[('usps', '=', True)]" attrs="{'invisible': ['|',('delivery_method', '=', False),('usps','=',False)]}"/>
+                        <field name="usps" invisible="1"/>
+
+                        <field name="method_type_ups" domain="[('ups', '=', True)]" attrs="{'invisible': ['|',('delivery_method', '=', False),('ups','=',False)]}"/>
+                        <field name="ups" invisible="1"/>
+
+                        <!-- <field name="account_number" attrs="{'invisible': [('method_type_fedex', '=', False),('method_type_dhl', '=', False),('method_type_usps', '=', False),('method_type_ups', '=', False)]}"/> -->
+                    </xpath>
+                    <xpath expr="//page[2]/group" position="inside">
+                        <group attrs="{'invisible': [('delivery_type', 'in', ['prepay_and_add', False])]}" >
+                            <field name="account_number" attrs="{'invisible': [('delivery_method', 'in', [False])]}"/>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

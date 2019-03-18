@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Mails & quote templates is done in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <record id="website_service_quotation_default" model="sale.quote.template">
+            <field name="name">Service Quotation Template</field>
+            <field name="number_of_days">30</field>
+            <field name="website_description" type="xml">
+                <section data-snippet-id="title">
+                    <h1 class="page-header">About us</h1>
+                </section>
+                <section data-snippet-id="text-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                This is a <strong>sample quotation template</strong>. You should
+                                customize it to fit your own needs from the <i>Sale</i>
+                                application, using the menu: Configuration /
+                                Quotation Templates.
+                            </p><p>
+                                Great quotation templates will significantly
+                                <strong>boost your success rate</strong>. The
+                                first section is usually about your company,
+                                your references, your methodology or
+                                guarantees, your team, SLA, terms and conditions, etc.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section data-snippet-id="quality">
+                    <div class="row mt32">
+                        <div class="col-md-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                   <center><h3 class="panel-title">Our Quality</h3></center>
+                                </div>
+                                <div class="panel-body">
+                                   <p>
+                                       Product quality is the foundation we
+                                       stand on; we build it with a relentless
+                                       focus on fabric, performance and craftsmanship.
+                                   </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                   <center><h3 class="panel-title">Our Service</h3></center>
+                                </div>
+                                <div class="panel-body">
+                                   <p>
+                                       As a leading professional services firm,
+                                       we know that success is all about the
+                                       commitment we put on strong services.
+                                   </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                   <center><h3 class="panel-title">Price</h3></center>
+                                </div>
+                                <div class="panel-body">
+                                   <p>
+                                       We always ensure that our products are
+                                       set at a fair price so that you will be
+                                       happy to buy them.
+                                   </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-snippet-id="text-block">
+                    <h1 class="page-header">Our Offer</h1>
+                    <p>
+                        You can <strong>set a description per product</strong>. Odoo will
+                        automatically create a quotation using the descriptions
+                        of all products in the proposal. The table of content
+                        on the left is generated automatically using the styles you
+                        used in your description (heading 1, heading 2, ...)
+                    </p><p>
+                        If edit a quotation from the 'Preview' of a quotation, you will
+                        update the quotation for this customer only. If you edit the quotation
+                        template (from the Configuration menu), all future quotations will
+                        use this modified template.
+                    </p>
+                </section>
+            </field>
+        </record>
+        
+               <record id="email_template_edi_service_quotation" model="mail.template">
+            <field name="name">Service Quotation - Send by Email</field>
+            <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
+            <field name="subject">${object.company_id.name} ${object.state in ('draft', 'sent') and 'Service Quotation' or 'Order'} (Ref ${object.name or 'n/a' })</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="biztech_service.action_report_service_quotation"/>
+            <field name="report_name">${(object.name or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<p>Dear ${object.partner_id.name}
+% set access_action = object.with_context(force_website=True).get_access_action()
+% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'
+% set doc_name = 'Service Quotation' if object.state in ('draft', 'sent') else 'order confirmation'
+% set pay_sign_name =  object.get_portal_confirmation_action()
+% set access_name = is_online and object.state in ('draft', 'sent') and pay_sign_name in ('pay', 'sign') and 'Accept and %s online' % pay_sign_name or 'View %s' % doc_name
+% set access_url = is_online and object.get_mail_url() or ''
+
+% if object.partner_id.parent_id:
+    (<i>${object.partner_id.parent_id.name}</i>)
+% endif
+,</p>
+<p>
+Here is
+% if ctx.get('proforma')
+in attachment, your pro-forma invoice
+% else
+the ${doc_name} <strong>${object.name}</strong>
+% endif
+% if object.origin:
+(with reference: ${object.origin} )
+% endif
+amounting in <strong>${object.amount_total} ${object.pricelist_id.currency_id.name}</strong>
+from ${object.company_id.name}.
+</p>
+
+% if is_online and not ctx.get('proforma'):
+    <br/><br/>
+    <center>
+        <a href="${access_url}" style="background-color: #1abc9c; padding: 20px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 16px;" class="o_default_snippet_text">${access_name}</a>
+        <br/><br/><br/>
+        <span style="color:#888888">(or view attached PDF)</span>
+    </center>
+    <br/>
+% endif
+
+<p>You can reply to this email if you have any questions.</p>
+<p>Thank you,</p>
+
+<p style="color:#888888;">
+% if object.user_id and object.user_id.signature:
+    ${object.user_id.signature | safe}
+% endif
+</p>
+]]></field>
+        </record>
+
+
+    </data>
+</odoo>

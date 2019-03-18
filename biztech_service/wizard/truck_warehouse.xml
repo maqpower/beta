@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- service move wiz form -->
+     <record id="warehouse_move_wiz_line" model="ir.ui.view">
+        <field name="name">truck.warehouse.wiz.form</field>
+        <field name="model">truck.warehouse.wiz</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="product_id"/>
+                </group>
+                <group>
+                     <separator string="Warehouse" colspan="4"/>
+                    <field name="warehouse_location_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="location_id" class="no_edit" domain="[('is_fleet_location', '=', True)]"/>
+                            <field name="dest_location_id" class="no_edit"/>
+                            <field name="qty" class="no_edit"/>
+                            <field name="is_truck"/>
+                            <field name="final_quantity"/>
+                        </tree>
+                    </field>
+                </group> 
+                <field name="required_message" style="color:red;"/>
+                <footer>
+
+                    <button name="truck_transfer_warehouse" type="object" string="Transfer" class="btn btn-primary finish_date_color"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="truck_warehouse_line_transfer" model="ir.actions.act_window">
+        <field name="name">Truck To Warehouse Transfer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">truck.warehouse.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="warehouse_move_wiz_line"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

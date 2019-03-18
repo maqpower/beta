@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_without_payment_classic_main">
+            <t t-call="customize_general_template.classic_external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <center>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="font-size:12px;padding:0px 20px 20px 20px; margin:0; font-family: Arial,Helvetica, sans-serif; background:#fff; line-height:20px;" width="100%">
+                                            <tr>
+                                                <td align="center" colspan="2" style="padding: 5px 5px 15px 15px;  line-height:15px; font-size:22px;" valign="top">
+                                                    <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice No #</span>
+                                                    <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA No #</span>
+                                                    <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice #</span>
+                                                    <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice No #</span>
+                                                    <span t-if="o.type == 'out_refund'">Refund No #</span>
+                                                    <span t-if="o.type == 'in_refund'">Vendor Refund No #</span>
+                                                    <span t-if="o.type == 'in_invoice'">Vendor Invoice No #</span>
+                                                    <span>
+                                                        <!-- <span t-field="o.number"/> -->
+                                                        <t t-if="o.number">
+                                                            <t t-esc="o.number.split('/')[2]"/>
+                                                        </t>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr style="background-color:#f2f2f2">
+                                                <td align="left" style="padding: 15px 5px 10px 20px; width:50%; line-height:20px;" valign="top">
+                                                    <h1 t-attf-style="text-transform:capitalize; color: #{o.company_id and o.company_id.theme_color or '#ffffff'}; font-size:16px; font-weight:bold;margin:0; margin-bottom:5px;">
+                                                        <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">
+                                                            <!-- <t t-if="o.partner_id == o.partner_shipping_id">Bill To And Ship To:
+                                                                </t> -->
+                                                                <!-- t-if="o.partner_id != o.partner_shipping_id" -->
+                                                            <span>Invoice To:</span>
+                                                                                                                     </span>
+                                                        <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA To:</span>
+                                                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">
+                                                            <!-- <t t-if="o.partner_id == o.partner_shipping_id">Draft Bill To And Ship To:
+                                                                </t> -->
+                                                            <t >Draft Invoice To:
+                                                                </t>
+                                                        </span>
+                                                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">
+                                                            <!-- <t t-if="o.partner_id == o.partner_shipping_id">Cancelled Bill To And Ship To:
+                                                                </t> -->
+                                                            <t>Cancelled Invoice To:
+                                                                </t>
+                                                        </span>
+                                                        <span t-if="o.type == 'out_refund'">Refund To:</span>
+                                                        <span t-if="o.type == 'in_refund'">Vendor Refund To:</span>
+                                                        <span t-if="o.type == 'in_invoice'">Vendor Invoice To:</span>
+                                                    </h1>
+                                                    <t t-if="o.company_id and o.company_id.is_customer_bold">
+                                                        <span style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                                            <b>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_id"/>
+                                                            </b>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="not o.company_id.is_customer_bold">
+                                                        <span style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_id"/>
+                                                        </span>
+                                                    </t>
+                                                    <p t-attf-style="font-size :14px;color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">
+                                                        <span t-esc="o._get_street(o.partner_id)"/>
+                                                        <br/>
+                                                        <span t-esc="o._get_address_details(o.partner_id)"/>
+                                                        <br/>
+                                                        <!-- <t t-if="o.partner_id.mobile">
+                                                            <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Mobile:</strong>
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_id.mobile"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="o.partner_id.phone">
+                                                            <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Phone:</strong>
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_id.phone"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="o.partner_id.fax">
+                                                            <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Fax:</strong>
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_id.fax"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="o.partner_id.vat">
+                                                            <b t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Vat: </b>
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_id.vat"/>
+                                                        </t> -->
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                <!--change for same address-->
+                                                <p t-attf-style="text-transform:capitalize; color: #{o.company_id and o.company_id.theme_color or '#ffffff'}; font-size:16px; font-weight:bold;margin:0; margin-bottom:5px;">
+                                                    <span>Ship To:</span> </p>
+                                               	<t t-if="not o.partner_shipping_id or  o.partner_id == o.partner_shipping_id">
+                                               		<t t-if="o.company_id and o.company_id.is_customer_bold">
+                                                        <span style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                                            <b>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_id"/>
+                                                            </b>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="not o.company_id.is_customer_bold">
+                                                        <span style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                                            <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_id"/>
+                                                        </span>
+                                                    </t>
+                                                    <p t-attf-style="font-size :14px;color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">
+                                                        <span t-esc="o._get_street(o.partner_id)"/>
+                                                        <br/>
+                                                        <span t-esc="o._get_address_details(o.partner_id)"/>
+                                                        <br/>
+                                                    </p>
+                                               	</t>
+                                               	<!-- finish the change of same address -->
+                                                <t t-if="o.partner_id != o.partner_shipping_id and o.type != 'in_refund' and o.type != 'in_invoice'">
+                                                    
+                                                        <t t-if="o.company_id and o.company_id.is_customer_bold">
+                                                            <span style="text-transform:capitalize; font-size :15px; padding:0px; margin:0;">
+                                                                <b>
+                                                                    <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_shipping_id"/>
+                                                                </b>
+                                                            </span>
+                                                        </t>
+                                                        <t t-if="not o.company_id.is_customer_bold">
+                                                            <span style="text-transform:capitalize; font-size :14px; padding:0px; margin:0;">
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_color or '#ffffff'};" t-field="o.partner_shipping_id"/>
+                                                            </span>
+                                                        </t>
+                                                        <p t-attf-style="font-size :14px;color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">
+                                                            <span t-esc="o._get_street(o.partner_shipping_id)"/>
+                                                            <br/>
+                                                            <span t-esc="o._get_address_details(o.partner_shipping_id)"/>
+                                                            <br/>
+                                                            <!-- <t t-if="o.partner_shipping_id.mobile">
+                                                                <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Mobile:</strong>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_shipping_id.mobile"/>
+                                                                <br/>
+                                                            </t>
+                                                            <t t-if="o.partner_shipping_id.phone">
+                                                                <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Phone:</strong>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_shipping_id.phone"/>
+                                                                <br/>
+                                                            </t>
+                                                            <t t-if="o.partner_shipping_id.fax">
+                                                                <strong t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Fax:</strong>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_shipping_id.fax"/>
+                                                                <br/>
+                                                            </t>
+                                                            <t t-if="o.partner_shipping_id.vat">
+                                                                <b t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};">Vat: </b>
+                                                                <span t-attf-style="color: #{o.company_id and o.company_id.customer_address_color or '#ffffff'};" t-field="o.partner_shipping_id.vat"/>
+                                                            </t> -->
+                                                        </p>
+                                                    
+                                                </t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="4" style="font-size:12px; padding:15px 0px;" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" style="color:#fff; text-transform:capitalize; font-size:14px;" width="100%">
+                                                       <tr style="color: #000000; background-color: #ffffff">
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Invoice Date:</b>
+                                                                <br/>
+                                                                <t t-if="o.date_invoice">
+                                                                    <span t-esc="time.strftime('%m/%d/%y', time.strptime(o.date_invoice,'%Y-%m-%d'))"/>
+                                                                </t>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Customer:</b>
+                                                                <br/>
+                                                                <span t-esc="o.partner_id.id" t-if="o.partner_id and not o.partner_shipping_id">
+                                                                    <span t-esc="o.partner_id.id" t-if="o.partner_id"/>
+                                                                </span>
+                                                                <span t-if="not o.partner_id">Pending</span>
+
+                                                                <strong t-if="o.partner_shipping_id == o.partner_id">
+                                                                    <span t-esc="o.partner_id.id" t-if="o.partner_id"/>
+                                                                </strong>
+                                                                <strong t-if="o.partner_id != o.partner_shipping_id and o.type != 'in_refund' and o.type != 'in_invoice'">
+                                                                    <span t-esc="o.partner_shipping_id.id" t-if="o.partner_id"/>
+                                                                </strong>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Original Invoice Number:</b>
+                                                                <br/>
+                                                                <span t-esc="o.invoice_original"/>
+                                                            </td>
+                                                            <t t-if="o._get_customer(o.origin)">
+                                                                <td style="padding:5px 15px;">
+                                                                    <b>
+
+                                                                        <span>PO Number:</span>
+
+                                                                    </b>
+                                                                    <br/>
+                                                                    <span t-if="o.type in ('out_invoice','out_refund')">
+                                                                        <span t-esc="o._get_customer(o.origin)"/>
+                                                                    </span>
+                                                                    <span t-if="o.type in ('in_invoice', 'in_refund')">
+                                                                        <span t-field="o.reference" t-if="o.reference"/>
+                                                                    </span>
+                                                                </td>
+                                                            </t>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>
+                                                                    <span>Shipping Method:</span>
+                                                                </b>
+                                                                <br/>
+                                                                <span t-esc="o._get_ship_info(o.origin)"/>
+                                                            </td>
+                                                            <!-- <td style="padding:5px 15px;">
+                                                                <b>Order Number:</b>
+                                                                <br/>
+                                                                <span/>
+                                                            </td> -->
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Terms:</b>
+                                                                <br/>
+                                                                <t t-if="o.payment_term_id">
+                                                                    <span t-field="o.payment_term_id"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" t-attf-style="border-bottom:1px solid #{o.company_id and o.company_id.theme_color or '#000000'}; padding:0px;"/>
+                                                <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="2" style="font-size:12px; padding:20px 0px 0 0; text-transform:uppercase; fnt-weight:bold; " valign="top">
+                                                    <t t-as="page" t-foreach="o.order_lines_layouted()">
+                                                        <table BORDERCOLOR="#{o.company_id and o.company_id.theme_color or '#000000'}" border="1" cellpadding="0" cellspacing="0" class="table table-bordered" style="font-size:12px;border:0.5px solid #ccc;  border-collapse: collapse; text-transform:capitalize; padding:15px;border-bottom:1px solid #ccc; " width="100%">
+                                                            <thead>
+                                                                <tr t-attf-style="page-break-inside: avoid !important;padding:5px 10px; border:0.5px solid #{o.company_id and o.company_id.theme_color or '#000000'}; font-weight:bold; background-color: #{o.company_id and o.company_id.theme_color or '#000000'}; color: #{o.company_id and o.company_id.theme_text_color or '#000000'};">
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="5%">No</td>
+                                                                    <!-- <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="10%">Qty Shipped</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="10%">Qty Back-Ordered</td> -->
+                                                                    <!-- <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="20%">Part Number</td> -->
+                                                                    <!-- <t t-if="o.company_id.add_product_image == True">
+                                                                        <td align="left" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="8%">Image</td>
+                                                                    </t> -->
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="42%">Part Number/Description</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="5%">Qty</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="10%">Qty Shipped</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="10%">BO Qty</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="8%">Unit</td>
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" t-if="display_discount" width="5%">Disc.(%)</td>
+                                                                   <!--  <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="8%">Taxes</td> -->
+                                                                    <td align="center" t-attf-style="padding:5px 10px; color: #{o.company_id and o.company_id.theme_text_color or '#000000'}; border:1px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; border-right:0px solid #{o.company_id and o.company_id.theme_color or '#000000'} !important; font-weight:bold;" width="12%">Extension</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <div class="watermark pull-center" style="position:absolute;opacity:0.25;font-size:1em;width:90%;text-align:center;z-index:1000;height:100%;">
+                                                                    <img style="max-height: 800px;" t-att-src="'data:image/png;base64,%s' %  o.company_id.watermark_logo" t-if="o.company_id"/>
+                                                                </div>
+                                                                    <t t-as="l" t-foreach="o.invoice_line_ids">
+                                                                        <t t-if="l_odd">
+                                                                            <tr t-att-style="'page-break-inside: avoid !important;background-color: '+ o.company_id.even_party_color or o.company_id.even_party_color ">
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color:  %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="l_index+1"/>
+                                                                                </td>
+                                                                                
+                                                                                <!-- <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_deliver_qty(l.id)"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_backorder_qty(l.id)"/>
+                                                                                </td> -->
+                                                                               <!--  <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <t t-if="l.product_id and l.product_id.default_code">
+                                                                                        <span t-field="l.product_id.default_code"/>
+                                                                                    </t>
+                                                                                </td> -->
+                                                                                <!-- <t t-if="o.company_id.add_product_image == True">
+                                                                                    <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                        <span t-field="l.product_id.image_small" t-options="{&quot;widget&quot;:&quot;image&quot;,&quot;class&quot;:&quot;img-rounded&quot;}"/>
+                                                                                    </td>
+                                                                                </t> -->
+                                                                                <td class="text-left" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color:  %s;' % (o.company_id.text_color)">
+                                                                                    <t t-if="l.product_id and l.product_id.default_code">
+                                                                                        <span t-field="l.product_id.default_code"/>
+                                                                                        <br />
+                                                                                    </t>
+                                                                                    <t t-if="str(l.name).find(']') != -1">
+                                                                                        <span t-esc="str(l.name).split(']')[1]"/>
+                                                                                        </t>
+                                                                                        <t t-if="str(l.name).find(']') == -1">
+                                                                                            <t t-esc="l.name" />
+                                                                                        </t>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.quantity"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_deliver_qty(l.id)"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_backorder_qty(l.id)"/>
+                                                                                </td> 
+                                                                                <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.price_unit" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                                </td>
+                                                                                <td class="text-right" groups="sale.group_discount_per_so_line" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)" t-if="display_discount">
+                                                                                    <span t-field="l.discount"/>
+                                                                                </td>
+                                                                                <!-- <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+                                                                                </td> -->
+                                                                                <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </t>
+                                                                        <t t-if="l_even">
+                                                                            <tr t-att-style="'page-break-inside: avoid !important;background-color: '+ o.company_id.odd_party_color or o.company_id.odd_party_color ">
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="l_index+1"/>
+                                                                                </td>
+                                                                                
+                                                                                <!-- <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_deliver_qty(l.id)"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_backorder_qty(l.id)"/>
+                                                                                </td> -->
+                                                                                <!-- <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <t t-if="l.product_id and l.product_id.default_code">
+                                                                                        <span t-field="l.product_id.default_code"/>
+                                                                                    </t>
+                                                                                </td> -->
+                                                                                <!-- <t t-if="o.company_id.add_product_image == True">
+                                                                                    <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                        <span t-field="l.product_id.image_small" t-options="{&quot;widget&quot;:&quot;image&quot;,&quot;class&quot;:&quot;img-rounded&quot;}"/>
+                                                                                    </td>
+                                                                                </t> -->
+                                                                                <td class="text-left" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <t t-if="l.product_id and l.product_id.default_code">
+                                                                                        <span t-field="l.product_id.default_code"/>
+                                                                                        <br />
+                                                                                    </t>
+                                                                                    <t t-if="str(l.name).find(']') != -1">
+                                                                                        <span t-esc="str(l.name).split(']')[1]"/>
+                                                                                        </t>
+                                                                                        <t t-if="str(l.name).find(']') == -1">
+                                                                                            <t t-esc="l.name" />
+                                                                                        </t>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.quantity"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_deliver_qty(l.id)"/>
+                                                                                </td>
+                                                                                <td class="text-center" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="o.get_backorder_qty(l.id)"/>
+                                                                                </td> 
+                                                                                <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.price_unit" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                                </td>
+                                                                                <td class="text-right" groups="sale.group_discount_per_so_line" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)" t-if="display_discount">
+                                                                                    <span t-field="l.discount"/>
+                                                                                </td>
+                                                                                <!-- <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+                                                                                </td> -->
+                                                                                <td class="text-right" t-att-style="'padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: %s;' % (o.company_id.text_color)">
+                                                                                    <span t-field="l.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </t>
+                                                                    </t>
+                                                            </tbody>
+                                                        </table>
+                                                        <t groups="sale.group_sale_layout" t-if="page_index &lt; page_size - 1">
+                                                            <p style="page-break-before:always;"/>
+                                                        </t>
+                                                    </t>
+                                                    <table class="pull-right" style="font-size:13px; font-weight:bold;width:40%;" t-att-style="'color: '+ o.company_id.text_color">
+                                                        <tr>
+                                                            <td class="pull-left" colspan="2" t-att-style="'padding:9px 10px 7px 0px;  font-size:13px; color: %s;' % (o.company_id.text_color) ">SUBTOTAL </td>
+                                                            <td align="right" style="padding:9px 0px 7px 10px; font-size:13px;">
+                                                                <span t-att-style="'color: '+ o.company_id.text_color" t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" style="border-bottom:1px solid #959595"/>
+                                                        </tr>
+                                                        <tr t-att-style="'font-size:13px;padding:9px 10px 7px 0px; color: %s;' % (o.company_id.text_color) ">
+                                                            <t t-as="amount_by_group" t-foreach="o._get_tax_amount_by_group()">
+                                                                <tr>
+                                                                    <td class="pull-left" colspan="2" t-att-style="'padding:9px 10px 7px 0px; color: %s;' % (o.company_id.text_color)">
+                                                                        <t t-if="amount_by_group[0] == 'Taxes'">
+                                                                            <span>Sales Tax</span>
+                                                                        </t>
+                                                                        <!-- <span t-esc="amount_by_group[0] or 'Taxes'"/> -->
+                                                                    </td>
+                                                                    <td align="right" t-att-style="'padding:9px 0px 7px 10px; color: %s;' % (o.company_id.text_color) ">
+                                                                        <span t-esc="amount_by_group[1]" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pull-left" colspan="2" t-att-style="'padding:9px 10px 7px 0px; font-size:13px; color: %s;' % (o.company_id.text_color) ">TOTAL</td>
+                                                            <td align="right" style="padding:9px 0px 7px 10px;font-size:13px; text-transform:capitalize; ">
+                                                                <span t-att-style="'color: '+ o.company_id.text_color" t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <t t-if="o.company_id.add_amount_in_words == True">
+                                                        <table class="pull-left" style="width:60%; text-transform:capitalize;">
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <tr>
+                                                                <td style="padding:9px 10px 7px 0px;">Total in word</td>
+                                                                <td>
+                                                                    <t t-esc="o.amount_to_text"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </t>
+                                                </td>
+                                                <tr>
+                                                    <td colspan="3" t-attf-style="border-bottom:1px solid #{'#959595'}; padding:0px"/>
+                                                </tr>
+                                            </tr>
+                                            
+                                            <!-- <tr t-if="not o.payment_move_line_ids">
+                                                <td>
+                                                    <span t-att-style="'font-size:14px; font-weight:bold; color:#000; margin-bottom:0; margin-top:8px; color: %s;' % (o.company_id.text_color)">
+                                                        <b>Payment is Pending</b>
+                                                    </span>
+                                                </td>
+                                            </tr> -->
+                                            <tr>
+                                                <td class="pull-left" colspan="2" style="font-size:13px; color: #{o.company_id and o.company_id.text_color or '#000000'}; padding-top:50px; ">
+                                                    <ul style="padding-left:15px; margin:0">
+                                                        <t t-if="o.payment_term_id.name">
+                                                            <li t-att-style="'color: '+ o.company_id.text_color">
+                                                                <b>Payment Term: </b>
+                                                                <span t-field="o.payment_term_id.name"/>
+                                                            </li>
+                                                        </t>
+                                                        <!--<t t-if="o.residual">
+                                                            <li t-att-style="'color: '+ o.company_id.text_color">
+                                                                <span t-if="o.type in ('out_refund', 'in_refund')">Credit Amount</span>
+                                                                <span t-if="o.type in ('out_invoice', 'in_invoice')">Amount Due</span>
+                                                                <span t-field="o.residual" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                                            </li>
+                                                        </t>-->
+                                                        <t t-if="o.comment">
+                                                            <li t-att-style="'color: '+ o.company_id.text_color">
+                                                                <b>Additional comment: </b>
+                                                                <span t-field="o.comment"/>
+                                                            </li>
+                                                        </t>
+                                                        <t t-if="o.fiscal_position_id.name">
+                                                            <li t-att-style="'color: '+ o.company_id.text_color">
+                                                                <b>Fiscal Position Remark: </b>
+                                                                <span t-field="o.fiscal_position_id.name"/>
+                                                            </li>
+                                                        </t>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </center>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+        <template id="account.report_invoice">
+            <t t-call="web.html_container">
+                <t t-set="report_name" t-value="{'report_invoice_template_custom': 'general_template.report_invoice_template_main',                                         'report_invoice_template_custom_creative': 'general_template.report_invoice_creative_main',                                         'report_invoice_template_custom_elegant': 'general_template.report_invoice_elegant_main',                                         'report_invoice_template_custom_professional': 'general_template.report_invoice_professional_main',                                         'report_invoice_template_custom_exclusive': 'general_template.report_invoice_exclusive_main',                                         'report_invoice_template_custom_advanced': 'general_template.report_invoice_advanced_main',                 'report_invoice_template_custom_incredible': 'general_template.report_invoice_incredible_main',                 'report_invoice_template_custom_innovative': 'general_template.report_invoice_innovative_main',                 'report_invoice_template_custom_classic': 'customize_general_template.report_invoice_classic_main',}"/>
+                <t t-as="o" t-foreach="docs">
+                    <t t-set="r_name" t-value="o.report_template_id and o.report_template_id.report_name or o.partner_id and o.partner_id.report_template_id and o.partner_id.report_template_id.report_name or o.company_id and o.company_id.report_template_id and o.company_id.report_template_id.report_name"/>
+                    <t t-set="real_name" t-value="r_name.split('.')"/>
+                    <t t-if="o.report_template_id or o.partner_id and o.partner_id.report_template_id or o.company_id and o.company_id.report_template_id">
+                        <!-- <t t-call="#{report_name.get(real_name[1], 'general_template.report_invoice_template_main')}" t-lang="o.partner_id.lang"/>-->
+                        <t t-call="general_template.report_invoice_template_main" t-if="r_name == 'general_template.report_invoice_template_custom'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_advanced_main" t-if="r_name == 'general_template.report_invoice_template_custom_advanced'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_elegant_main" t-if="r_name == 'general_template.report_invoice_template_custom_elegant'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_exclusive_main" t-if="r_name == 'general_template.report_invoice_template_custom_exclusive'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_professional_main" t-if="r_name == 'general_template.report_invoice_template_custom_professional'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_creative_main" t-if="r_name == 'general_template.report_invoice_template_custom_creative'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_incredible_main" t-if="r_name == 'general_template.report_invoice_template_custom_incredible'" t-lang="o.partner_id.lang"/>
+                        <t t-call="general_template.report_invoice_innovative_main" t-if="r_name == 'general_template.report_invoice_template_custom_innovative'" t-lang="o.partner_id.lang"/>
+                        <t t-call="customize_general_template.report_invoice_without_payment_classic_main" t-if="r_name == 'customize_general_template.report_invoice_template_custom_classic'" t-lang="o.partner_id.lang"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <report file="customize_general_template.classic_invoice_without_payment" 
+        		id="report_invoice_without_payment_template_classic" 
+        		menu="False" 
+        		model="account.invoice" 
+        		name="customize_general_template.classic_invoice_without_payment" report_type="qweb-pdf" string="MaqPower - Main"/>
+    </data>
+</odoo>

@@ -1,0 +1,488 @@
+import odoo.addons.decimal_precision as dp
+from dateutil import relativedelta
+from datetime import datetime
+from odoo import models, api, fields, _
+from dateutil.relativedelta import relativedelta
+from odoo.exceptions import Warning
+from odoo.exceptions import UserError, ValidationError
+
+
+class service_stage(models.Model):
+    _name = 'service.stage'
+    _order = "id"
+
+    name = fields.Char("Name")
+
+    @api.multi
+    def write(self, vals):
+        if vals['name']:
+            raise UserError(
+                _('You Can Not Change The Stage Name Of Service Work Order'))
+
+
+class ServiceCustomerInformation(models.Model):
+    _name = "service.customer.information"
+    _description = "Service Customer Information"
+    _inherit = ['mail.thread', 'mail.activity.mixin',
+                'utm.mixin', 'format.address.mixin']
+
+    is_plan_done = fields.Boolean('')
+    is_schedule_done = fields.Boolean('')
+    is_in_progress_done = fields.Boolean('')
+    is_complete = fields.Boolean('')
+
+    @api.model
+    def default_get(self, fields):
+        rec = super(ServiceCustomerInformation, self).default_get(fields)
+        if not self.stage_id:
+            state_obj = self.env['service.stage'].search(
+                [('name', '=', 'Planning')], limit=1)
+            if state_obj:
+                rec.update({'stage_id': state_obj.id})
+            return rec
+
+    @api.model
+    def _read_group_stage_ids(self, stages, domain, order):
+        state = self.env['service.stage'].search([])
+        return state
+
+    @api.multi
+    def write(self, vals):
+        res = super(ServiceCustomerInformation, self).write(vals)
+        plan_stage_id = self.env['service.stage'].search(
+            [('name', '=', 'Planning')], limit=1)
+        state_obj = self.env['service.stage'].search(
+            [('name', '=', 'Completed')], limit=1)
+        schedule_id = self.env['service.stage'].search(
+            [('name', '=', 'Scheduled')], limit=1)
+        in_progress_id = self.env['service.stage'].search(
+            [('name', '=', 'In Progress')], limit=1)
+        if vals.get('stage_id') == schedule_id.id or vals.get('stage_id') == in_progress_id.id or vals.get('stage_id') == state_obj.id or vals.get('stage_id') == 1:
+            if not self.technician:
+                raise UserError(
+                    _('Can not Move plan Service without technician'))
+            if not self.time_line_ids and vals.get('is_schedule_done') == False:
+                raise UserError(
+                    _('Can not Move Schedule Service before start'))
+
+            if self.is_schedule_done == True and self.is_plan_done == False and not self.time_line_ids:
+                if vals.get('is_schedule_done') == True and vals.get('is_plan_done') == False:
+                    pass
+                else:
+                    raise UserError(
+                        _('Can not Move Schedule Service before start'))
+
+            if self.is_in_progress_done == True:
+                if vals.get('is_in_progress_done') == True:
+                    pass
+                else:
+                    raise UserError(
+                        _('Can not Move the service while it is continue'))
+        if self.end_date:
+            if vals.get('stage_id') == plan_stage_id.id or vals.get('stage_id') == schedule_id.id or vals.get('stage_id') == in_progress_id.id:
+                raise UserError(_('Service will not move after Completion'))
+
+    name = fields.Char(string='Work Order Number',
+                       default=lambda self: _('New'), index=True)
+    partner_id = fields.Many2one(
+        'res.partner', string='Customer', required=True)
+    partner_invoice_id = fields.Many2one(
+        'res.partner', string='Invoice Address')
+    partner_shipping_id = fields.Many2one(
+        'res.partner', string='Service Address')
+    customer_contact_ids = fields.Many2many(
+        'res.partner', string="Customer Contact Name")
+    payment_term_id = fields.Many2one(
+        'account.payment.term', string='Payment Terms')
+    service_type = fields.Selection([
+        ('repair', 'Repair'),
+        ('troubleshoot', 'Troubleshoot'),
+        ('start_up', 'Start Up'),
+        ('minor_pm', 'Minor PM'),
+        ('major_pm', 'Major PM'),
+        ('elite_care', 'Elite Care')
+    ], string="Service Type", store=True)
+    po_number = fields.Char('PO Number')
+
+    # --- for equipment information ---
+    equipment_id = fields.Many2one('service.equipment', string="Equipment")
+    equipment_make_id = fields.Many2one(
+        'service.equipment.make', string="Make", related="equipment_id.equipment_make_id")
+    equipment_model_id = fields.Many2one(
+        'service.equipment.model', string="Model", related="equipment_id.equipment_model_id")
+    equipment_serial_number = fields.Char(
+        'Serial Number', related="equipment_id.equipment_serial_number")
+    equipment_date_installed = fields.Date(
+        'Date First Installed', related="equipment_id.date_installed")
+    year_installed = fields.Char('Year Installed (If known)')
+    equipment_compressor = fields.Text('Compressor')
+    equipment_location = fields.Text('Location')
+
+    # --- for Scheduling Information ---
+    user_id = fields.Many2one('res.users', string='Technician Assigned')
+    no_of_service_units = fields.Integer(
+        'Number of Service Units', default=1, required=True)
+    date_service_scheduled = fields.Date('Date Service Scheduled')
+    date_service_performed = fields.Date('Date Service Performed')
+    work_details = fields.Text('Work to be Performed')
+
+    # --- for inventory related workflow ---
+    service_inventory_workflow = fields.One2many(
+        'service.inventory.workflow', 'service_customer_info_id', string="Service Inventory Workflow")
+
+    # --- for service related data ---
+    is_all_service_fields_true = fields.Boolean(
+        'Is all Service Related Data fields are true')
+    total_run_hours = fields.Float(
+        'Total Run Hours', help="Hours the compressor unit has operated.")
+    total_loaded_hours = fields.Float('Total Loaded Hours')
+    loaded_pressure = fields.Float('Loaded Pressure')
+    unloaded_pressure = fields.Float('Unloaded Pressure')
+    ambient_temperature = fields.Float(
+        'Ambient Temperature', help="In degrees Fahrengheit")
+    service_location = fields.Selection([
+        ('indoor', 'Indoor'),
+        ('outdoor', 'Outdoor'),
+    ], string="Location", store=True)
+    package_discharge_temperature = fields.Float(
+        'Package Discharge Temperature')
+    injection_temperature = fields.Float('Injection Temperature')
+    airend_discharge_tempreature = fields.Char('Airend Discharge Temperature')
+
+    @api.onchange('total_run_hours', 'total_loaded_hours', 'loaded_pressure', 'unloaded_pressure', 'ambient_temperature', 'service_location', 'package_discharge_temperature', 'injection_temperature', 'airend_discharge_tempreature')
+    def _onchange_service_fields(self):
+        if self.total_run_hours and self.total_loaded_hours and self.loaded_pressure and self.unloaded_pressure and self.ambient_temperature and self.service_location in ('indoor', 'outdoor') and self.package_discharge_temperature and self.injection_temperature and self.airend_discharge_tempreature:
+            self.is_all_service_fields_true = True
+        else:
+            self.is_all_service_fields_true = False
+
+    # --- for visual inspection---
+    is_all_visual_inspection_fields_true = fields.Boolean(
+        'Is all Visual Inspection fields are true')
+    oil_lines_inspection = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Oil Lines Visual Inspection", store=True, default='no')
+    air_lines_inspection = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Air Lines Visual Inspection", store=True, default='no')
+    control_component_inspection = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Control Components Visual Inspection", store=True, default='no')
+    check_oil_discharge_temperature = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check Oil Discharge Temperature", store=True, default='no')
+
+    cooler_oil_temperature_inlet_and_outlet = fields.Char(
+        'Cooler Oil Temperature - Inlet & Outlet')
+    cooler_air_temperature_inlet_and_outlet = fields.Char(
+        'Cooler Air Temperature - Inlet & Outlet')
+
+    check_oil_level = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check Oil Level", store=True, default='no')
+    check_oil_or_water_separator = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check Oil/Water Separator", store=True, default='no')
+    check_air_drier = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check Air Drier", store=True, default='no')
+    check_air_line_filters = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check All Line Filters", store=True, default='no')
+    check_all_system_drain_lines = fields.Selection([
+        ('yes', 'YES'),
+        ('no', 'NO')
+    ], string="Check All System Drain Lines", store=True, default='no')
+
+    @api.onchange('oil_lines_inspection', 'air_lines_inspection', 'control_component_inspection', 'check_oil_discharge_temperature', 'cooler_oil_temperature_inlet_and_outlet', 'cooler_air_temperature_inlet_and_outlet', 'check_oil_level', 'check_oil_or_water_separator', 'check_air_drier', 'check_air_line_filters', 'check_all_system_drain_lines')
+    def _onchange_visual_inspections_fields(self):
+        if self.oil_lines_inspection == 'yes' and self.air_lines_inspection == 'yes' and self.control_component_inspection == 'yes' and self.check_oil_discharge_temperature == 'yes' and self.check_oil_level == 'yes' and self.check_oil_or_water_separator == 'yes' and self.check_air_drier == 'yes' and self.check_air_line_filters == 'yes' and self.check_all_system_drain_lines == 'yes' and self.cooler_oil_temperature_inlet_and_outlet and self.cooler_air_temperature_inlet_and_outlet:
+            self.is_all_visual_inspection_fields_true = True
+        else:
+            self.is_all_visual_inspection_fields_true = False
+
+    # --- for electrical ---
+    is_all_electrical_fields_are_true = fields.Boolean(
+        'Is all Electrical fields are true')
+    ele_volts_l1_l2 = fields.Float('Volts L1-L2')
+    ele_volts_l2_l3 = fields.Float('Volts L2-L3')
+    ele_volts_l1_l3 = fields.Float('Volts L1-L3')
+
+    ele_l1 = fields.Float('L1')
+    ele_l2 = fields.Float('L2')
+    ele_l3 = fields.Float('L3')
+
+    ele_cv1 = fields.Float('CV1')
+    ele_cv2 = fields.Float('CV2')
+
+    ele_amps_fla_l1 = fields.Float('AMPS FLA L1')
+    ele_amps_fla_l2 = fields.Float('AMPS FLA L2')
+    ele_amps_fla_l3 = fields.Float('AMPS FLA L3')
+
+    ele_ula_l1 = fields.Float('ULA L1')
+    ele_ula_l2 = fields.Float('ULA L2')
+    ele_ula_l3 = fields.Float('ULA L3')
+
+    @api.onchange('ele_volts_l1_l2', 'ele_volts_l2_l3', 'ele_volts_l1_l3', 'ele_l1', 'ele_l2', 'ele_l3', 'ele_cv1', 'ele_amps_fla_l1', 'ele_amps_fla_l2', 'ele_amps_fla_l3', 'ele_ula_l1', 'ele_ula_l2', 'ele_ula_l3')
+    def _onchange_electrical_fields(self):
+        if self.ele_volts_l1_l2 and self.ele_volts_l2_l3 and self.ele_volts_l1_l3 and self.ele_l1 and self.ele_l2 and self.ele_l3 and self.ele_cv1 and self.ele_amps_fla_l1 and self.ele_amps_fla_l2 and self.ele_amps_fla_l3 and self.ele_ula_l1 and self.ele_ula_l2 and self.ele_ula_l3:
+            self.is_all_electrical_fields_are_true = True
+        else:
+            self.is_all_electrical_fields_are_true = False
+
+    # --- for service wrap up ---
+    is_all_wrap_up_fields_true = fields.Boolean(
+        "Is all Service Wrap Up fields are true")
+    recommendations = fields.Text('Recommendations')
+    next_schedule_visit = fields.Date('Next Suggested Scheduled Visit')
+    next_schedule_visit_success = fields.Date(
+        'Next Suggested Scheduled Visit')  # for display purpose only
+
+    @api.onchange('next_schedule_visit')
+    def _onchange_next_schedule_visit(self):
+        if self.next_schedule_visit:
+            self.next_schedule_visit_success = self.next_schedule_visit
+
+    @api.onchange('next_schedule_visit_success')
+    def _onchange_next_schedule_visit_success(self):
+        if self.next_schedule_visit_success:
+            self.next_schedule_visit = self.next_schedule_visit_success
+
+    @api.onchange('recommendations', 'next_schedule_visit')
+    def _onchange_service_wrap_up_fields(self):
+        if self.recommendations and self.next_schedule_visit:
+            self.is_all_wrap_up_fields_true = True
+        else:
+            self.is_all_wrap_up_fields_true = False
+
+    #-----for state----
+    state = fields.Selection([('plan', 'Plan'),
+                              ('schedule', 'Schedule'),
+                              ('in_progress', 'In Progress'),
+                              ('completed', 'Completed')],
+                             string='Status', required=True, readonly=True, index=True, copy=False, default='plan')
+
+    color = fields.Integer('Color Index', default=0)
+    end_date = fields.Datetime("Finish Date")
+    schedule_date = fields.Datetime("Schedule Date")
+    technician = fields.Many2one('res.users', string="Technician")
+    demo_time = fields.Float("Demo time")
+#     work_schedule_ids = fields.One2many("work.schedule.line",'service_work_id',string = "Work Schedule Line")
+
+    # new code
+    time_line_ids = fields.One2many(
+        'customer.workcenter.productivity', 'customer_workcenter_id', 'Time Logs')
+#     total_duration = fields.Float('Real Duration', compute='_compute_duration',store=True)
+    total_duration = fields.Float(
+        'Real Duration', compute='_compute_total_duration', store=True)
+    count_duration = fields.Float("Count Duration")
+    is_user_working = fields.Boolean(
+        'Is the Current User Working', compute='_compute_is_user_working',
+        help="Technical field indicating whether the current user is working.")
+    stage_id = fields.Many2one(
+        'service.stage', string='Stage', group_expand='_read_group_stage_ids')
+    company_id = fields.Many2one('res.company', 'Company', default=lambda self: self.env['res.company']._company_default_get(
+        'currency.rate.update.service'))
+    total_labor = fields.Float(
+        string='Total Labor', compute="
+_get_total_labor")
+    technician_gruop_id = fields.Integer(
+        string="group", compute='get_technician_gruops_id')
+    signature_image = fields.Binary("Customer Signature")
+    technician_warning = fields.Char(
+        "", default="Please Assign The Technician Before start the Work order")
+
+    required_field_message = fields.Char(
+        string='Required Fields Not Completed', default="* Required Fields Not completed", readonly=True)
+    is_order_valid_to_complete = fields.Boolean(
+        'Is this Order valid to Complete')
+
+    @api.onchange('is_all_service_fields_true', 'is_all_visual_inspection_fields_true', 'is_all_electrical_fields_are_true', 'is_all_wrap_up_fields_true')
+    def _onchange_required_tab_fields(self):
+        if self.is_all_service_fields_true and self.is_all_visual_inspection_fields_true and self.is_all_electrical_fields_are_true and self.is_all_wrap_up_fields_true:
+            self.is_order_valid_to_complete = True
+        else:
+            self.is_order_valid_to_complete = False
+
+    def show_warning_complete(self):
+        raise Warning(_('You cannot complete order without filling following details. \n1. Service Related Data Gathering \n2. Visual Inspection \n3. Electrical \n4. Service Wrap Up'))
+
+    @api.one
+    def get_technician_gruops_id(self):
+        for rec in self:
+            tach_id = self.env['res.groups'].search(
+                [('name', '=', 'Technician')], limit=1)
+            self.technician_gruop_id = tach_id
+
+    @api.one
+    def get_technician_gruops_id(self):
+        for rec in self:
+            tach_id= self.env['res.groups'].search([('name','=','Technician')],limit = 1)
+            self.technician_gruop_id=tach_id
+
+    def _compute_is_user_working(self):
+        """ Checks whether the current user is working """
+        for order in self:
+            if order.time_line_ids.filtered(lambda x: (x.technician_id.id == self.technician.id) and (not x.date_end)):
+                order.is_user_working = True
+            else:
+                order.is_user_working = False
+
+    @api.one
+    @api.depends('time_line_ids.duration_line')
+    def _compute_total_duration(self):
+        total = 0.0
+        for rec in self:
+            total = sum(self.time_line_ids.mapped('duration_line'))
+            rec.total_duration = total
+
+    def pause_workorder(self):
+        self.end_previous()
+        return True
+
+    @api.multi
+    def end_previous(self, doall=False):
+        """
+        @param: doall:  This will close all open time lines on the open work orders when doall = True, otherwise
+        only the one of the current user
+        """
+        # TDE CLEANME
+        timeline_obj = self.env['customer.workcenter.productivity']
+        domain = [('customer_workcenter_id', 'in', self.ids),
+                  ('date_end', '=', False)]
+        if not doall:
+            domain.append(('technician_id', '=', self.technician.id))
+        not_productive_timelines = timeline_obj.browse()
+
+        for timeline in timeline_obj.search(domain, limit=None if doall else 1):
+            wo = timeline.customer_workcenter_id
+#             maxdate = fields.Datetime.from_string(timeline.date_start) + relativedelta(minutes=wo.total_duration)
+            enddate = datetime.now()
+#             if maxdate > enddate:
+#                 timeline.write({'date_end': enddate})
+#             else:
+            timeline.write({'date_end': enddate})
+            not_productive_timelines = timeline.write({'date_end': enddate})
+            self.is_complete = True
+            self.is_in_progress_done = False
+        return True
+
+    @api.multi
+    def start_workorder(self):
+        timeline = self.env['customer.workcenter.productivity']
+        for workorder in self:
+            timeline.create({
+                'customer_workcenter_id': workorder.id,
+                'date_start': datetime.now(),
+                'description': _('Time Tracking: ') + self.technician.name,
+                'technician_id': self.technician.id,
+            })
+            state_obj = self.env['service.stage'].search(
+                [('name', '=', 'In Progress')], limit=1)
+        return self.write({'state': 'in_progress', 'stage_id': state_obj.id, 'is_in_progress_done': True
+                           })
+
+    @api.multi
+    def stop_workorder(self):
+        self.end_previous()
+        state_obj = self.env['service.stage'].search(
+            [('name', '=', 'Completed')], limit=1)
+        return self.write({'state': 'completed', 'end_date': fields.Datetime.now(), 'stage_id': state_obj.id})
+# older methods
+#     @api.one
+#     @api.depends('work_schedule_ids.time')
+#     def _compute_parent_duration(self):
+#         self.duration = sum(self.work_schedule_ids.mapped('time'))
+
+    @api.multi
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        if self.partner_id:
+            addr = self.partner_id.address_get(['delivery', 'invoice'])
+            values = {
+                'payment_term_id': self.partner_id.property_payment_term_id and self.partner_id.property_payment_term_id.id or False,
+                'partner_invoice_id': addr['invoice'],
+                'partner_shipping_id': addr['delivery'],
+                'equipment_id': False,
+                'equipment_model_id': False,
+                'equipment_make_id': False,
+                'equipment_serial_number': False,
+                'equipment_date_installed': False,
+            }
+            self.update(values)
+            return
+
+    @api.model
+    def create(self, vals):
+        vals.update({'is_plan_done': True})
+        if vals.get('name', 'New') == 'New':
+            vals['name'] = self.env['ir.sequence'].next_by_code(
+                'seq.service') or 'New'
+            result = super(ServiceCustomerInformation, self).create(vals)
+            return result
+
+
+class customer_workcenter_productivity(models.Model):
+    _name = "customer.workcenter.productivity"
+
+    customer_workcenter_id = fields.Many2one(
+        'service.customer.information', "Work Center")
+    technician_id = fields.Many2one("res.users")
+    date_start = fields.Datetime("Start Date")
+    date_end = fields.Datetime("End Date")
+    duration_line = fields.Float(
+        "Time", compute='_compute_duration', store=True)
+    description = fields.Text('Description')
+
+    @api.depends('date_end', 'date_start')
+    def _compute_duration(self):
+        for blocktime in self:
+            if blocktime.date_end:
+                d1 = fields.Datetime.from_string(blocktime.date_start)
+                d2 = fields.Datetime.from_string(blocktime.date_end)
+                diff = d2 - d1
+                blocktime.duration_line = round(diff.total_seconds() / 60.0, 2)
+            else:
+                blocktime.duration_line = 0.0
+
+
+class ServiceEquipmentMake(models.Model):
+    _name = "service.equipment.make"
+    _description = "Service Equipment Make"
+
+    name = fields.Char('Name')
+
+
+class ServiceEquipmentModel(models.Model):
+    _name = "service.equipment.model"
+    _description = "Service Equipment Model"
+
+    name = fields.Char('Name')
+
+
+class ServiceInventoryWorkflow(models.Model):
+    _name = "service.inventory.workflow"
+    _description = "Service Inventory Workflow"
+
+    service_customer_info_id = fields.Many2one(
+        'service.customer.information', string="Service Customer Information")
+    product_id = fields.Many2one(
+        'product.product', string='Product', required=True)
+    product_uom_qty = fields.Float(string='Quantity', digits=dp.get_precision(
+        'Product Unit of Measure'), default=1.0)
+    product_uom = fields.Many2one(
+        'product.uom', string='Unit of Measure', related="product_id.uom_id")
+    product_price = fields.Float(
+        string="Price", related="product_id.list_price")
+    inventory_source = fields.Selection([
+        ('truck', 'Truck'),
+        ('non_truck', 'Non-Truck'),
+    ], string="Inventory Source")

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="biz_customer_sales_history" model="ir.ui.view">
+        <field name="name">customer.sale.history</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page name='customer_sales_history' string="Original Sales History">
+                    <field name="customer_history_id" mode="tree">
+                        <tree editable="bottom" string="Sales History">
+                            <field name="serial" />
+                            <field name="units" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="ship_date" />
+                            <field name="start_up_date" />
+                            <field name="description" />
+                            <field name="warranty_registration" />
+                            <field name="ship_to" />
+                            <field name="bill_to" invisible="1"/>
+                            <field name="top_bill" invisible="1"/>
+                            <field name="unit_price" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

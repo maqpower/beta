@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_fleet_product_form_wiz" model="ir.ui.view">
+        <field name="name">fleet.product.form.wiz</field>
+        <field name="model">fleet.product.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Load Product" >
+                <sheet>
+                    <group string = "Select Initial Product">
+                        <field name="fleet_product_id" />
+                    </group>
+                    <group string="Vehicle Product Load">
+                        <field name="fleet_product_line_wiz" nolabel = "1">
+                            <tree editable="bottom">
+                                <field name="product_id" />
+                                <field name="name" />
+                                <field name="product_qty" />
+                                <field name="balance_product_qty" />
+                                <field name="fleet_product_line_wiz_id" invisible = "1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Request Truck Inventory" class="oe_stat_button" icon="fa-building-o" name="set_default_stock"
+                        type="object" context="{'default_is_fleet_stock': 1}"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_fleet_load_product_wiz" model="ir.actions.act_window">
+        <field name="name">Load Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fleet.product.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fleet_product_form_wiz"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

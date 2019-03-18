@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_service_order"
+        model="res.partner"
+        string="Service Agreement Report"
+        name="biztech_service_agreement.agreement_report_view"
+        file="biztech_service_agreement.agreement_report_view"
+        report_type="qweb-pdf"/>
+
+
+    <record model="ir.ui.view" id="report_service_order_form">
+        <field name="name">partner.view.button.subscriptions_count</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="before">
+                <button class="oe_stat_button" type="action" name="%(biztech_service_agreement.report_service_order)d" icon="fa fa-newspaper-o" string="Service Agreement">
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

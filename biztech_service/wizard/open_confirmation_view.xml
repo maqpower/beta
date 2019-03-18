@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="confirmation_view_form" model="ir.ui.view">
+        <field name="name">confirmation.view.form</field>
+        <field name="model">confirmation.view</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <form string="Confirmation">
+                <group col= "2">
+                	<div><strong>Do you want to complete this service work order ?</strong></div>
+                 </group>
+                <footer>
+                    <button name="stop_workorder" id="stop_workorder" string="YES" type="object" class="btn btn-primary finish_date_color" />
+                    <button string="NO" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="confirmation_workorder_action" model="ir.actions.act_window">
+        <field name="name">Confirmation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">confirmation.view</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="confirmation_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

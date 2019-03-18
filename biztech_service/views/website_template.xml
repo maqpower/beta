@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="asset_backend" inherit_id="web.assets_backend" name="assets frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/biztech_service/static/src/css/custom_service.css" />
+            <script type="text/javascript" src="/biztech_service/static/src/js/custom.js"></script>
+            <script type="text/javascript" src="/biztech_service/static/src/js/custom_tab.js"></script>
+            <script type="text/javascript" src="/biztech_service/static/src/js/access.js"></script>
+            <script type="text/javascript" src="/biztech_service/static/src/js/kanban_false.js"></script>
+            <script type="text/javascript" src="/biztech_service/static/src/js/mrp_widget.js"></script>
+            <link rel="stylesheet" type="text/less" href="/biztech_service/static/src/less/mrp.less"/>
+        </xpath>
+    </template>
+
+    <template id="custom_web_login" inherit_id="web.login" name="Custom Web Login">
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+
+    <template id="custom_auth_oauth_login" inherit_id="auth_oauth.login" name="Custom Auth Login">
+        <xpath expr="//div[hasclass('pull-right')]" position="before">
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </xpath>
+    </template>
+
+    <template id="custom_auth_signup" inherit_id="auth_signup.login" name="Custom Auth Signup">
+        <xpath expr="//a[@t-if='signup_enabled']" position="replace">
+        </xpath>
+        <xpath expr="//a[@t-if='reset_password_enabled']" position="replace">
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="after">
+            <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}" class="btn btn-link pull-right">Sign up</a>
+                <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}" class="btn btn-link pull-right">Reset Password</a>
+            </xpath>
+    </template>
+    
+</odoo>

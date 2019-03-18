@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="biz_product_list_view_customization" model="ir.ui.view">
+        <field name="name">biz.product.list.view.customization</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="public_categ_ids"/>
+                <field name="currency_id" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='list_price']" position="attributes">
+                <attribute name="widget">monetary</attribute>
+                <attribute name="options">{'currency_field': 'currency_id'}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="widget">monetary</attribute>
+                <attribute name="options">{'currency_field': 'currency_id'}</attribute>
+            </xpath>
+       </field>
+    </record>
+    <record id="biz_product_product_list_view_customization" model="ir.ui.view">
+        <field name="name">biz.product.product.list.view.customization</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lst_price']" position="after">
+                <field name="public_categ_ids"/>
+                <field name="currency_id" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='lst_price']" position="attributes">
+                <attribute name="widget">monetary</attribute>
+                <attribute name="options">{'currency_field': 'currency_id'}</attribute>
+            </xpath>
+       </field>
+    </record>
+
+    <!-- add inventory location fields -->
+    <record id="biz_add_inventory_location" model="ir.ui.view">
+        <field name="name">biz.add.inventory.location</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+            	<div colspan = "2" style = "width:100%">
+                    <span class="oe_inline">(Corridor(X)</span>
+                    <field name="posx" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span class="oe_inline">;   Shelves(Y):  </span>
+                    <field name="posy" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span class="oe_inline">;   Height(Z)</span>
+                    <field name="posz" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span>)</span>
+                </div>
+                <field name="property_stock_inventory"/>
+            </xpath>
+       </field>
+    </record>
+    <!-- add inventory location fields -->
+    <record id="biz_add_inventory_location_variants" model="ir.ui.view">
+        <field name="name">biz.add.inventory.location.variants</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+            	<div colspan = "2" style = "width:100%">
+                    <span class="oe_inline">(Corridor(X)</span>
+                    <field name="posx" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span class="oe_inline">;   Shelves(Y):  </span>
+                    <field name="posy" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span class="oe_inline">;   Height(Z)</span>
+                    <field name="posz" nolabel="1" readonly = "1" class="oe_inline"/>
+                    <span>)</span>
+                </div>
+                <field name="property_stock_inventory"/>
+            </xpath>
+       </field>
+    </record>
+    <!-- Hide fields in inventory tab -->
+    <record id="biz_add_hide_inventory_fiels" model="ir.ui.view">
+        <field name="name">biz.hide.inventory.fiels</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_template_property_form" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='property_stock_inventory']" position="replace" />
+       </field>
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- State -->
+        <record id="service_state_1" model="service.stage">
+            <field name="name">Plan</field>
+        </record>
+        <record id="service_state_2" model="service.stage">
+            <field name="name">Schedule</field>
+        </record>
+        <record id="service_state_3" model="service.stage">
+            <field name="name">In Progress</field>
+        </record>
+        <record id="service_state_4" model="service.stage">
+            <field name="name">Completed</field>
+        </record>
+        <!--sale payment method-->
+        <record id="sale_payment_method_1" model="sale.payment.method">
+            <field name="name">Cash</field>
+        </record>
+        <record id="sale_payment_method_2" model="sale.payment.method">
+            <field name="name">Bank</field>
+        </record>
+        <record id="sale_payment_method_3" model="sale.payment.method">
+            <field name="name">Credit Card</field>
+        </record>
+    </data>
+</odoo>

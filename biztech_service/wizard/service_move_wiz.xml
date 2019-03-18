@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- service move wiz form -->
+     <record id="service_move_wiz_line" model="ir.ui.view">
+        <field name="name">service.move.wiz.form</field>
+        <field name="model">service.move.wiz</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="product_id"/>
+                </group>
+                <group>
+                     <separator string="Fleet Location" colspan="4"/>
+                    <field name="fleet_location_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="location_id" class="no_edit" domain="[('is_fleet_location', '=', True)]"/>
+                            <field name="dest_location_id" domain="[('is_fleet_location', '=', True),('id', '!=', location_id)]"/>
+                            <field name="qty" class="no_edit"/>
+                            <field name="is_truck"/>
+                            <field name="final_quantity"/>
+                        </tree>
+                    </field>
+                </group> 
+                <field name="required_message" style="color:red;"/>
+                <footer>
+
+                    <button name="truck_transfer" type="object" string="Transfer" class="btn btn-primary finish_date_color"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="service_move_line_wiz_action" model="ir.actions.act_window">
+        <field name="name">Truck Transfer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">service.move.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="service_move_wiz_line"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

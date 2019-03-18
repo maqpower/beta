@@ -1,0 +1,21 @@
+<odoo>
+    <record id="account_journal_dashboard_kanban_view_service" model="ir.ui.view">
+        <field name="name">account.journal.dashboard.kanban.service</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='JournalBodySalePurchase']//div[hasclass('o_kanban_primary_right')]" position="inside">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a type="object" t-if="journal_type == 'sale'" name="open_action_service" context="{'search_default_is_service_invocie':True}" id="account_dashboard_purchase_pay_link_service">
+                            <span><t t-esc="dashboard.service_count"/></span> Service Invoice <br/>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 text-right" t-if="journal_type == 'sale'">
+                         <span><t t-esc="dashboard.sum_service"/></span>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
